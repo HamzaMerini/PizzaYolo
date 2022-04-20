@@ -1,2 +1,2 @@
 # PizzaYolo
-![alt text](https://github.com/HamzaMerini/PizzaYolo/blob/main/Logos/V1__________.png?raw=true)
+![alt text](https://github.com/HamzaMerini/PizzaYolo/blob/main/LOGO.png?raw=true)
