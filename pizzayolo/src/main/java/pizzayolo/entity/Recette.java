@@ -9,9 +9,29 @@ public class Recette {
 	private double prixM;
 	private double prixL;
 	private double prixXL;
-	private List<Ingredient> listeIngre;
+	private List<Food> listeIngre;
 
-	public Recette(String nom, double prixM,List<Ingredient> listeIngre) {
+	
+	
+	public Recette(Integer id,String nom, double prixM) {
+		this.id=id;
+		this.nom = nom;
+		this.prixM = prixM;
+		this.prixL = prixM+3;
+		this.prixXL = prixL+3;
+	}
+	
+	
+	public Recette(String nom, double prixM) {
+		
+		this.nom = nom;
+		this.prixM = prixM;
+		this.prixL = prixM+3;
+		this.prixXL = prixL+3;
+	}
+	
+	
+	public Recette(String nom, double prixM,List<Food> listeIngre) {
 		
 		this.nom = nom;
 		this.prixM = prixM;
@@ -20,7 +40,7 @@ public class Recette {
 		this.listeIngre = listeIngre;
 	}
 	
-	public Recette(double prixM,List<Ingredient> listeIngre) {
+	public Recette(double prixM,List<Food> listeIngre) {
 	
 		this.nom = "Compos�e";
 		this.prixM = prixM;
@@ -72,21 +92,28 @@ public class Recette {
 	
 
 
-	public List<Ingredient> getListeIngre() {
+	public List<Food> getListeIngre() {
 		return listeIngre;
 	}
 
-	public void setListeIngre(List<Ingredient> listeIngre) {
+	public void setListeIngre(List<Food> listeIngre) {
 		this.listeIngre = listeIngre;
 	}
-	
+
+
 	@Override
-	public String toString() {	
-		return ""+nom+" : "+getListeIngre();
-		
+	public String toString() {
+		return "Recette [id=" + id + ", nom=" + nom + ", prixM=" + prixM + ", prixL=" + prixL + ", prixXL=" + prixXL
+				+ ", listeIngre=" + listeIngre + "]";
+	}
+	
+//	@Override
+//	public String toString() {	
+//		return ""+nom+" : "+getListeIngre();
+//		
 //		return "Recette [id=" + id + ", nom=" + nom + ", prixM=" + prixM + ", prixL=" + prixL + ", prixXL=" + prixXL
 //				+ ", listeIngre=" + listeIngre + "]";
-	}
+//	}
 	
 	
 	
