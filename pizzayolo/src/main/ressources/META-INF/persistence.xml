@@ -15,7 +15,7 @@
 		<!-- driver jdbc -->
 		<property name="hibernate.connection.driver" value="org.postgresql.Driver"/>
 		<!-- url base -->
-		<property name="hibernate.connection.url" value="jdbc:postgresql://localhost:5433/pizzayolo"/>
+		<property name="hibernate.connection.url" value="jdbc:postgresql://localhost:5432/pizzayolo"/>
 		<property name="hibernate.connection.user" value="postgres"/>
 		<property name="hibernate.connection.password" value="postgres"/>
 		<!-- dialect hibernate -->
