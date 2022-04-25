@@ -2,7 +2,7 @@ package pizzayolo.entity;
 
 public class Pizza {
 
-	private static int cpt=0;
+	
 	private Integer id;
 	private double prix;
 	private Recette recette;
@@ -11,8 +11,7 @@ public class Pizza {
 
 
 	public Pizza(Recette recette,Taille taille,TypePate pate) {
-		cpt++;
-		this.id = cpt;
+		
 		this.recette = recette;
 		this.taille = taille;
 		this.pate=pate;
@@ -68,7 +67,7 @@ public class Pizza {
 
 	@Override
 	public String toString() {
-		return "Pizza "+getTaille()+" "+pate+" - "+getRecette()+" - Prix : "+getPrix()+"€";//AJOUTER TYPE PATE
+		return "Pizza "+getTaille()+" "+pate+" - "+getRecette()+" - Prix : "+getPrix()+"�";//AJOUTER TYPE PATE
 		//return "Pizza [id=" + id + ", prix=" + prix + ", recette=" + recette + "]";
 	}
 
