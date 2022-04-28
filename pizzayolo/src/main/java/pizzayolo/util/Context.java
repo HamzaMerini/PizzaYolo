@@ -6,7 +6,6 @@ import java.util.List;
 import pizzayolo.dao.DAOBoisson;
 import pizzayolo.dao.DAODessert;
 import pizzayolo.dao.DAOIngredient;
-import pizzayolo.dao.DAOLienR;
 import pizzayolo.dao.DAORecette;
 import pizzayolo.entity.PlanSalle;
 
@@ -20,7 +19,6 @@ public class Context {
 	private DAORecette daoRecette = new DAORecette();
 	private DAOBoisson daoBoisson = new DAOBoisson();
 	private DAODessert daoDessert = new DAODessert();
-	private DAOLienR daoLienR = new DAOLienR();
 	
 	private Context() {}
 
@@ -80,16 +78,6 @@ public class Context {
 	}
 
 
-
-	public DAOLienR getDaoLienR() {
-		return daoLienR;
-	}
-
-
-
-	public void setDaoLienR(DAOLienR daoLienR) {
-		this.daoLienR = daoLienR;
-	}
 
 
 

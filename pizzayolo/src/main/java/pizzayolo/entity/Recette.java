@@ -1,11 +1,39 @@
 package pizzayolo.entity;
 
 import java.util.List;
+import java.util.Objects;
+import java.util.Set;
 
-public class Recette {
-	
-	private Integer id;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.ForeignKey;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
+
+
+@Entity
+@Table(name = "recette")
+@SequenceGenerator(name = "seqRecette", sequenceName = "seq_recette", initialValue = 1, allocationSize = 1)
+public class Recette { 
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqRecette")
+	private Long id;
 	private String nom;
+
+@ManyToMany(fetch = FetchType.LAZY)
+@JoinTable(name = "ingredients", joinColumns = @JoinColumn(name = "ingredients_id", foreignKey = @ForeignKey(name = "INGREDIENT_RECETTE_ID_FK")), inverseJoinColumns = @JoinColumn(name = "recette_id", foreignKey = @ForeignKey(name = "INGREDIENT_INGREDIENT_ID_FK")))
+private Set<Ingredient> ingredients;
+
+
+
+	
 	private double prixM;
 	private double prixL;
 	private double prixXL;
@@ -13,7 +41,7 @@ public class Recette {
 
 	
 	
-	public Recette(Integer id,String nom, double prixM) {
+	public Recette(Long id,String nom, double prixM) {
 		this.id=id;
 		this.nom = nom;
 		this.prixM = prixM;
@@ -49,11 +77,11 @@ public class Recette {
 		this.listeIngre = listeIngre;
 	}
 	
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -102,22 +130,29 @@ public class Recette {
 
 
 	@Override
-	public String toString() {
-		return "Recette [id=" + id + ", nom=" + nom + ", prixM=" + prixM + ", prixL=" + prixL + ", prixXL=" + prixXL
-				+ ", listeIngre=" + listeIngre + "]";
+	public int hashCode() {
+		return Objects.hash(id);
 	}
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Recette other = (Recette) obj;
+		return Objects.equals(id, other.id);
+	}
+
+
 	
-//	@Override
-//	public String toString() {	
-//		return ""+nom+" : "+getListeIngre();
-//		
-//		return "Recette [id=" + id + ", nom=" + nom + ", prixM=" + prixM + ", prixL=" + prixL + ", prixXL=" + prixXL
-//				+ ", listeIngre=" + listeIngre + "]";
-//	}
-	
-	
+
 	
 	
 	
 	
 }
+

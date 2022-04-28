@@ -1,8 +1,11 @@
 package pizzayolo.entity;
 
+import javax.persistence.Embeddable;
+
+@Embeddable
 public class Adresse {
 		
-	private int id	;
+	
 	private int numVoie;
 		private String nomVoie;
 		private String complement;
@@ -13,13 +16,6 @@ public class Adresse {
 		
 	}
 
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
 
 	public Adresse(int numVoie, String nomVoie, String complement, String cP, String ville) {
 		this.numVoie = numVoie;
@@ -69,10 +65,6 @@ public class Adresse {
 		Ville = ville;
 	}
 
-	@Override
-	public String toString() {
-		return "Adresses [numVoie=" + numVoie + ", nomVoie=" + nomVoie + ", complement=" + complement + ", CP=" + CP
-				+ ", Ville=" + Ville + "]";
-	}
+
 
 }

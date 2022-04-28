@@ -10,10 +10,11 @@ import java.util.Scanner;
 import pizzayolo.dao.DAOBoisson;
 import pizzayolo.dao.DAODessert;
 import pizzayolo.dao.DAOIngredient;
-import pizzayolo.dao.DAOLienR;
 import pizzayolo.dao.DAORecette;
 import pizzayolo.entity.Food;
+import pizzayolo.entity.Pizza;
 import pizzayolo.entity.PlanSalle;
+import pizzayolo.entity.Recette;
 import pizzayolo.entity.Taille;
 import pizzayolo.entity.TypePate;
 import pizzayolo.util.Context;
@@ -24,8 +25,7 @@ public class Test {
 	static DAORecette daoRecette = Context.getInstance().getDaoRecette();
 	static DAOBoisson daoBoisson = Context.getInstance().getDaoBoisson();
 	static DAODessert daoDessert = Context.getInstance().getDaoDessert();
-	static DAOLienR daoLienR = Context.getInstance().getDaoLienR();
-	
+
 	
 	public static String saisieString(String msg) 
 	{
@@ -243,32 +243,32 @@ public class Test {
 
 //AJOUT DES Desserts 
 		
-		daoDessert.insert(RecettePizza.GlaceCookiep);
-		daoDessert.insert(RecettePizza.GlaceCookieg);
-		daoDessert.insert(RecettePizza.GlaceChocop);
-		daoDessert.insert(RecettePizza.GlaceChocog);
-		daoDessert.insert(RecettePizza.GlaceVanillep);
-		daoDessert.insert(RecettePizza.GlaceVanilleg);
-		daoDessert.insert(RecettePizza.GlaceCaramel);
-		daoDessert.insert(RecettePizza.Moelleux);
-		daoDessert.insert(RecettePizza.Beignets);
-		daoDessert.insert(RecettePizza.ChocoB);
-		
-		
-		
-		
-		
-		
-//		Recette maPizza = RecettePizza.orientale();
-//		Pizza p=new Pizza(maPizza,Taille.Medium,TypePate.MozzaCrust);
-//		System.out.println(p);
+//		daoDessert.insert(RecettePizza.GlaceCookiep);
+//		daoDessert.insert(RecettePizza.GlaceCookieg);
+//		daoDessert.insert(RecettePizza.GlaceChocop);
+//		daoDessert.insert(RecettePizza.GlaceChocog);
+//		daoDessert.insert(RecettePizza.GlaceVanillep);
+//		daoDessert.insert(RecettePizza.GlaceVanilleg);
+//		daoDessert.insert(RecettePizza.GlaceCaramel);
+//		daoDessert.insert(RecettePizza.Moelleux);
+//		daoDessert.insert(RecettePizza.Beignets);
+//		daoDessert.insert(RecettePizza.ChocoB);
 //		
-//		RecettePizza.modifierRecette(maPizza);
-//		Recette r=RecettePizza.creerRecette();
-//		System.out.println(r);
-//		
-//		p=new Pizza(r,Taille.Medium,TypePate.MozzaCrust);
-//		System.out.println(p);
+		
+		
+		
+		
+		
+		Recette maPizza = RecettePizza.orientale();
+		Pizza p=new Pizza(maPizza,Taille.Medium,TypePate.MozzaCrust);
+		System.out.println(p);
+		
+		RecettePizza.modifierRecette(maPizza);
+		Recette r=RecettePizza.creerRecette();
+		System.out.println(r);
+		
+		p=new Pizza(r,Taille.Medium,TypePate.MozzaCrust);
+		System.out.println(p);
 		/*
 		maPizza=RecettePizza.reine();
 		p=new Pizza(maPizza,Taille.Large,TypePate.Classique);
