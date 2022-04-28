@@ -1,11 +1,33 @@
 package pizzayolo.entity;
-import pizzayolo.util.Context;
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
 
+import pizzayolo.util.Context;
+@Entity
+@DiscriminatorValue("S")
 public class Salle extends Commande{
-	
+	private PlanSalle table;
 
   
-  public void voirTableLibre(){
+	
+	
+	
+  public Salle() {
+		
+	}
+
+
+public PlanSalle getTable() {
+		return table;
+	}
+
+
+	public void setTable(PlanSalle table) {
+		this.table = table;
+	}
+
+
+public void voirTableLibre(){
 	
 		if (Context.getInstance().getTableLibre().isEmpty()) {System.out.println("Toutes les tables sont prises");}
 		else {
@@ -28,4 +50,6 @@ public class Salle extends Commande{
 		Context.getInstance().getTablePrise().remove(PlanSalle);
 	}
 
+	
+	
 }
