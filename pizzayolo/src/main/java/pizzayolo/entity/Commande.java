@@ -2,15 +2,127 @@ package pizzayolo.entity;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="commande")
+@SequenceGenerator(name = "seqCommande", sequenceName = "seq_commande", initialValue = 1, allocationSize = 1)
 public abstract class Commande {
-	
+	@Id
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "seqCommande")
+	protected Long id;
 	protected int numTicket;
 	protected List<Pizza> pizzas = new ArrayList();
 	protected List<Dessert> desserts = new ArrayList();
 	protected List<Boisson> boissons = new ArrayList();
-	protected double PrixTotal; 
+	protected double PrixTotal;
 	
+
+public Commande() {
+		super();
+	}
+
+
+
+@Override
+public int hashCode() {
+	return Objects.hash(id);
+}
+
+
+
+@Override
+public boolean equals(Object obj) {
+	if (this == obj)
+		return true;
+	if (obj == null)
+		return false;
+	if (getClass() != obj.getClass())
+		return false;
+	Commande other = (Commande) obj;
+	return Objects.equals(id, other.id);
+}
+
+
+
+public Long getId() {
+	return id;
+}
+
+
+
+public void setId(Long id) {
+	this.id = id;
+}
+
+
+
+public int getNumTicket() {
+	return numTicket;
+}
+
+
+
+public void setNumTicket(int numTicket) {
+	this.numTicket = numTicket;
+}
+
+
+
+public List<Pizza> getPizzas() {
+	return pizzas;
+}
+
+
+
+public void setPizzas(List<Pizza> pizzas) {
+	this.pizzas = pizzas;
+}
+
+
+
+public List<Dessert> getDesserts() {
+	return desserts;
+}
+
+
+
+public void setDesserts(List<Dessert> desserts) {
+	this.desserts = desserts;
+}
+
+
+
+public List<Boisson> getBoissons() {
+	return boissons;
+}
+
+
+
+public void setBoissons(List<Boisson> boissons) {
+	this.boissons = boissons;
+}
+
+
+
+public double getPrixTotal() {
+	return PrixTotal;
+}
+
+
+
+public void setPrixTotal(double prixTotal) {
+	PrixTotal = prixTotal;
+}
+
+
 
 public double calculTotalPizzas(){
 	double TotalPizzas=0 ;
