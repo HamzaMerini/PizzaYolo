@@ -1,13 +1,54 @@
 package pizzayolo.entity;
 
+import java.util.Objects;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="boisson")
+@SequenceGenerator(name = "seqDessert", sequenceName = "seq_dessert", initialValue = 1, allocationSize = 1)
 public class Dessert {
 
+	@Id
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "seqDessert")
 	private int id;
 	private String nom;
 	private double prix;
 
 	
 	
+	@Override
+	public int hashCode() {
+		return Objects.hash(id);
+	}
+
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Dessert other = (Dessert) obj;
+		return id == other.id;
+	}
+
+
+
+	public Dessert() {
+		super();
+	}
+
+
+
 	public Dessert(String nom, double prix) {
 		this.nom = nom;
 		this.prix = prix;

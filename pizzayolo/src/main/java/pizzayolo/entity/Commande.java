@@ -16,15 +16,14 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-
 import org.hibernate.annotations.ManyToAny;
 @Entity
-@SequenceGenerator(name="seqCommande",sequenceName = "seq_commande", initialValue = 1, allocationSize = 1)
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@SequenceGenerator(name="seqCommande",sequenceName = "seq_commande", initialValue = 1, allocationSize = 1)
 @DiscriminatorColumn(name="type_commande", discriminatorType = DiscriminatorType.STRING,length = 1)
 public abstract class Commande {
 	@Id
@@ -35,8 +34,8 @@ public abstract class Commande {
 	Set<CommandeBoisson> boissons;
 	
 	//rajouter le @OneToMany(mappedby="") mapped by en fonction du nom des clef primaire donné par joe pour Boisson
-	@OneToMany(mappedBy = "idCD.commande")
 	Set<CommandeDessert> desserts;
+	@OneToMany(mappedBy = "idCD.commande")
 	
 	// rejouter le @OneToMany(mappedby="") mapped by en fonction du nom de la clef etrangere donné à la commande dans la table pizza par Khadidja
 	@OneToMany(mappedBy="commande")
