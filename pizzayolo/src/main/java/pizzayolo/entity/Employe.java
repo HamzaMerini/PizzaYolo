@@ -23,7 +23,7 @@ import javax.persistence.Table;
 @Table(name = "employe")
 @SequenceGenerator(name = "seqEmploye", sequenceName = "seq_employe", initialValue = 10, allocationSize = 1)
 
-public class Employee {
+public class Employe {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqEmploye")
 	@Column(name = "matricule", nullable = false, unique = true)
@@ -50,7 +50,7 @@ public class Employee {
 	@JoinTable(name = "creneau", joinColumns = @JoinColumn(name = "employe_id", foreignKey = @ForeignKey(name = "CRENEAU_EMPLOYE_ID_FK")), inverseJoinColumns = @JoinColumn(name = "creneau_id", foreignKey = @ForeignKey(name = "CRENEAU_CRENEAU_ID_FK")))
 	private Creneau creneaux;
 
-	public Employee() {
+	public Employe() {
 
 	}
 
@@ -139,7 +139,7 @@ public class Employee {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Employee other = (Employee) obj;
+		Employe other = (Employe) obj;
 		return Objects.equals(matricule, other.matricule);
 	}
 
