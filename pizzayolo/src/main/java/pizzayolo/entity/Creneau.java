@@ -29,7 +29,7 @@ public class Creneau {
 	private LocalTime fin;
 
 	@ManyToMany(mappedBy = "creneaux")
-	private Employee employe;
+	private Employe employe;
 
 	public Creneau() {
 	}
@@ -66,11 +66,11 @@ public class Creneau {
 		this.fin = fin;
 	}
 
-	public Employee getEmploye() {
+	public Employe getEmploye() {
 		return employe;
 	}
 
-	public void setEmploye(Employee employe) {
+	public void setEmploye(Employe employe) {
 		this.employe = employe;
 	}
 
