@@ -3,6 +3,7 @@ package pizzayolo.entity;
 import java.util.Set;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
@@ -12,6 +13,8 @@ import pizzayolo.entity.Recette;
 public class Ingredient extends Food{
 
 
+	@Id
+	private Long id;
 	@ManyToMany(mappedBy = "ingredients")
 	private Set<Recette> recettes;
 

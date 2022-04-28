@@ -14,8 +14,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 //import hypothetique a adapter en fonction du boulot de chacun 
 import pizzayolo.config.PizzayoloConfig;
+import pizzayolo.entity.Adresse;
 import pizzayolo.entity.Utilisateur;
-import pizzayolo.exceptions.UtilisateurException;
+import pizzayolo.exception.ExceptionPizzayolo;
 import pizzayolo.services.UtilisateurService;
 
 @ExtendWith(SpringExtension.class)
@@ -28,15 +29,23 @@ import pizzayolo.services.UtilisateurService;
 public class UtilisateurServiceTest {
 	@Autowired
 	UtilisateurService utilisateurService;   // injection de commande service pour nos test sur cette page
-	
-	
+	@Test
+	public void uneMethode() {
+		Utilisateur u=new Utilisateur();
+		u.setNom("abc");
+//		Adresse a=new Adresse();
+//		u.setAdresse(a);
+		utilisateurService.create(u);
+		assertNotNull(utilisateurService.getById(u.getId()));
+	}
+
 	//pour faire un test @Test puit creer une methode qui doit verifier assert...
-	// L’annotation @Disabled permet de désactiverun test.
-	
-	
-	
-	
-	
-	
-	
+	// Lï¿½annotation @Disabled permet de dï¿½sactiverun test.
+
+
+
+
+
+
+
 }

@@ -37,7 +37,7 @@ private Set<Ingredient> ingredients;
 	private double prixM;
 	private double prixL;
 	private double prixXL;
-	private List<Food> listeIngre;
+	//private List<Food> listeIngre;
 
 	
 	
@@ -65,7 +65,7 @@ private Set<Ingredient> ingredients;
 		this.prixM = prixM;
 		this.prixL = prixM+3;
 		this.prixXL = prixL+3;
-		this.listeIngre = listeIngre;
+		//this.listeIngre = listeIngre;
 	}
 	
 	public Recette(double prixM,List<Food> listeIngre) {
@@ -74,7 +74,7 @@ private Set<Ingredient> ingredients;
 		this.prixM = prixM;
 		this.prixL = prixM+3;
 		this.prixXL = prixL+3;
-		this.listeIngre = listeIngre;
+		//this.listeIngre = listeIngre;
 	}
 	
 	public Long getId() {
@@ -120,13 +120,13 @@ private Set<Ingredient> ingredients;
 	
 
 
-	public List<Food> getListeIngre() {
-		return listeIngre;
-	}
-
-	public void setListeIngre(List<Food> listeIngre) {
-		this.listeIngre = listeIngre;
-	}
+//	public List<Food> getListeIngre() {
+//		return listeIngre;
+//	}
+//
+//	public void setListeIngre(List<Food> listeIngre) {
+//		this.listeIngre = listeIngre;
+//	}
 
 
 	@Override
