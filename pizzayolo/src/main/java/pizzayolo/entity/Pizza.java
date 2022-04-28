@@ -31,6 +31,7 @@ public class Pizza {
 
 	private double prix;
 	private Recette recette;
+	
 	private Taille taille;
 	private TypePate pate;
 
