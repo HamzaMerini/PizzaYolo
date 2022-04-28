@@ -1,9 +1,34 @@
 package pizzayolo.entity;
 
+import java.util.Objects;
+
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.ForeignKey;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
+import pizzayolo.entity.Recette;
+
+@Entity
+@Table(name = "pizza")
+@SequenceGenerator(name = "seqPizza", sequenceName = "seq_pizza", initialValue = 1, allocationSize = 1)
 public class Pizza {
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqPizza")
+	private Long id;
+	private String nom;
+	@ManyToOne
+	@JoinColumn(name = "numticket_id", foreignKey = @ForeignKey(name = "PIZZA_NUMTICKET_ID_FK"))
+	private Commande commande;
 
 	
-	private Integer id;
+
 	private double prix;
 	private Recette recette;
 	
@@ -54,11 +79,11 @@ public class Pizza {
 		this.recette = recette;
 	}
 	
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 	
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -67,13 +92,27 @@ public class Pizza {
 	}
 
 	@Override
-	public String toString() {
-		return "Pizza "+getTaille()+" "+pate+" - "+getRecette()+" - Prix : "+getPrix()+"�";//AJOUTER TYPE PATE
-		//return "Pizza [id=" + id + ", prix=" + prix + ", recette=" + recette + "]";
+	public int hashCode() {
+		return Objects.hash(id);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Pizza other = (Pizza) obj;
+		return Objects.equals(id, other.id);
+	}
+
+	
 	}
 
 
 
 
 
-}
+
