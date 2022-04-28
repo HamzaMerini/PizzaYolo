@@ -34,8 +34,9 @@ public abstract class Commande {
 	Set<CommandeBoisson> boissons;
 	
 	//rajouter le @OneToMany(mappedby="") mapped by en fonction du nom des clef primaire donné par joe pour Boisson
-	Set<CommandeDessert> desserts;
+	
 	@OneToMany(mappedBy = "idCD.commande")
+	Set<CommandeDessert> desserts;
 	
 	// rejouter le @OneToMany(mappedby="") mapped by en fonction du nom de la clef etrangere donné à la commande dans la table pizza par Khadidja
 	@OneToMany(mappedBy="commande")

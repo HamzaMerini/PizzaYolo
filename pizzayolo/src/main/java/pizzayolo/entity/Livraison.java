@@ -15,11 +15,4 @@ public class Livraison extends Commande{
 		
 	}
 
-
-
-	public double calculTotal(){
-		PrixTotal=calculTotalPizzas()+calculTotalBoissons()+calculTotalDesserts()+prixLivraison;
-		return PrixTotal;
-	}
-
 }
