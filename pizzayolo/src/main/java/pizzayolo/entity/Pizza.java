@@ -30,6 +30,9 @@ public class Pizza {
 	
 
 	private double prix;
+	
+	@ManyToOne
+	@JoinColumn(name="recette", foreignKey =@ForeignKey(name="PIZZA_RECETTE_ID_FK"))
 	private Recette recette;
 	
 	private Taille taille;

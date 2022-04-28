@@ -15,7 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 //import hypothetique a adapter en fonction du boulot de chacun 
 import pizzayolo.config.PizzayoloConfig;
 import pizzayolo.entity.Commande;
-import pizzayolo.exceptions.CommandeException;
+import pizzayolo.exception.ExceptionPizzayolo;
 import pizzayolo.services.CommandeService;
 
 
@@ -30,9 +30,9 @@ public class CommandeServiceTest {
 	@Autowired
 	CommandeService commandeService;   // injection de commande service pour nos test sur cette page
 	
-	
+	//Commande c=new Commande();
 	//pour faire un test @Test puit creer une methode qui doit verifier assert...
-	// L’annotation @Disabled permet de désactiverun test.
+	// Lï¿½annotation @Disabled permet de dï¿½sactiverun test.
 	
 	
 	

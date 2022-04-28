@@ -2,6 +2,7 @@ package pizzayolo.entity;
 
 import java.util.Date;
 import java.util.Objects;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -47,8 +48,10 @@ public class Employe {
 	private Utilisateur utilisateur;
 
 	@ManyToMany(fetch = FetchType.LAZY)
-	@JoinTable(name = "creneau", joinColumns = @JoinColumn(name = "employe_id", foreignKey = @ForeignKey(name = "CRENEAU_EMPLOYE_ID_FK")), inverseJoinColumns = @JoinColumn(name = "creneau_id", foreignKey = @ForeignKey(name = "CRENEAU_CRENEAU_ID_FK")))
-	private Creneau creneaux;
+	@JoinTable(name = "creneauEmploye",
+	joinColumns = @JoinColumn(name = "employe_id", foreignKey = @ForeignKey(name = "CRENEAU_EMPLOYE_ID_FK")), 
+	inverseJoinColumns = @JoinColumn(name = "creneau_id", foreignKey = @ForeignKey(name = "CRENEAU_CRENEAU_ID_FK")))
+	private Set<Creneau> creneaux;
 
 	public Employe() {
 
@@ -118,11 +121,13 @@ public class Employe {
 		this.utilisateur = utilisateur;
 	}
 
-	public Creneau getCreneau() {
+
+
+	public Set<Creneau> getCreneaux() {
 		return creneaux;
 	}
 
-	public void setCreneau(Creneau creneaux) {
+	public void setCreneaux(Set<Creneau> creneaux) {
 		this.creneaux = creneaux;
 	}
 

@@ -1,4 +1,4 @@
-package repository;
+package pizzayolo.repositories;
 
 public interface TypePateRepository {
 

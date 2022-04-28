@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import pizzayolo.entity.Utilisateur;
+import pizzayolo.exception.ExceptionPizzayolo;
+import pizzayolo.repositories.UtilisateurRepository;
 
 @Service
 public class UtilisateurService {
@@ -17,7 +19,7 @@ public class UtilisateurService {
 	}
 
 	public Utilisateur getById(Long id) {
-		return utilisateurRepository.findById(id);//.orElseThrow(UtilisateurException::new);
+		return utilisateurRepository.findById(id).orElseThrow(ExceptionPizzayolo::new);
 	}
 
 	public void create(Utilisateur utilisateur) {

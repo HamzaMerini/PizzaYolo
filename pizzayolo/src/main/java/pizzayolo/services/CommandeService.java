@@ -6,18 +6,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import pizzayolo.entity.Commande;
+import pizzayolo.exception.ExceptionPizzayolo;
+import pizzayolo.repositories.CommandeRepository;
 
 @Service
 public class CommandeService {
 	@Autowired
 	private CommandeRepository commandeRepository;
+	
+	
 
 	public List<Commande> getAll() {
 		return commandeRepository.findAll();
 	}
 
 	public Commande getById(Long id) {
-		return commandeRepository.findById(id);//.orElseThrow(CommandeException::new);
+		return commandeRepository.findById(id).orElseThrow(ExceptionPizzayolo::new);
 	}
 
 	public void create(Commande commande) {
