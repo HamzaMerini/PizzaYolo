@@ -6,7 +6,7 @@ import javax.persistence.Embeddable;
 public class Adresse {
 		
 	
-	private int numVoie;
+	private String numVoie;
 		private String nomVoie;
 		private String complement;
 		private String CP;
@@ -17,7 +17,7 @@ public class Adresse {
 	}
 
 
-	public Adresse(int numVoie, String nomVoie, String complement, String cP, String ville) {
+	public Adresse(String numVoie, String nomVoie, String complement, String cP, String ville) {
 		this.numVoie = numVoie;
 		this.nomVoie = nomVoie;
 		this.complement = complement;
@@ -25,11 +25,11 @@ public class Adresse {
 		Ville = ville;
 	}
 
-	public int getNumVoie() {
+	public String getNumVoie() {
 		return numVoie;
 	}
 
-	public void setNumVoie(int numVoie) {
+	public void setNumVoie(String numVoie) {
 		this.numVoie = numVoie;
 	}
 

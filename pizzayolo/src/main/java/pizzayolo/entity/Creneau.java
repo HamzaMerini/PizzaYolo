@@ -3,6 +3,7 @@ package pizzayolo.entity;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Objects;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -29,7 +30,7 @@ public class Creneau {
 	private LocalTime fin;
 
 	@ManyToMany(mappedBy = "creneaux")
-	private Employe employe;
+	private Set<Employe> employe;
 
 	public Creneau() {
 	}
@@ -66,11 +67,11 @@ public class Creneau {
 		this.fin = fin;
 	}
 
-	public Employe getEmploye() {
+	public Set<Employe> getEmploye() {
 		return employe;
 	}
 
-	public void setEmploye(Employe employe) {
+	public void setEmploye(Set<Employe> employe) {
 		this.employe = employe;
 	}
 
