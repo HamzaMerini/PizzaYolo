@@ -8,16 +8,16 @@ import javax.persistence.Entity;
 public class Salle extends Commande{
 	private PlanSalle table;
 
-  
-	
-	
-	
-  public Salle() {
-		
+
+
+
+
+	public Salle() {
+
 	}
 
 
-public PlanSalle getTable() {
+	public PlanSalle getTable() {
 		return table;
 	}
 
@@ -28,8 +28,8 @@ public PlanSalle getTable() {
 
 
 
-	}
+}
 
-	
-	
+
+
 

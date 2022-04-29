@@ -1,5 +1,5 @@
 package pizzayolo.entity;
 
-public enum type {
+public enum TypeFood {
 	Base,Ingredient
 }

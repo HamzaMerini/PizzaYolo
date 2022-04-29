@@ -1,5 +1,9 @@
 package pizzayolo.repositories;
 
-public interface DessertRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import pizzayolo.entity.Dessert;
+
+public interface DessertRepository extends JpaRepository<Dessert, Long>{
 
 }
