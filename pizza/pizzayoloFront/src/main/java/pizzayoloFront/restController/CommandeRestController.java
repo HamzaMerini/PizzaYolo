@@ -29,13 +29,13 @@ public class CommandeRestController {
 	}
 
 //	@JsonView(JsonViews.Common.class)
-	@PostMapping("")
+	@PostMapping("/create")
 	public Commande create(@RequestBody Commande commande) {
 		return commandeService.create(commande);
 	}
 	
 	//@JsonView(JsonViews.Common.class)
-	@PostMapping("")
+	@PostMapping("/delete")
 	public void delete(@RequestBody Commande commande) {
 		commandeService.delete(commande);
 	}
