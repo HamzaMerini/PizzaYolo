@@ -26,23 +26,22 @@ public class Recette {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqRecette")
 	private Long id;
-
 	private String nom;
 
 	@ManyToMany(fetch = FetchType.LAZY)
-	@JoinTable(name = "ingredients", joinColumns = @JoinColumn(name = "ingredients_id", foreignKey = @ForeignKey(name = "INGREDIENT_RECETTE_ID_FK")), inverseJoinColumns = @JoinColumn(name = "recette_id", foreignKey = @ForeignKey(name = "INGREDIENT_INGREDIENT_ID_FK")))
-	private Set<Ingredient> ingredients;
+	@JoinTable(name = "lien_recette_ingredients", 
+			   joinColumns = @JoinColumn(name = "ingredient_id", foreignKey = @ForeignKey(name = "INGREDIENT_RECETTE_ID_FK")), 
+			   inverseJoinColumns = @JoinColumn(name = "recette_id", foreignKey = @ForeignKey(name = "INGREDIENT_INGREDIENT_ID_FK")))
+	private Set<Ingredient> listeIngre;
 
-	@OneToMany(mappedBy = "recette")
-	private Pizza pizza;
+//	@OneToMany(mappedBy = "recette")
+//	private Pizza pizza;
 
 	private double prixM;
 	private double prixL;
 	private double prixXL;
 	//private List<Food> listeIngre;
 
-
-	
 
 
 	public Recette(Long id,String nom, double prixM) {
@@ -68,43 +67,43 @@ public class Recette {
 	}
 
 
-	public Recette(String nom, double prixM,List<Ingredient> listeIngre) {
+	public Recette(String nom, double prixM,Set<Ingredient> listeIngre) {
 
 		this.nom = nom;
 		this.prixM = prixM;
 		this.prixL = prixM+3;
 		this.prixXL = prixL+3;
-		//this.listeIngre = listeIngre;
+		this.listeIngre = listeIngre;
 	}
 
-	public Recette(double prixM,List<Ingredient> listeIngre) {
+	public Recette(Set<Ingredient> listeIngre) {
 
-		this.nom = "Composï¿½e";
-		this.prixM = prixM;
+		this.nom = "Composée";
+		this.prixM = 10;
 		this.prixL = prixM+3;
 		this.prixXL = prixL+3;
 		//this.listeIngre = listeIngre;
 	}
 
 
-	public Set<Ingredient> getIngredients() {
-		return ingredients;
-	}
+//	public Set<Ingredient> getIngredients() {
+//		return ingredients;
+//	}
+//
+//
+//	public void setIngredients(Set<Ingredient> ingredients) {
+//		this.ingredients = ingredients;
+//	}
 
 
-	public void setIngredients(Set<Ingredient> ingredients) {
-		this.ingredients = ingredients;
-	}
-
-
-	public Pizza getPizza() {
-		return pizza;
-	}
-
-
-	public void setPizza(Pizza pizza) {
-		this.pizza = pizza;
-	}
+//	public Pizza getPizza() {
+//		return pizza;
+//	}
+//
+//
+//	public void setPizza(Pizza pizza) {
+//		this.pizza = pizza;
+//	}
 
 	public Long getId() {
 		return id;
@@ -149,11 +148,11 @@ public class Recette {
 
 
 
-	//	public List<Food> getListeIngre() {
+	//	public Set<Food> getListeIngre() {
 	//		return listeIngre;
 	//	}
 	//
-	//	public void setListeIngre(List<Food> listeIngre) {
+	//	public void setListeIngre(Set<Food> listeIngre) {
 	//		this.listeIngre = listeIngre;
 	//	}
 

@@ -10,7 +10,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="boisson")
+@Table(name="dessert")
 @SequenceGenerator(name = "seqDessert", sequenceName = "seq_dessert", initialValue = 1, allocationSize = 1)
 public class Dessert {
 

@@ -31,40 +31,40 @@ public class Pizza {
 
 	private double prix;
 	
-	@ManyToOne
-	@JoinColumn(name="recette", foreignKey =@ForeignKey(name="PIZZA_RECETTE_ID_FK"))
-	private Recette recette;
-	
+//	@ManyToOne
+//	@JoinColumn(name="recette", foreignKey =@ForeignKey(name="PIZZA_RECETTE_ID_FK"))
+//	private Recette recette;
+//	
 	private Taille taille;
 	private TypePate pate;
 
 
-	public Pizza(Recette recette,Taille taille,TypePate pate) {
-		
-		this.recette = recette;
-		this.taille = taille;
-		this.pate=pate;
-		
-		if(taille==Taille.Medium){
-			this.prix=recette.getPrixM();
-		}else if(taille==Taille.Large){
-			this.prix=recette.getPrixL();
-		}
-		else{
-			this.prix=recette.getPrixXL();
-		}
-	
-		if(pate==TypePate.MozzaCrust){
-			this.prix=this.prix+pate.getPrix();
-		}else if(pate==TypePate.Pan){
-			this.prix=this.prix+pate.getPrix();
-		}
-		else{
-			this.prix=this.prix+pate.getPrix();
-		}
-	
-	
-	}
+//	public Pizza(Recette recette,Taille taille,TypePate pate) {
+//		
+//		this.recette = recette;
+//		this.taille = taille;
+//		this.pate=pate;
+//		
+//		if(taille==Taille.Medium){
+//			this.prix=recette.getPrixM();
+//		}else if(taille==Taille.Large){
+//			this.prix=recette.getPrixL();
+//		}
+//		else{
+//			this.prix=recette.getPrixXL();
+//		}
+//	
+//		if(pate==TypePate.MozzaCrust){
+//			this.prix=this.prix+pate.getPrix();
+//		}else if(pate==TypePate.Pan){
+//			this.prix=this.prix+pate.getPrix();
+//		}
+//		else{
+//			this.prix=this.prix+pate.getPrix();
+//		}
+//	
+//	
+//	}
 
 	public double getPrix() {
 		return prix;
@@ -74,13 +74,13 @@ public class Pizza {
 		this.prix = prix;
 	}
 	
-	public Recette getRecette() {
-		return recette;
-	}
-	
-	public void setRecette(Recette recette) {
-		this.recette = recette;
-	}
+//	public Recette getRecette() {
+//		return recette;
+//	}
+//	
+//	public void setRecette(Recette recette) {
+//		this.recette = recette;
+//	}
 	
 	public Long getId() {
 		return id;

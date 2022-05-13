@@ -1,0 +1,9 @@
+@font-face {
+  font-family: myfont;
+  src: url("./font/ZillaSlab-Bold.ttf");
+}
+
+.blacker {
+	font-size: 25px;
+  font-family: myfont;
+}
