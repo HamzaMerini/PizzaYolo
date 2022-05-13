@@ -9,6 +9,7 @@ import pizzayolo.entity.Utilisateur;
 import pizzayolo.exception.ExceptionPizzayolo;
 import pizzayolo.repositories.UtilisateurRepository;
 
+
 @Service
 public class UtilisateurService {
 	@Autowired
@@ -21,9 +22,13 @@ public class UtilisateurService {
 	public Utilisateur getById(Long id) {
 		return utilisateurRepository.findById(id).orElseThrow(ExceptionPizzayolo::new);
 	}
+	
+	public Utilisateur getByIdWithAdresse(Long id) {
+		return utilisateurRepository.findByIdWithAdresse(id).orElseThrow(RuntimeException::new);
+	}
 
-	public void create(Utilisateur utilisateur) {
-		utilisateurRepository.save(utilisateur);
+	public Utilisateur create(Utilisateur utilisateur) {
+		return utilisateurRepository.save(utilisateur);
 	}
 
 	public Utilisateur update(Utilisateur utilisateur) {

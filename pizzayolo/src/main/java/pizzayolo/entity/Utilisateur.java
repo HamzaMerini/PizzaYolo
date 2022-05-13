@@ -14,6 +14,10 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
+import quest.entity.JsonViews;
+
 @Entity
 @SequenceGenerator(name="seqUtilisateur",sequenceName = "seq_utilisateur", initialValue = 1, allocationSize = 1)
 public class Utilisateur {
@@ -24,6 +28,7 @@ public class Utilisateur {
 		private String mail;
 		private String mdp;
 		private String nom;
+		//@JsonView(JsonViews.UtilisateurWithAdress.class)
 		@Embedded
 		private Adresse adresse;
 		private String type; // client employe ou responsable 
@@ -36,7 +41,6 @@ public class Utilisateur {
 	    private Employe employe;
 		
 	public Utilisateur() {
-		
 		
 	}
 
