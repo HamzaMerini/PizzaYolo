@@ -22,8 +22,8 @@ public class DessertService {
 		return dessertRepository.findById(id).orElseThrow(ExceptionPizzayolo::new);
 	}
 
-	public void create(Dessert dessert) {
-		dessertRepository.save(dessert);
+	public Dessert create(Dessert dessert) {
+		return dessertRepository.save(dessert);
 	}
 
 	public Dessert update(Dessert dessert) {
