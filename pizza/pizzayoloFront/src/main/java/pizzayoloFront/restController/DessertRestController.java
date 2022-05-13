@@ -1,4 +1,4 @@
-package pizzayolo.restController;
+package pizzayoloFront.restController;
 
 import java.util.List;
 
@@ -12,8 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import pizzayolo.entity.Dessert;
-import pizzayolo.entity.Dessert;
-import pizzayolo.services.DessertService;
 import pizzayolo.entity.JsonViews;
 import pizzayolo.services.DessertService;
 
@@ -27,18 +25,13 @@ public class DessertRestController {
 	@JsonView(JsonViews.Common.class)
 	@GetMapping("")
 	public List<Dessert> getAll() {
-		try {
-			return dessertService.getAll();
-		} catch (Exception e) {
-		
-			e.printStackTrace();
-		}
-	}
+		return dessertService.getAll();
+}
 
 	@JsonView(JsonViews.Common.class)
 	@PostMapping("")
-	
-	public Dessert create (@RequestBody Dessert dessert) {
-    return dessertService.create(dessert);	
+
+	public Dessert create(@RequestBody Dessert dessert) {
+		return dessertService.create(dessert);
 	}
-	}
+}

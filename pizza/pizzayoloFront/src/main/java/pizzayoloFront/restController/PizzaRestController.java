@@ -1,4 +1,4 @@
-package pizzayolo.restController;
+package pizzayoloFront.restController;
 
 public class PizzaRestController {
 

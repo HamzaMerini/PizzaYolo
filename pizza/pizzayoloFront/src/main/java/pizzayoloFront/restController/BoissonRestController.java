@@ -1,4 +1,4 @@
-package pizzayolo.restController;
+package pizzayoloFront.restController;
 
 import java.util.List;
 
@@ -27,12 +27,7 @@ public class BoissonRestController {
 	@JsonView(JsonViews.Common.class)
 	@GetMapping("")
 	public List<Boisson> getAll() {
-		try {
 			return boissonService.getAll();
-		} catch (Exception e) {
-		
-			e.printStackTrace();
-		}
 	}
 
 	@JsonView(JsonViews.Common.class)
