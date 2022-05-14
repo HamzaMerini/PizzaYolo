@@ -18,11 +18,9 @@ public class CommandeDessertKey implements Serializable{
 	private Commande commandeDessert;
 
 	public CommandeDessertKey() {
-		super();
 	}
 
 	public CommandeDessertKey(Dessert dessert, Commande commande) {
-		super();
 		this.dessert = dessert;
 		this.commandeDessert = commande;
 	}

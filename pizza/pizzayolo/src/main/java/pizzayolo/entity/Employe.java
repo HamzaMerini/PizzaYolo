@@ -21,9 +21,9 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-
-@SequenceGenerator(name = "seqEmploye", sequenceName = "seq_employe", initialValue = 10, allocationSize = 1)
 @Table(name = "employe")
+@SequenceGenerator(name = "seqEmploye", sequenceName = "seq_employe", initialValue = 10, allocationSize = 1)
+
 public class Employe {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqEmploye")
@@ -35,7 +35,7 @@ public class Employe {
 	private String prenom;
 	@Column(name = "adresse", length = 200)
 	private String adresse;
-	@Column(name = "dateEmbauche", length = 200)
+	@Column(name = "date_embauche", length = 200)
 	private Date dateEmbauche;
 	@Column(name = "salaire", nullable = false, length = 200)
 	private double salaire;
@@ -48,7 +48,7 @@ public class Employe {
 	private Utilisateur utilisateur;
 
 	@ManyToMany(fetch = FetchType.LAZY)
-	@JoinTable(name = "creneauEmploye",
+	@JoinTable(name = "creneau_employe",
 	joinColumns = @JoinColumn(name = "employe_id", foreignKey = @ForeignKey(name = "CRENEAU_EMPLOYE_ID_FK")), 
 	inverseJoinColumns = @JoinColumn(name = "creneau_id", foreignKey = @ForeignKey(name = "CRENEAU_CRENEAU_ID_FK")))
 	private Set<Creneau> creneaux;

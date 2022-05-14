@@ -3,6 +3,7 @@ package pizzayolo.entity;
 import java.util.Objects;
 import java.util.Set;
 
+import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.ForeignKey;
@@ -16,43 +17,47 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@SequenceGenerator(name="seqUtilisateur",sequenceName = "seq_utilisateur", initialValue = 1, allocationSize = 1)
 @Table(name = "utilisateur")
+@SequenceGenerator(name = "seqUtilisateur", sequenceName = "seq_utilisateur", initialValue = 1, allocationSize = 1)
+
 public class Utilisateur {
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator ="seqUtilisateur" )
-		private Long id;
-		
-		private String mail;
-		private String mdp;
-		private String nom;
-		@Embedded
-		private Adresse adresse;
-		private String type; // client employe ou responsable 
-		
-		@OneToMany(mappedBy = "clientTicket")
-		Set<Commande> historiqueCommande;
-		
-	
-		@OneToOne(mappedBy = "utilisateur")
-	    private Employe employe;
-		
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqUtilisateur")
+	@Column(name = "id")
+	private Long id;
+	@Column(name = "mail")
+	private String mail;
+	@Column(name = "mdp")
+	private String mdp;
+	@Column(name = "nom")
+	private String nom;
+	@Column(name="prenom")
+	private String prenom;
+	@Embedded
+	// GERER LE NOM DES COLONNES DANS ADRESSES ?
+	private Adresse adresse;
+	@Column(name = "type")
+	private String type; // client employe ou responsable
+
+	@OneToMany(mappedBy = "clientTicket")
+	Set<Commande> historiqueCommande;
+
+	@OneToOne(mappedBy = "utilisateur")// PAS TOUJOURS VRAI DANS LE SENS OU UN UTILSATEUR NEST PAS FORCEMENT UN EMPLYE
+	private Employe employe;
+
 	public Utilisateur() {
-		
-		
+
 	}
 
-	public Utilisateur(Long id, String mail, String mdp, String nom, Adresse adresse, String type) {
-		
+	public Utilisateur(Long id, String mail, String mdp, String prenom,String nom, Adresse adresse, String type) {
 		this.id = id;
 		this.mail = mail;
 		this.mdp = mdp;
 		this.nom = nom;
+		this.prenom=prenom;
 		this.adresse = adresse;
 		this.type = type;
 	}
-
-	
 
 	public Long getId() {
 		return id;
@@ -102,6 +107,14 @@ public class Utilisateur {
 		this.type = type;
 	}
 
+	public String getPrenom() {
+		return prenom;
+	}
+
+	public void setPrenom(String prenom) {
+		this.prenom = prenom;
+	}
+
 	public Set<Commande> getHistoriqueCommande() {
 		return historiqueCommande;
 	}
@@ -126,6 +139,5 @@ public class Utilisateur {
 		Utilisateur other = (Utilisateur) obj;
 		return Objects.equals(id, other.id);
 	}
-	
 
 }

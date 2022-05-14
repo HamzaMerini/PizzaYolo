@@ -1,9 +1,9 @@
 package pizzayolo.entity;
 
-import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ForeignKey;
@@ -22,14 +22,16 @@ import com.fasterxml.jackson.annotation.JsonView;
 
 
 @Entity
-
-@SequenceGenerator(name = "seqRecette", sequenceName = "seq_recette", initialValue = 1, allocationSize = 1)
 @Table(name = "recette")
+@SequenceGenerator(name = "seqRecette", sequenceName = "seq_recette", initialValue = 1, allocationSize = 1)
+
 public class Recette { 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqRecette")
+	@Column(name="id")
 	private Long id;
 	@JsonView(JsonViews.Common.class)
+	@Column(name="nom")
 	private String nom;
 
 	@ManyToMany(fetch = FetchType.LAZY)
@@ -42,13 +44,15 @@ public class Recette {
 	private Set<Pizza> pizzas;
 	
 	@JsonView(JsonViews.Common.class)
+	@Column(name="prix_m")
 	private double prixM;
 	@JsonView(JsonViews.Common.class)
+	@Column(name="prix_l")
 	private double prixL;
 	@JsonView(JsonViews.Common.class)
+	@Column(name="prix_xl")
 	private double prixXL;
-	//private List<Food> listeIngre;
-
+	
 
 
 	public Recette(Long id,String nom, double prixM) {
@@ -61,7 +65,6 @@ public class Recette {
 
 
 	public Recette() {
-		super();
 	}
 
 
@@ -89,7 +92,7 @@ public class Recette {
 		this.prixM = 10;
 		this.prixL = prixM+3;
 		this.prixXL = prixL+3;
-		//this.listeIngre = listeIngre;
+		this.listeIngre = listeIngre;
 	}
 
 
@@ -155,16 +158,6 @@ public class Recette {
 		this.prixXL = prixXL;
 	}
 
-
-
-
-	//	public Set<Food> getListeIngre() {
-	//		return listeIngre;
-	//	}
-	//
-	//	public void setListeIngre(Set<Food> listeIngre) {
-	//		this.listeIngre = listeIngre;
-	//	}
 
 
 	@Override

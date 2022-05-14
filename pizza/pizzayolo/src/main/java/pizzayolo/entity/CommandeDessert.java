@@ -2,6 +2,7 @@ package pizzayolo.entity;
 
 import java.util.Objects;
 
+import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -10,7 +11,9 @@ import javax.persistence.Table;
 @Table(name="commande_dessert")
 public class CommandeDessert {
 	@EmbeddedId
+	@Column(name="id_commande_dessert")
 	private CommandeDessertKey idCD;
+	@Column(name="quantite_dessert")
 	private int quantiteDessert;
 
 	public int getQuantiteDessert() {

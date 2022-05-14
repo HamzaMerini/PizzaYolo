@@ -2,8 +2,10 @@ package pizzayolo.entity;
 
 import java.util.Objects;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,88 +15,113 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
-import pizzayolo.entity.Recette;
-
 @Entity
-
-@SequenceGenerator(name = "seqPizza", sequenceName = "seq_pizza", initialValue = 1, allocationSize = 1)
 @Table(name = "pizza")
+@SequenceGenerator(name = "seqPizza", sequenceName = "seq_pizza", initialValue = 1, allocationSize = 1)
+
 public class Pizza {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqPizza")
+	@Column(name = "id")
 	private Long id;
+	@Column(name = "nom")
 	private String nom;
-	
-	
+
 	@ManyToOne
 	@JoinColumn(name = "numticket_id", foreignKey = @ForeignKey(name = "PIZZA_NUMTICKET_ID_FK"))
 	private Commande commandePizza;
-
-	
-
+	@Column(name = "prix")
 	private double prix;
-	
+
 	@ManyToOne
-	@JoinColumn(name="recette", foreignKey =@ForeignKey(name="PIZZA_RECETTE_ID_FK"))
+	@JoinColumn(name = "recette", foreignKey = @ForeignKey(name = "PIZZA_RECETTE_ID_FK"))
 	private Recette recette;
 
+	@Enumerated(EnumType.STRING)
+	@Column(name = "taille_pizza")
 	private Taille taille;
+	@Enumerated(EnumType.STRING)
+	@Column(name = "type_pate")
 	private TypePate pate;
 
+	public Pizza(Recette recette, Taille taille, TypePate pate) {
 
-//	public Pizza(Recette recette,Taille taille,TypePate pate) {
-//		
-//		this.recette = recette;
-//		this.taille = taille;
-//		this.pate=pate;
-//		
-//		if(taille==Taille.Medium){
-//			this.prix=recette.getPrixM();
-//		}else if(taille==Taille.Large){
-//			this.prix=recette.getPrixL();
-//		}
-//		else{
-//			this.prix=recette.getPrixXL();
-//		}
-//	
-//		if(pate==TypePate.MozzaCrust){
-//			this.prix=this.prix+pate.getPrix();
-//		}else if(pate==TypePate.Pan){
-//			this.prix=this.prix+pate.getPrix();
-//		}
-//		else{
-//			this.prix=this.prix+pate.getPrix();
-//		}
-//	
-//	
-//	}
-
-	public double getPrix() {
-		return prix;
-	}
-	
-	public void setPrix(double prix) {
-		this.prix = prix;
-	}
-	
-	public Recette getRecette() {
-		return recette;
-	}
-	
-	public void setRecette(Recette recette) {
 		this.recette = recette;
+		this.taille = taille;
+		this.pate = pate;
+
+		if (taille == Taille.Medium) {
+			this.prix = recette.getPrixM();
+		} else if (taille == Taille.Large) {
+			this.prix = recette.getPrixL();
+		} else {
+			this.prix = recette.getPrixXL();
+		}
+
+		if (pate == TypePate.MozzaCrust) {
+			this.prix = this.prix + pate.getPrix();
+		} else if (pate == TypePate.Pan) {
+			this.prix = this.prix + pate.getPrix();
+		} else {
+			this.prix = this.prix + pate.getPrix();
+		}
+
 	}
-	
+
 	public Long getId() {
 		return id;
 	}
-	
+
 	public void setId(Long id) {
 		this.id = id;
 	}
 
+	public String getNom() {
+		return nom;
+	}
+
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+
+	public Commande getCommandePizza() {
+		return commandePizza;
+	}
+
+	public void setCommandePizza(Commande commandePizza) {
+		this.commandePizza = commandePizza;
+	}
+
+	public double getPrix() {
+		return prix;
+	}
+
+	public void setPrix(double prix) {
+		this.prix = prix;
+	}
+
+	public Recette getRecette() {
+		return recette;
+	}
+
+	public void setRecette(Recette recette) {
+		this.recette = recette;
+	}
+
 	public Taille getTaille() {
 		return taille;
+	}
+
+	public void setTaille(Taille taille) {
+		this.taille = taille;
+	}
+
+	public TypePate getPate() {
+		return pate;
+	}
+
+	public void setPate(TypePate pate) {
+		this.pate = pate;
 	}
 
 	@Override
@@ -114,11 +141,4 @@ public class Pizza {
 		return Objects.equals(id, other.id);
 	}
 
-	
-	}
-
-
-
-
-
-
+}
