@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 @Table(name = "boisson")
 @SequenceGenerator(name = "seqBoisson", sequenceName = "seq_commande", initialValue = 1, allocationSize = 1)
@@ -19,8 +21,10 @@ public class Boisson {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqBoisson")
 	@Column(name = "id")
 	private Integer id;
+	@JsonView(JsonViews.Common.class)
 	@Column(name = "nom")
 	private String nom;
+	@JsonView(JsonViews.Common.class)
 	@Column(name = "prix")
 	private double prix;
 

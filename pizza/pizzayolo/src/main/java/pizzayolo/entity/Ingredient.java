@@ -14,6 +14,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 @Table(name = "ingredient")
 @SequenceGenerator(name = "seqIngredient", sequenceName = "seq_ingredient", initialValue = 1, allocationSize = 1)
@@ -24,12 +26,16 @@ public class Ingredient {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqIngredient")
 	@Column(name="id")
 	private Long id;
+	@JsonView(JsonViews.Common.class)
 	@Column(name="libelle")
 	private String libelle;
+	@JsonView(JsonViews.Common.class)
 	@Column(name="prix_sup_m")
 	private double prixSupM;
+	@JsonView(JsonViews.Common.class)
 	@Column(name="prix_sup_l")
 	private double prixSupL;
+	@JsonView(JsonViews.Common.class)
 	@Column(name="prix_sup_xl")
 	private double prixSupXL;
 
@@ -37,6 +43,7 @@ public class Ingredient {
 	private Set<Recette> recettes;
 
 	@Enumerated(EnumType.STRING)
+	@JsonView(JsonViews.Common.class)
 	@Column(name="type_ingredient")
 	private TypeIngredient typeIngredient;
 

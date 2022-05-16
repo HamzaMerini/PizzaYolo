@@ -41,7 +41,7 @@ public class PizzayoloConfig {
 		emf.setPackagesToScan("pizzayolo.entity");
 		emf.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
 		Properties properties = new Properties();
-		properties.setProperty("hibernate.hbm2ddl.auto", "update");
+		properties.setProperty("hibernate.hbm2ddl.auto", "create");
 		properties.setProperty("hibernate.dialect","org.hibernate.dialect.PostgreSQL10Dialect");
 		properties.setProperty("hibernate.show_sql", "false"); // true pour afficher les requetes SQL
 		properties.setProperty("hibernate.format_sql", "false"); // true pour afficher les requetes SQL

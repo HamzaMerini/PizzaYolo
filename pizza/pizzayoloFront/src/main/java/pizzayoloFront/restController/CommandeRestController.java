@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import pizzayolo.entity.Commande;
+import pizzayolo.entity.JsonViews;
 import pizzayolo.services.CommandeService;
 
 
@@ -22,19 +23,19 @@ public class CommandeRestController {
 	@Autowired
 	private CommandeService commandeService;
 
-//	@JsonView(JsonViews.Common.class)
+	@JsonView(JsonViews.Common.class)
 	@GetMapping("")
 	public List<Commande> getAll() {
 		return commandeService.getAll();
 	}
 
-//	@JsonView(JsonViews.Common.class)
+	@JsonView(JsonViews.Common.class)
 	@PostMapping("/create")
 	public Commande create(@RequestBody Commande commande) {
 		return commandeService.create(commande);
 	}
 	
-	//@JsonView(JsonViews.Common.class)
+	@JsonView(JsonViews.Common.class)
 	@PostMapping("/delete")
 	public void delete(@RequestBody Commande commande) {
 		commandeService.delete(commande);

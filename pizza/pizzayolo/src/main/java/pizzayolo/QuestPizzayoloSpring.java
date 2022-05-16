@@ -99,7 +99,6 @@ public class QuestPizzayoloSpring {
 		Ingredient Boeuf = new Ingredient("Boeuf", 1.8);
 		Ingredient Champignons = new Ingredient("Champignons", 1.3);
 		Ingredient Chevre = new Ingredient("Chèvre", 2);
-		Ingredient Chorizo = new Ingredient("Chorizo", 2);
 		Ingredient Emmental = new Ingredient("Emmental", 2);
 		Ingredient Fourme = new Ingredient("Fourme", 2);
 		Ingredient Jambon = new Ingredient("Jambon", 1.5);
@@ -115,7 +114,6 @@ public class QuestPizzayoloSpring {
 		Ingredient Poulet = new Ingredient("Poulet", 1.8);
 		Ingredient Patate = new Ingredient("Patate", 1.3);
 		Ingredient Piments = new Ingredient("Piments", 1);
-		Ingredient Raclette = new Ingredient("Raclette", 2.5);
 		Ingredient Reblochon = new Ingredient("Reblochon", 2.3);
 		Ingredient Saumon = new Ingredient("Saumon", 2.9);
 		Ingredient Tomates = new Ingredient("Tomates", 1);
@@ -129,7 +127,6 @@ public class QuestPizzayoloSpring {
 		ingredientService.create(Boeuf);
 		ingredientService.create(Champignons);
 		ingredientService.create(Chevre);
-		ingredientService.create(Chorizo);
 		ingredientService.create(Emmental);
 		ingredientService.create(Fourme);
 		ingredientService.create(Jambon);
@@ -146,7 +143,6 @@ public class QuestPizzayoloSpring {
 		ingredientService.create(Poulet);
 		ingredientService.create(Patate);
 		ingredientService.create(Piments);
-		ingredientService.create(Raclette);
 		ingredientService.create(Reblochon);
 		ingredientService.create(Saumon);
 		ingredientService.create(Tomates);
@@ -227,14 +223,6 @@ public class QuestPizzayoloSpring {
 		Collections.addAll(ind, CremeFraiche,Mozzarella,Champignons,Oignons,Poulet,Emmental);
 		Recette indienne = new Recette("Indienne", 9,ind);
 		
-		Set<Ingredient> bel=new HashSet<Ingredient> ();
-		Collections.addAll(bel, SauceTomate,Mozzarella,Chorizo,Merguez,Poivrons);	
-		Recette bellacho = new Recette("Bellacho", 9,bel);
-		
-		Set<Ingredient> divf=new HashSet<Ingredient> ();
-		Collections.addAll(divf, CremeFraiche,Mozzarella,Oignons,Raclette,Emmental);
-		Recette divinefro = new Recette("Divine 3 Fromages", 9,divf);
-		
 		Set<Ingredient> hypno=new HashSet<Ingredient> ();
 		Collections.addAll(hypno, SauceTomate,Mozzarella,Poulet,Merguez,Champignons);
 		Recette hypnotika = new Recette("Hypnotika", 9,hypno);
@@ -254,10 +242,6 @@ public class QuestPizzayoloSpring {
 		Set<Ingredient> pepp=new HashSet<Ingredient> ();
 		Collections.addAll(pepp, SauceTomate,Mozzarella,Oignons,Poivrons,Champignons,Tomates,Olives,Origan);
 		Recette peppina = new Recette("Peppina", 9,pepp);
-
-		Set<Ingredient> rac=new HashSet<Ingredient> ();
-		Collections.addAll(rac, CremeFraiche,Mozzarella,Patate,Bacon,Oignons,Raclette);
-		Recette raclette = new Recette("Authentique Raclette", 9,rac);
 
 		Set<Ingredient> racM=new HashSet<Ingredient> ();
 		Collections.addAll(racM, CremeFraiche,Mozzarella,Chevre,Fourme,Emmental);
@@ -297,14 +281,11 @@ public class QuestPizzayoloSpring {
 		recetteService.create(deluxe);
 		recetteService.create(pecheur);
 		recetteService.create(indienne);
-		recetteService.create(bellacho);
-		recetteService.create(divinefro);
 		recetteService.create(hypnotika);
 		recetteService.create(diavolaB);
 		recetteService.create(diavolaP);
 		recetteService.create(sKebab);
 		recetteService.create(peppina);
-		recetteService.create(raclette);
 		recetteService.create(racletteMiel);
 		recetteService.create(qFro);
 		recetteService.create(baconGroovy);

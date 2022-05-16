@@ -30,7 +30,6 @@ public class DessertRestController {
 
 	@JsonView(JsonViews.Common.class)
 	@PostMapping("")
-
 	public Dessert create(@RequestBody Dessert dessert) {
 		return dessertService.create(dessert);
 	}

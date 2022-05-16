@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 @Table(name = "dessert")
 @SequenceGenerator(name = "seqDessert", sequenceName = "seq_dessert", initialValue = 1, allocationSize = 1)
@@ -21,8 +23,10 @@ public class Dessert {
 	@Column(name = "id")
 	private int id;
 	@Column(name = "nom")
+	@JsonView(JsonViews.Common.class)
 	private String nom;
 	@Column(name = "prix")
+	@JsonView(JsonViews.Common.class)
 	private double prix;
 
 	public Dessert() {
