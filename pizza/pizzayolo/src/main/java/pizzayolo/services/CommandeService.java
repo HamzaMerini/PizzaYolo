@@ -24,8 +24,8 @@ public class CommandeService {
 		return commandeRepository.findById(id).orElseThrow(ExceptionPizzayolo::new);
 	}
 
-	public void create(Commande commande) {
-		commandeRepository.save(commande);
+	public Commande create(Commande commande) {
+		return commandeRepository.save(commande);
 	}
 
 	public Commande update(Commande commande) {

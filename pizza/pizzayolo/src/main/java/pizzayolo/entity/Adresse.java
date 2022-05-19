@@ -1,28 +1,31 @@
 package pizzayolo.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
 @Embeddable
 public class Adresse {
-		
-	
+
+	@Column(name="numero")
 	private String numVoie;
-		private String nomVoie;
-		private String complement;
-		private String CP;
-		private String Ville;
-		
+	@Column(name="rue")
+	private String nomVoie;
+	@Column(name="complement")
+	private String complement;
+	@Column(name="code_postale")
+	private String cp;
+	@Column(name="ville")
+	private String ville;
+
 	public Adresse() {
-		
 	}
 
-
-	public Adresse(String numVoie, String nomVoie, String complement, String cP, String ville) {
+	public Adresse(String numVoie, String nomVoie, String complement, String cp, String ville) {
 		this.numVoie = numVoie;
 		this.nomVoie = nomVoie;
 		this.complement = complement;
-		CP = cP;
-		Ville = ville;
+		this.cp = cp;
+		this.ville = ville;
 	}
 
 	public String getNumVoie() {
@@ -49,22 +52,20 @@ public class Adresse {
 		this.complement = complement;
 	}
 
-	public String getCP() {
-		return CP;
+	public String getCp() {
+		return cp;
 	}
 
-	public void setCP(String cP) {
-		CP = cP;
+	public void setCp(String cp) {
+		this.cp = cp;
 	}
 
 	public String getVille() {
-		return Ville;
+		return ville;
 	}
 
 	public void setVille(String ville) {
-		Ville = ville;
+		this.ville = ville;
 	}
-
-
 
 }

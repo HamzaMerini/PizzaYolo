@@ -22,8 +22,8 @@ public class BoissonService {
 		return boissonRepository.findById(id).orElseThrow(ExceptionPizzayolo::new);
 	}
 
-	public void create(Boisson boisson) {
-		boissonRepository.save(boisson);
+	public Boisson create(Boisson boisson) {
+		return boissonRepository.save(boisson);
 	}
 
 	public Boisson update(Boisson boisson) {

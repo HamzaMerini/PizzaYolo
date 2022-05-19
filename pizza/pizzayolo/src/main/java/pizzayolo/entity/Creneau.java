@@ -15,15 +15,16 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-
-@SequenceGenerator(name = "seqCreneau", sequenceName = "seq_creneau", initialValue = 1, allocationSize = 1)
 @Table(name = "creneau")
+@SequenceGenerator(name = "seqCreneau", sequenceName = "seq_creneau", initialValue = 1, allocationSize = 1)
+
 public class Creneau {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqCreneau")
 	@Column(name="id")
 	private Long id;
+	@Column(name="date")
 	private LocalDate date;//a quoi ca sert ???
 	@Column(name="debut")
 	private LocalTime debut;

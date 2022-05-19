@@ -22,8 +22,8 @@ public class UtilisateurService {
 		return utilisateurRepository.findById(id).orElseThrow(ExceptionPizzayolo::new);
 	}
 
-	public void create(Utilisateur utilisateur) {
-		utilisateurRepository.save(utilisateur);
+	public Utilisateur create(Utilisateur utilisateur) {
+		return utilisateurRepository.save(utilisateur);
 	}
 
 	public Utilisateur update(Utilisateur utilisateur) {
@@ -45,5 +45,8 @@ public class UtilisateurService {
 		
 	}
 
+	public Utilisateur getByIdWithAdresse(Long id) {
+        return utilisateurRepository.findByIdWithAdresse(id).orElseThrow(RuntimeException::new);
+    }
 	
 }

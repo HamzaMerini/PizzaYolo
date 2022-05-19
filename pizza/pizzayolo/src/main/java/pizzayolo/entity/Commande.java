@@ -22,50 +22,39 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import org.hibernate.annotations.ManyToAny;
+
 @Entity
-@Table(name="commande")
-@SequenceGenerator(name="seqCommande",sequenceName = "seq_commande", initialValue = 1, allocationSize = 1)
+@Table(name = "commande")
+@SequenceGenerator(name = "seqCommande", sequenceName = "seq_commande", initialValue = 1, allocationSize = 1)
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name="type_commande", discriminatorType = DiscriminatorType.STRING,length = 5)
+@DiscriminatorColumn(name = "type_commande", discriminatorType = DiscriminatorType.STRING, length = 5)
 
 public abstract class Commande {
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator ="seqCommande" )
-	@Column(name="num_ticket")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqCommande")
+	@Column(name = "num_ticket")
 	protected Long numTicket;
-	
+
 	@OneToMany(mappedBy = "idCB.commandeBoisson")
 	Set<CommandeBoisson> boissons;
-
-
 
 	@OneToMany(mappedBy = "idCD.commandeDessert")
 	Set<CommandeDessert> desserts;
 
-	
-	@OneToMany(mappedBy="commandePizza")
+	@OneToMany(mappedBy = "commandePizza")
 	Set<Pizza> pizzas;
-
 
 	@ManyToOne
 	@JoinColumn(name = "id_client", foreignKey = @ForeignKey(name = "COMMANDE_ID_CLIENT_FK"))
 	protected Utilisateur clientTicket;
 
-	@Column(name="date_ticket")
+	@Column(name = "date_ticket")
 	protected LocalDate dateTicket;
 
-	@Column(name="prix_total")
-	protected double prixTotal; 
+	@Column(name = "prix_total")
+	protected double prixTotal;
 
-	
-	public Commande() { 
-		super();
-	}
-
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(numTicket);
+	public Commande() {
 	}
 
 
@@ -117,15 +106,18 @@ public abstract class Commande {
 		this.dateTicket = dateTicket;
 	}
 
-
-
 	public double getPrixTotal() {
 		return prixTotal;
 	}
 
-
 	public void setPrixTotal(double prixTotal) {
 		this.prixTotal = prixTotal;
+	}
+
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(numTicket);
 	}
 
 
@@ -138,16 +130,10 @@ public abstract class Commande {
 		if (getClass() != obj.getClass())
 			return false;
 		Commande other = (Commande) obj;
-		return numTicket == other.numTicket;
+		return Objects.equals(numTicket, other.numTicket);
 	}
 
-
-
-
-
-
+	
 
 
 }
-
-

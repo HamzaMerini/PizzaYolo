@@ -1,13 +1,19 @@
-/* Please â�¤ this if you like it! */
 @import
 	url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700,800,900')
 	;
 
 :root {
-  --vert: #00933f;
-  --rouge: #ca0815;
-  --blue:#00933f;
-  --all:#ffeba7;
+  --vert: #1e592f;
+  --rouge: #ffffff;
+  --fleche:#ffffff;
+  
+  /*--all:#D32F2F; rouge */
+  --all:#256F3A;
+  
+  --mdp:#256F3A;
+  
+  
+  
 }
 
 body {
@@ -15,8 +21,8 @@ body {
 	font-weight: 300;
 	font-size: 15px;
 	line-height: 1.7;
-	color: #c4c3ca;
-	background-color: #0b0b0b;
+	color: var(--mdp);
+	background-color: #26282b;
 	overflow-x: hidden;
 }
 
@@ -30,11 +36,11 @@ a:hover {
 }
 
 .link {
-	color: #c4c3ca;
+	color: #ffffff;
 }
 
 .link:hover {
-	color: var(--all);
+	color:#350000;
 }
 
 p {
@@ -45,6 +51,7 @@ p {
 
 h4 {
 	font-weight: 600;
+	color:#fff;
 }
 
 h6 span {
@@ -88,7 +95,7 @@ h6 span {
 	height: 36px;
 	border-radius: 50%;
 	color: var(--all);
-	background-color: var(--blue);
+	background-color: var(--fleche);
 	font-family: 'unicons';
 	content: '\eb4f';
 	z-index: 20;
@@ -108,7 +115,7 @@ h6 span {
 	position: relative;
 	width: 440px;
 	max-width: 100%;
-	height: 400px;
+	height: 500px;
 	-webkit-transform-style: preserve-3d;
 	transform-style: preserve-3d;
 	perspective: 800px;
@@ -129,7 +136,7 @@ h6 span {
 .card-front, .card-back {
 	width: 100%;
 	height: 100%;
-	background-color: #2a2b38;
+	background-color: #353941;
 	background-image:
 		url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/1462889/pat.svg');
 	background-position: bottom center;
@@ -171,6 +178,23 @@ h6 span {
 	display: block;
 	margin: 0;
 	padding: 0;
+}
+
+.form-group-right {
+	position: relative;
+	display: block;
+	margin: 0;
+	padding: 0;
+	float : right;
+}
+
+
+.form-group-left {
+	position: relative;
+	display: block;
+	margin: 0;
+	padding: 0;
+	float : left;
 }
 
 .form-style {
@@ -288,18 +312,18 @@ h6 span {
 	text-align: center;
 	border: none;
 	background-color: var(--all);
-	color: var(--blue);
-	box-shadow: 0 8px 24px 0 rgba(255, 235, 167, .2);
+	color: #ffffff;
+	box-shadow: 0 8px 24px 0 rgba(0, 0, 0, .2);
 }
 
 .btn:active, .btn:focus {
-	background-color: var(--blue);
+	background-color: var(--fleche);
 	color: var(--all);
 	box-shadow: 0 8px 24px 0 rgba(16, 39, 112, .2);
 }
 
 .btn:hover {
-	background-color: var(--blue);
+	background-color: var(--fleche);
 	color: var(--all);
 	box-shadow: 0 8px 24px 0 rgba(16, 39, 112, .2);
 }

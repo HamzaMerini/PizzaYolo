@@ -3,6 +3,7 @@ package pizzayolo.entity;
 import java.util.Objects;
 import java.util.Set;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -13,24 +14,37 @@ import javax.persistence.ManyToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
-@Entity
+import com.fasterxml.jackson.annotation.JsonView;
 
-@SequenceGenerator(name = "seqIngredient", sequenceName = "seq_ingredient", initialValue = 1, allocationSize = 1)
+@Entity
 @Table(name = "ingredient")
+@SequenceGenerator(name = "seqIngredient", sequenceName = "seq_ingredient", initialValue = 1, allocationSize = 1)
+
 public class Ingredient {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqIngredient")
+	@Column(name="id")
 	private Long id;
+	@JsonView(JsonViews.Common.class)
+	@Column(name="libelle")
 	private String libelle;
+	@JsonView(JsonViews.Common.class)
+	@Column(name="prix_sup_m")
 	private double prixSupM;
+	@JsonView(JsonViews.Common.class)
+	@Column(name="prix_sup_l")
 	private double prixSupL;
+	@JsonView(JsonViews.Common.class)
+	@Column(name="prix_sup_xl")
 	private double prixSupXL;
 
 	@ManyToMany(mappedBy = "listeIngre")
 	private Set<Recette> recettes;
 
 	@Enumerated(EnumType.STRING)
+	@JsonView(JsonViews.Common.class)
+	@Column(name="type_ingredient")
 	private TypeIngredient typeIngredient;
 
 	public Ingredient() {
@@ -55,12 +69,11 @@ public class Ingredient {
 		this.typeIngredient = TypeIngredient.Ingredient;
 	}
 
-//	public Ingredient(Long id, Set<Recette> recettes, TypeFood typeFood) {
-//	super();
-//	this.id = id;
-//	this.recettes = recettes;
-//	this.typeFood = typeFood;
-//}
+	public Ingredient(Long id, Set<Recette> recettes, TypeIngredient type) {
+	this.id = id;
+	this.recettes = recettes;
+	this.typeIngredient = type;
+}
 
 	public Long getId() {
 		return id;
@@ -70,13 +83,13 @@ public class Ingredient {
 		this.id = id;
 	}
 
-//	public Set<Recette> getRecettes() {
-//		return recettes;
-//	}
-//
-//	public void setRecettes(Set<Recette> recettes) {
-//		this.recettes = recettes;
-//	}
+	public Set<Recette> getRecettes() {
+		return recettes;
+	}
+
+	public void setRecettes(Set<Recette> recettes) {
+		this.recettes = recettes;
+	}
 
 	public String getLibelle() {
 		return libelle;
