@@ -298,7 +298,7 @@ public class QuestPizzayoloSpring {
 	}
 
 	public void run(String... args) {
-		init();
+		//init();
 	}
 
 }
