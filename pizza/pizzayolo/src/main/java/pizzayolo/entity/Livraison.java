@@ -1,5 +1,8 @@
 package pizzayolo.entity;
 
+import java.time.LocalDate;
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
@@ -34,4 +37,17 @@ public class Livraison extends Commande {
 
 	}
 
+	public Livraison(Set<CommandeBoisson> boissons, Set<CommandeDessert> desserts, Set<Pizza> pizzas,
+			Utilisateur clientTicket, LocalDate dateTicket, double prixTotal, String heureSouhaite,
+			double prixLivraison) {
+		super(boissons, desserts, pizzas, clientTicket, dateTicket, prixTotal);
+		this.heureSouhaite = heureSouhaite;
+		this.prixLivraison = prixLivraison;
+	}
+
+
+	
+	
+	
+	
 }

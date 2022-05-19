@@ -7,10 +7,13 @@ import javax.persistence.Embeddable;
 import javax.persistence.ForeignKey;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+
+import com.fasterxml.jackson.annotation.JsonView;
 @Embeddable
 public class CommandeDessertKey implements Serializable{
 	@ManyToOne
 	@JoinColumn(name = "dessert_id", foreignKey = @ForeignKey(name = "dessert_commande_dessert_id_fk"))
+	@JsonView(JsonViews.Common.class)
 	private Dessert dessert;
 	
 	@ManyToOne

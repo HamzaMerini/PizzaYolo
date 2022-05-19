@@ -15,6 +15,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 @Table(name = "pizza")
 @SequenceGenerator(name = "seqPizza", sequenceName = "seq_pizza", initialValue = 1, allocationSize = 1)
@@ -25,6 +27,7 @@ public class Pizza {
 	@Column(name = "id")
 	private Long id;
 	@Column(name = "nom")
+	@JsonView(JsonViews.Common.class)
 	private String nom;
 
 	@ManyToOne
@@ -35,13 +38,16 @@ public class Pizza {
 
 	@ManyToOne
 	@JoinColumn(name = "recette", foreignKey = @ForeignKey(name = "PIZZA_RECETTE_ID_FK"))
+	@JsonView(JsonViews.Common.class)
 	private Recette recette;
 
 	@Enumerated(EnumType.STRING)
 	@Column(name = "taille_pizza")
+	@JsonView(JsonViews.Common.class)
 	private Taille taille;
 	@Enumerated(EnumType.STRING)
 	@Column(name = "type_pate")
+	@JsonView(JsonViews.Common.class)
 	private TypePate pate;
 
 	public Pizza(Recette recette, Taille taille, TypePate pate) {

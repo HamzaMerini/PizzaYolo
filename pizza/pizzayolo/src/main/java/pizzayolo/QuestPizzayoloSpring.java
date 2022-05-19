@@ -6,14 +6,27 @@ import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import pizzayolo.entity.Adresse;
 import pizzayolo.entity.Boisson;
+import pizzayolo.entity.Commande;
+import pizzayolo.entity.CommandeBoisson;
+import pizzayolo.entity.CommandeBoissonKey;
+import pizzayolo.entity.CommandeDessert;
+import pizzayolo.entity.CommandeDessertKey;
 import pizzayolo.entity.Dessert;
 import pizzayolo.entity.Ingredient;
+import pizzayolo.entity.Livraison;
+import pizzayolo.entity.Pizza;
 import pizzayolo.entity.Recette;
+import pizzayolo.entity.Taille;
+import pizzayolo.entity.TypePate;
+import pizzayolo.entity.Utilisateur;
 import pizzayolo.services.BoissonService;
+import pizzayolo.services.CommandeService;
 import pizzayolo.services.DessertService;
 import pizzayolo.services.IngredientService;
 import pizzayolo.services.RecetteService;
+import pizzayolo.services.UtilisateurService;
 
 public class QuestPizzayoloSpring {
 
@@ -28,6 +41,12 @@ public class QuestPizzayoloSpring {
 
 	@Autowired
 	private RecetteService recetteService;
+	
+	@Autowired
+	private UtilisateurService utilisateurservice;
+	
+	@Autowired
+	private CommandeService commandeservice;
 
 	public void init() {
 
@@ -294,11 +313,59 @@ public class QuestPizzayoloSpring {
 		recetteService.create(extravaganzza);
 		recetteService.create(savoyarde);
 		recetteService.create(forestiere);
+		
+		
+		Adresse a1 = new Adresse("Numvoie1","NomVoie1","complement1","CP1","ville1");
+		Utilisateur u1 = new Utilisateur("u1@u1", "mdp123", "prenom1", "nom1", a1, "client");
+		utilisateurservice.create(u1);
 
+		
+		Adresse a2 = new Adresse("Numvoie2","NomVoie2","complement2","CP2","ville2");
+		Utilisateur u2 = new Utilisateur("u2@u2", "mdp123", "prenom2", "nom2", a2, "employe");
+		utilisateurservice.create(u2);
+		
+	
+
+
+	Pizza p1 =new Pizza(cannibale, Taille.Large, TypePate.Classique);
+	Pizza p2 = new Pizza(forestiere, Taille.XL, TypePate.Fine);
+	Pizza p3 = new Pizza(hypnotika, Taille.Medium, TypePate.MozzaCrust);
+	
+	
+	Livraison c1 = new Livraison();
+	
+	Set<CommandeBoisson> boissons = new HashSet();
+	CommandeBoissonKey cbk1 = new CommandeBoissonKey(evian, c1);
+	CommandeBoisson cb1 = new CommandeBoisson(cbk1,3);
+	boissons.add(cb1);
+	
+	
+	Set<CommandeDessert> desserts = new HashSet();
+	CommandeDessertKey cdk1 = new CommandeDessertKey(ChocoB, c1);
+	CommandeDessert cd1 = new CommandeDessert(cdk1,1);
+	desserts.add(cd1);
+	
+	Set<Pizza> pizzas = new HashSet();
+	pizzas.add(p1);
+	pizzas.add(p2);
+	pizzas.add(p2);
+	
+	
+	c1.setBoissons(boissons);	
+	c1.setDesserts(desserts);	
+	c1.setClientTicket(u1);
+	c1.setPizzas(pizzas);
+	
+	commandeservice.create(c1);
+	
+	
+	
+		
+		
 	}
-
 	public void run(String... args) {
-		//init();
+		init();
+		
 	}
 
 }

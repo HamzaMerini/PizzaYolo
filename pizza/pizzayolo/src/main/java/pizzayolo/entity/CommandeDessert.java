@@ -7,10 +7,13 @@ import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 @Table(name="commande_dessert")
 public class CommandeDessert {
 	@EmbeddedId
+	@JsonView(JsonViews.Common.class)
 	@Column(name="id_commande_dessert")
 	private CommandeDessertKey idCD;
 	@Column(name="quantite_dessert")
@@ -26,6 +29,15 @@ public class CommandeDessert {
 
 	public CommandeDessert() {
 		super();
+	}
+	
+	
+	
+
+	public CommandeDessert(CommandeDessertKey idCD, int quantiteDessert) {
+		super();
+		this.idCD = idCD;
+		this.quantiteDessert = quantiteDessert;
 	}
 
 	public CommandeDessertKey getId() {

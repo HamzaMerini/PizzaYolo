@@ -19,6 +19,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
+import pizzayolo.entity.JsonViews;
 import pizzayolo.entity.Utilisateur;
 import pizzayolo.services.UtilisateurService;
 
@@ -26,46 +29,46 @@ import pizzayolo.services.UtilisateurService;
 
 
 @RestController
-@RequestMapping("/utilisateur")
+@RequestMapping("/api/utilisateur")
 public class UtilisateurRestController {
 	
 	@Autowired
 	private UtilisateurService utilisateurService;
 	
 	@GetMapping("")
-	//@JsonView(JsonViews.Common.class)
+	@JsonView(JsonViews.Common.class)
 	public List<Utilisateur> getAll() {
 		return utilisateurService.getAll();
 	}
 	
 	@PostMapping("")
 	@ResponseStatus(code = HttpStatus.CREATED)
-	//@JsonView(JsonViews.Common.class)
+	@JsonView(JsonViews.Common.class)
 	public Utilisateur create(@Valid @RequestBody Utilisateur utilisateur, BindingResult br) {
 		return utilisateurService.create(utilisateur);
 	}
 	
 	@GetMapping("/{id}")
-	//@JsonView(JsonViews.Common.class)
+	@JsonView(JsonViews.Common.class)
 	public Utilisateur getById(@PathVariable Long id) {
 		return utilisateurService.getById(id);
 	}
 	
 	@GetMapping("/{id}/adresse")
-	//@JsonView(JsonViews.UtilisateurWithAdresse.class)
+	@JsonView(JsonViews.UtilisateurWithAdresse.class)
 	public Utilisateur getByIdWithAdresse(@PathVariable Long id) {
 		return utilisateurService.getByIdWithAdresse(id);
 	}
 	
 	
 	@PatchMapping("/{id}")
-	//@JsonView(JsonViews.Common.class)
+	@JsonView(JsonViews.Common.class)
 	public Utilisateur partialUpdate(@RequestBody Map<String, Object> fields, @PathVariable Long id) {
 		Utilisateur utilisateur = utilisateurService.getById(id);
 		// utilisateur.setNom(fields.get("nom").toString());
 
 		fields.forEach((k, v) -> {
-//			if (k.equals("attributQuiPoseProbleme")) {
+//			if (k.equals("attributQuiPoseProbleme")) {   //adresse et employé
 //				;
 //			}else {
 				Field field = ReflectionUtils.findField(Utilisateur.class, k);

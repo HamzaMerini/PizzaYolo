@@ -9,11 +9,14 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Embeddable
 public class CommandeBoissonKey implements Serializable {
 
 	@ManyToOne
 	@JoinColumn(name = "boisson_id", foreignKey = @ForeignKey(name = "boisson_commande_boisson_id_fk"))
+	@JsonView(JsonViews.Common.class)
 	private Boisson boisson;
 
 	@ManyToOne
@@ -23,6 +26,10 @@ public class CommandeBoissonKey implements Serializable {
 	public CommandeBoissonKey() {
 		super();
 	}
+
+	
+
+
 
 	public CommandeBoissonKey(Boisson boisson, Commande commande) {
 		this.boisson = boisson;

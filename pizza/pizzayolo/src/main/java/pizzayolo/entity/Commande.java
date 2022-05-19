@@ -23,6 +23,8 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import org.hibernate.annotations.ManyToAny;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 @Table(name = "commande")
 @SequenceGenerator(name = "seqCommande", sequenceName = "seq_commande", initialValue = 1, allocationSize = 1)
@@ -33,29 +35,54 @@ public abstract class Commande {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqCommande")
 	@Column(name = "num_ticket")
+	@JsonView(JsonViews.Common.class)
 	protected Long numTicket;
 
 	@OneToMany(mappedBy = "idCB.commandeBoisson")
+	@JsonView(JsonViews.Common.class)
 	Set<CommandeBoisson> boissons;
 
 	@OneToMany(mappedBy = "idCD.commandeDessert")
+	@JsonView(JsonViews.Common.class)
 	Set<CommandeDessert> desserts;
 
 	@OneToMany(mappedBy = "commandePizza")
+	@JsonView(JsonViews.Common.class)
 	Set<Pizza> pizzas;
 
 	@ManyToOne
 	@JoinColumn(name = "id_client", foreignKey = @ForeignKey(name = "COMMANDE_ID_CLIENT_FK"))
+	@JsonView(JsonViews.Common.class)
 	protected Utilisateur clientTicket;
 
 	@Column(name = "date_ticket")
+	@JsonView(JsonViews.Common.class)
 	protected LocalDate dateTicket;
 
 	@Column(name = "prix_total")
+	@JsonView(JsonViews.Common.class)
 	protected double prixTotal;
 
 	public Commande() {
 	}
+
+
+
+
+
+	public Commande(Set<CommandeBoisson> boissons, Set<CommandeDessert> desserts, Set<Pizza> pizzas,
+			Utilisateur clientTicket, LocalDate dateTicket, double prixTotal) {
+		super();
+		this.boissons = boissons;
+		this.desserts = desserts;
+		this.pizzas = pizzas;
+		this.clientTicket = clientTicket;
+		this.dateTicket = dateTicket;
+		this.prixTotal = prixTotal;
+	}
+
+
+
 
 
 	public Long getNumTicket() {
