@@ -25,7 +25,7 @@ public class Creneau {
 	@Column(name="id")
 	private Long id;
 	@Column(name="date")
-	private LocalDate date;//a quoi ca sert ???
+	private LocalDate date;
 	@Column(name="debut")
 	private LocalTime debut;
 	@Column(name="fin")
@@ -36,6 +36,18 @@ public class Creneau {
 
 	public Creneau() {
 	}
+	
+	
+	
+
+	public Creneau(LocalDate date, LocalTime debut, LocalTime fin) {
+		this.date = date;
+		this.debut = debut;
+		this.fin = fin;
+	}
+
+
+
 
 	public Long getId() {
 		return id;

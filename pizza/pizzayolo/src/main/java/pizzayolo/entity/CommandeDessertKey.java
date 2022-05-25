@@ -7,14 +7,18 @@ import javax.persistence.Embeddable;
 import javax.persistence.ForeignKey;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Embeddable
-public class CommandeDessertKey implements Serializable{
+public class CommandeDessertKey implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "dessert_id", foreignKey = @ForeignKey(name = "dessert_commande_dessert_id_fk"))
+	@JsonView(JsonViews.Common.class)
 	private Dessert dessert;
-	
+
 	@ManyToOne
-	@JoinColumn (name="commande_id",foreignKey=@ForeignKey (name = "dessert_commande_commande_id_fk") )
+	@JoinColumn(name = "commande_id", foreignKey = @ForeignKey(name = "dessert_commande_commande_id_fk"))
 	private Commande commandeDessert;
 
 	public CommandeDessertKey() {
@@ -57,9 +61,5 @@ public class CommandeDessertKey implements Serializable{
 		CommandeDessertKey other = (CommandeDessertKey) obj;
 		return Objects.equals(commandeDessert, other.commandeDessert) && Objects.equals(dessert, other.dessert);
 	}
-	
-	
-
-	
 
 }
