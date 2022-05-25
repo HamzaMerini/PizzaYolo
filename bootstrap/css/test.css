@@ -5,7 +5,8 @@
 	align-items: center;
 	justify-content: space-between;
 	padding-top: .5rem;
-	padding-bottom: .5rem
+	padding-bottom: .5rem;
+	height: 90px;
 }
 
 @media ( min-width : 992px) {
@@ -42,3 +43,6 @@
 		display: none
 	}
 }
+
+
+

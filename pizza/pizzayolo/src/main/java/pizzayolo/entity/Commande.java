@@ -35,32 +35,32 @@ public abstract class Commande {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqCommande")
 	@Column(name = "num_ticket")
-	@JsonView(JsonViews.Common.class)
+	@JsonView(JsonViews.CommandeWithItem.class)
 	protected Long numTicket;
 
 	@OneToMany(mappedBy = "idCB.commandeBoisson")
-	@JsonView(JsonViews.Common.class)
+	//@JsonView(JsonViews.CommandeWithItem.class)
 	Set<CommandeBoisson> boissons;
 
 	@OneToMany(mappedBy = "idCD.commandeDessert")
-	@JsonView(JsonViews.Common.class)
+	//@JsonView(JsonViews.Common.class)
 	Set<CommandeDessert> desserts;
 
 	@OneToMany(mappedBy = "commandePizza")
-	@JsonView(JsonViews.Common.class)
+	//@JsonView(JsonViews.Common.class)
 	Set<Pizza> pizzas;
 
 	@ManyToOne
 	@JoinColumn(name = "id_client", foreignKey = @ForeignKey(name = "COMMANDE_ID_CLIENT_FK"))
-	@JsonView(JsonViews.Common.class)
+	@JsonView(JsonViews.CommandeWithItem.class)
 	protected Utilisateur clientTicket;
 
 	@Column(name = "date_ticket")
-	@JsonView(JsonViews.Common.class)
+	@JsonView(JsonViews.CommandeWithItem.class)
 	protected LocalDate dateTicket;
 
 	@Column(name = "prix_total")
-	@JsonView(JsonViews.Common.class)
+	@JsonView(JsonViews.CommandeWithItem.class)
 	protected double prixTotal;
 
 	public Commande() {

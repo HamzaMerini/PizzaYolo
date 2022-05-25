@@ -26,20 +26,17 @@ public class Pizza {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqPizza")
 	@Column(name = "id")
 	private Long id;
-	@Column(name = "nom")
+
+	@ManyToOne
+	@JoinColumn(name = "recette", foreignKey = @ForeignKey(name = "PIZZA_RECETTE_ID_FK"))
 	@JsonView(JsonViews.Common.class)
-	private String nom;
+	private Recette recette;
 
 	@ManyToOne
 	@JoinColumn(name = "numticket_id", foreignKey = @ForeignKey(name = "PIZZA_NUMTICKET_ID_FK"))
 	private Commande commandePizza;
 	@Column(name = "prix")
 	private double prix;
-
-	@ManyToOne
-	@JoinColumn(name = "recette", foreignKey = @ForeignKey(name = "PIZZA_RECETTE_ID_FK"))
-	@JsonView(JsonViews.Common.class)
-	private Recette recette;
 
 	@Enumerated(EnumType.STRING)
 	@Column(name = "taille_pizza")
@@ -49,6 +46,9 @@ public class Pizza {
 	@Column(name = "type_pate")
 	@JsonView(JsonViews.Common.class)
 	private TypePate pate;
+
+	public Pizza() {
+	}
 
 	public Pizza(Recette recette, Taille taille, TypePate pate) {
 
@@ -80,14 +80,6 @@ public class Pizza {
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-
-	public String getNom() {
-		return nom;
-	}
-
-	public void setNom(String nom) {
-		this.nom = nom;
 	}
 
 	public Commande getCommandePizza() {

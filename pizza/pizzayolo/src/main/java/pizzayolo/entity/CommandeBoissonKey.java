@@ -16,7 +16,7 @@ public class CommandeBoissonKey implements Serializable {
 
 	@ManyToOne
 	@JoinColumn(name = "boisson_id", foreignKey = @ForeignKey(name = "boisson_commande_boisson_id_fk"))
-	@JsonView(JsonViews.Common.class)
+	@JsonView(JsonViews.CommandeWithItem.class)
 	private Boisson boisson;
 
 	@ManyToOne
@@ -24,12 +24,7 @@ public class CommandeBoissonKey implements Serializable {
 	private Commande commandeBoisson;
 
 	public CommandeBoissonKey() {
-		super();
 	}
-
-	
-
-
 
 	public CommandeBoissonKey(Boisson boisson, Commande commande) {
 		this.boisson = boisson;
@@ -56,5 +51,21 @@ public class CommandeBoissonKey implements Serializable {
 		this.boisson = boisson;
 	}
 
+	@Override
+	public int hashCode() {
+		return Objects.hash(boisson, commandeBoisson);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		CommandeBoissonKey other = (CommandeBoissonKey) obj;
+		return Objects.equals(boisson, other.boisson) && Objects.equals(commandeBoisson, other.commandeBoisson);
+	}
 
 }

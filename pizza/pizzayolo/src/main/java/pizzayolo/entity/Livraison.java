@@ -6,15 +6,19 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
-import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonView;
 
 @Entity
 @DiscriminatorValue("L")
 public class Livraison extends Commande {
 
 	@Column(name = "heure_souhaite")
+	@JsonView(JsonViews.CommandeWithItem.class)
 	private String heureSouhaite;
+	
 	@Column(name = "prix_livraison")
+	@JsonView(JsonViews.CommandeWithItem.class)
 	private double prixLivraison;
 
 	public String getHeureSouhaite() {

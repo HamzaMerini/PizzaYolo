@@ -13,27 +13,20 @@ import com.fasterxml.jackson.annotation.JsonView;
 @Table(name = "commande_boisson")
 public class CommandeBoisson {
 	@EmbeddedId
-	@Column(name="id_commande_boisson")
-	@JsonView(JsonViews.Common.class)
+	@Column(name = "id_commande_boisson")
 	private CommandeBoissonKey idCB;
-	@Column(name="quantite_boisson")
-	@JsonView(JsonViews.Common.class)
+
+	@Column(name = "quantite_boisson")
+	@JsonView(JsonViews.CommandeWithItem.class)
 	private int quantiteBoisson;
 
 	public CommandeBoisson() {
 	}
-	
-	
-	
 
 	public CommandeBoisson(CommandeBoissonKey idCB, int quantiteBoisson) {
-		super();
 		this.idCB = idCB;
 		this.quantiteBoisson = quantiteBoisson;
 	}
-
-
-
 
 	public CommandeBoissonKey getIdCB() {
 		return idCB;
