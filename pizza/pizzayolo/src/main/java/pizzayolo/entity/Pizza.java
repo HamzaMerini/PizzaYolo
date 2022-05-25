@@ -15,6 +15,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 @Table(name = "pizza")
 @SequenceGenerator(name = "seqPizza", sequenceName = "seq_pizza", initialValue = 1, allocationSize = 1)
@@ -24,8 +26,11 @@ public class Pizza {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqPizza")
 	@Column(name = "id")
 	private Long id;
-	@Column(name = "nom")
-	private String nom;
+
+	@ManyToOne
+	@JoinColumn(name = "recette", foreignKey = @ForeignKey(name = "PIZZA_RECETTE_ID_FK"))
+	@JsonView(JsonViews.Common.class)
+	private Recette recette;
 
 	@ManyToOne
 	@JoinColumn(name = "numticket_id", foreignKey = @ForeignKey(name = "PIZZA_NUMTICKET_ID_FK"))
@@ -33,16 +38,17 @@ public class Pizza {
 	@Column(name = "prix")
 	private double prix;
 
-	@ManyToOne
-	@JoinColumn(name = "recette", foreignKey = @ForeignKey(name = "PIZZA_RECETTE_ID_FK"))
-	private Recette recette;
-
 	@Enumerated(EnumType.STRING)
 	@Column(name = "taille_pizza")
+	@JsonView(JsonViews.Common.class)
 	private Taille taille;
 	@Enumerated(EnumType.STRING)
 	@Column(name = "type_pate")
+	@JsonView(JsonViews.Common.class)
 	private TypePate pate;
+
+	public Pizza() {
+	}
 
 	public Pizza(Recette recette, Taille taille, TypePate pate) {
 
@@ -74,14 +80,6 @@ public class Pizza {
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-
-	public String getNom() {
-		return nom;
-	}
-
-	public void setNom(String nom) {
-		this.nom = nom;
 	}
 
 	public Commande getCommandePizza() {

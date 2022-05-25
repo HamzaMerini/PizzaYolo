@@ -23,19 +23,19 @@ public class CommandeRestController {
 	@Autowired
 	private CommandeService commandeService;
 
-	@JsonView(JsonViews.Common.class)
+	@JsonView(JsonViews.CommandeWithItem.class)
 	@GetMapping("")
 	public List<Commande> getAll() {
 		return commandeService.getAll();
 	}
 
-	@JsonView(JsonViews.Common.class)
+	@JsonView(JsonViews.CommandeWithItem.class)
 	@PostMapping("/create")
 	public Commande create(@RequestBody Commande commande) {
 		return commandeService.create(commande);
 	}
 	
-	@JsonView(JsonViews.Common.class)
+	@JsonView(JsonViews.CommandeWithItem.class)
 	@PostMapping("/delete")
 	public void delete(@RequestBody Commande commande) {
 		commandeService.delete(commande);

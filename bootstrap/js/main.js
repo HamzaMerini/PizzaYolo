@@ -1,19 +1,10 @@
 (function ($) {
     "use strict";
 
-    // Spinner
-    var spinner = function () {
-        setTimeout(function () {
-            if ($('#spinner').length > 0) {
-                $('#spinner').removeClass('show');
-            }
-        }, 1);
-    };
-    spinner();
-    
-    
+  
     // Initiate the wowjs
     new WOW().init();
+
 
 
     // Fixed Navbar
@@ -26,11 +17,16 @@
             }
         } else {
             if ($(this).scrollTop() > 45) {
-                $('.fixed-top').addClass('bg-white shadow').css('top', -45);
+                $('.fixed-top').addClass('bg-white shadow').css('top', -5);
+                $('.navbar .navbar-nav .nav-link').css({"color":"#26282b"});
             } else {
                 $('.fixed-top').removeClass('bg-white shadow').css('top', 0);
+                $('.navbar .navbar-nav .nav-link').css({"color":"white"});
             }
+               
         }
+        	$('.navbar .navbar-nav .nav-link:hover, .navbar .navbar-nav .nav-link.active').css({"color":"var(--monVert)"});
+      
     });
     
     

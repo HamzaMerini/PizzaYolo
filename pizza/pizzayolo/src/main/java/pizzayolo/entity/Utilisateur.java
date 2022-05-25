@@ -16,6 +16,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 @Table(name = "utilisateur")
 @SequenceGenerator(name = "seqUtilisateur", sequenceName = "seq_utilisateur", initialValue = 1, allocationSize = 1)
@@ -24,19 +26,27 @@ public class Utilisateur {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqUtilisateur")
 	@Column(name = "id")
+	@JsonView(JsonViews.Common.class)
 	private Long id;
 	@Column(name = "mail")
+	@JsonView(JsonViews.Common.class)
 	private String mail;
 	@Column(name = "mdp")
+	@JsonView(JsonViews.Common.class)
 	private String mdp;
 	@Column(name = "nom")
+	@JsonView(JsonViews.Common.class)
 	private String nom;
 	@Column(name="prenom")
+	@JsonView(JsonViews.Common.class)
 	private String prenom;
 	@Embedded
 	// GERER LE NOM DES COLONNES DANS ADRESSES ?
+	@JsonView(JsonViews.UtilisateurWithAdresse.class)
 	private Adresse adresse;
+	
 	@Column(name = "type")
+	@JsonView(JsonViews.Common.class)
 	private String type; // client employe ou responsable
 
 	@OneToMany(mappedBy = "clientTicket")
@@ -49,8 +59,8 @@ public class Utilisateur {
 
 	}
 
-	public Utilisateur(Long id, String mail, String mdp, String prenom,String nom, Adresse adresse, String type) {
-		this.id = id;
+	public Utilisateur( String mail, String mdp, String prenom,String nom, Adresse adresse, String type) {
+		
 		this.mail = mail;
 		this.mdp = mdp;
 		this.nom = nom;

@@ -6,14 +6,27 @@ import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import pizzayolo.entity.Adresse;
 import pizzayolo.entity.Boisson;
+import pizzayolo.entity.Commande;
+import pizzayolo.entity.CommandeBoisson;
+import pizzayolo.entity.CommandeBoissonKey;
+import pizzayolo.entity.CommandeDessert;
+import pizzayolo.entity.CommandeDessertKey;
 import pizzayolo.entity.Dessert;
 import pizzayolo.entity.Ingredient;
+import pizzayolo.entity.Livraison;
+import pizzayolo.entity.Pizza;
 import pizzayolo.entity.Recette;
+import pizzayolo.entity.Taille;
+import pizzayolo.entity.TypePate;
+import pizzayolo.entity.Utilisateur;
 import pizzayolo.services.BoissonService;
+import pizzayolo.services.CommandeService;
 import pizzayolo.services.DessertService;
 import pizzayolo.services.IngredientService;
 import pizzayolo.services.RecetteService;
+import pizzayolo.services.UtilisateurService;
 
 public class QuestPizzayoloSpring {
 
@@ -28,6 +41,12 @@ public class QuestPizzayoloSpring {
 
 	@Autowired
 	private RecetteService recetteService;
+
+	@Autowired
+	private UtilisateurService utilisateurservice;
+
+	@Autowired
+	private CommandeService commandeservice;
 
 	public void init() {
 
@@ -132,8 +151,8 @@ public class QuestPizzayoloSpring {
 		ingredientService.create(Jambon);
 		ingredientService.create(Kebab);
 		ingredientService.create(Lardons);
-		ingredientService.create(Merguez);		
-		ingredientService.create(Miel);		
+		ingredientService.create(Merguez);
+		ingredientService.create(Miel);
 		ingredientService.create(Mozzarella);
 		ingredientService.create(Oignons);
 		ingredientService.create(Olives);
@@ -150,48 +169,48 @@ public class QuestPizzayoloSpring {
 
 		// AJOUT INGREDIENTS DANS LA BDD
 		// Les Bons Plans
-		Set<Ingredient> marg=new HashSet<Ingredient> ();
-		Collections.addAll(marg, SauceTomate,Mozzarella);
-		Recette marga = new Recette("Margherita", 5.99,marg);
-		
-		Set<Ingredient> claJ=new HashSet<Ingredient> ();
-		Collections.addAll(claJ, SauceTomate,Mozzarella,Jambon);
-		Recette claJambon = new Recette("Classique Jambon", 5.99,claJ);
+		Set<Ingredient> marg = new HashSet<Ingredient>();
+		Collections.addAll(marg, SauceTomate, Mozzarella);
+		Recette marga = new Recette("Margherita", 5.99, marg);
 
-		Set<Ingredient> claM=new HashSet<Ingredient> ();
-		Collections.addAll(claM, SauceTomate,Mozzarella,Merguez);
-		Recette claMerguez = new Recette("Classique Merguez", 5.99,claM);
-		
-		Set<Ingredient> claP=new HashSet<Ingredient> ();
-		Collections.addAll(claP, SauceTomate,Mozzarella,Pepperoni);
-		Recette claPepperoni = new Recette("Classique Pepperoni", 5.99,claP);
-		
+		Set<Ingredient> claJ = new HashSet<Ingredient>();
+		Collections.addAll(claJ, SauceTomate, Mozzarella, Jambon);
+		Recette claJambon = new Recette("Classique Jambon", 5.99, claJ);
+
+		Set<Ingredient> claM = new HashSet<Ingredient>();
+		Collections.addAll(claM, SauceTomate, Mozzarella, Merguez);
+		Recette claMerguez = new Recette("Classique Merguez", 5.99, claM);
+
+		Set<Ingredient> claP = new HashSet<Ingredient>();
+		Collections.addAll(claP, SauceTomate, Mozzarella, Pepperoni);
+		Recette claPepperoni = new Recette("Classique Pepperoni", 5.99, claP);
+
 		recetteService.create(marga);
 		recetteService.create(claJambon);
 		recetteService.create(claMerguez);
 		recetteService.create(claPepperoni);
 
 		// Les incontournables
-		Set<Ingredient> hj=new HashSet<Ingredient> ();
-		Collections.addAll(hj, SauceTomate,Mozzarella,Ananas,Jambon);
-		Recette hawJambon = new Recette("Hawaïenne Jambon", 8,hj);
-		
-		Set<Ingredient> hp=new HashSet<Ingredient> ();
-		Collections.addAll(hp, SauceTomate,Mozzarella,Ananas,Poulet);
-		Recette hawPoulet = new Recette("Hawaïenne Poulet", 8,hp);
-		
-		Set<Ingredient> queen=new HashSet<Ingredient> ();
-		Collections.addAll(queen, SauceTomate,Mozzarella,Jambon,Champignons);
-		Recette reine = new Recette("Reine", 8,queen);
-		
-		Set<Ingredient> ori=new HashSet<Ingredient> ();
-		Collections.addAll(ori, SauceTomate,Mozzarella,Poivrons,Oignons,Merguez);
-		Recette orientale = new Recette("Orientale", 8,ori);
-		
-		Set<Ingredient> sc=new HashSet<Ingredient> ();
-		Collections.addAll(sc, SauceTomate,Mozzarella,Boeuf,Tomates,Origan);
-		Recette steakEtChesse = new Recette("Steak & Cheese", 8,sc);
-		
+		Set<Ingredient> hj = new HashSet<Ingredient>();
+		Collections.addAll(hj, SauceTomate, Mozzarella, Ananas, Jambon);
+		Recette hawJambon = new Recette("Hawaïenne Jambon", 8, hj);
+
+		Set<Ingredient> hp = new HashSet<Ingredient>();
+		Collections.addAll(hp, SauceTomate, Mozzarella, Ananas, Poulet);
+		Recette hawPoulet = new Recette("Hawaïenne Poulet", 8, hp);
+
+		Set<Ingredient> queen = new HashSet<Ingredient>();
+		Collections.addAll(queen, SauceTomate, Mozzarella, Jambon, Champignons);
+		Recette reine = new Recette("Reine", 8, queen);
+
+		Set<Ingredient> ori = new HashSet<Ingredient>();
+		Collections.addAll(ori, SauceTomate, Mozzarella, Poivrons, Oignons, Merguez);
+		Recette orientale = new Recette("Orientale", 8, ori);
+
+		Set<Ingredient> sc = new HashSet<Ingredient>();
+		Collections.addAll(sc, SauceTomate, Mozzarella, Boeuf, Tomates, Origan);
+		Recette steakEtChesse = new Recette("Steak & Cheese", 8, sc);
+
 		recetteService.create(hawJambon);
 		recetteService.create(hawPoulet);
 		recetteService.create(reine);
@@ -199,81 +218,82 @@ public class QuestPizzayoloSpring {
 		recetteService.create(steakEtChesse);
 
 		// Les supremes
-		Set<Ingredient> cdl=new HashSet<Ingredient> ();
-		Collections.addAll(cdl, SauceTomate,Mozzarella,Poulet,Oignons,Champignons,Poivrons,Tomates,Origan);
-		Recette chickenDeLight = new Recette("Chicken Delight", 9,cdl);
-		
-		Set<Ingredient> cm=new HashSet<Ingredient> ();
-		Collections.addAll(cm, CremeFraiche,Mozzarella,Chevre,Miel);
-		Recette chevreMiel = new Recette("Chèvre-Miel", 9,cm);
+		Set<Ingredient> cdl = new HashSet<Ingredient>();
+		Collections.addAll(cdl, SauceTomate, Mozzarella, Poulet, Oignons, Champignons, Poivrons, Tomates, Origan);
+		Recette chickenDeLight = new Recette("Chicken Delight", 9, cdl);
 
-		Set<Ingredient> keb=new HashSet<Ingredient> ();
-		Collections.addAll(keb, SauceTomate,Mozzarella,Kebab,Merguez,Oignons);
-		Recette kebab = new Recette("Urban Kebab", 9,keb);
+		Set<Ingredient> cm = new HashSet<Ingredient>();
+		Collections.addAll(cm, CremeFraiche, Mozzarella, Chevre, Miel);
+		Recette chevreMiel = new Recette("Chèvre-Miel", 9, cm);
 
-		Set<Ingredient> del=new HashSet<Ingredient> ();
-		Collections.addAll(del, SauceTomate,Mozzarella,Boeuf,Champignons,Poivrons,Oignons);
-		Recette deluxe = new Recette("Deluxe", 9,del);
+		Set<Ingredient> keb = new HashSet<Ingredient>();
+		Collections.addAll(keb, SauceTomate, Mozzarella, Kebab, Merguez, Oignons);
+		Recette kebab = new Recette("Urban Kebab", 9, keb);
 
-		Set<Ingredient> pech=new HashSet<Ingredient> ();
-		Collections.addAll(pech, SauceTomate,Mozzarella,Thon,Oignons,Olives);
-		Recette pecheur = new Recette("Pêcheur", 9,pech);
-		
-		Set<Ingredient> ind=new HashSet<Ingredient> ();
-		Collections.addAll(ind, CremeFraiche,Mozzarella,Champignons,Oignons,Poulet,Emmental);
-		Recette indienne = new Recette("Indienne", 9,ind);
-		
-		Set<Ingredient> hypno=new HashSet<Ingredient> ();
-		Collections.addAll(hypno, SauceTomate,Mozzarella,Poulet,Merguez,Champignons);
-		Recette hypnotika = new Recette("Hypnotika", 9,hypno);
-		
-		Set<Ingredient> diavB=new HashSet<Ingredient> ();
-		Collections.addAll(diavB, SauceTomate,Mozzarella,Boeuf,Piments,Oignons,Poivrons);
-		Recette diavolaB = new Recette("Diavola Boeuf", 9,diavB);
-		
-		Set<Ingredient> diavP=new HashSet<Ingredient> ();
-		Collections.addAll(diavP, SauceTomate,Mozzarella,Pepperoni,Piments,Oignons,Poivrons);
-		Recette diavolaP = new Recette("Diavola Pepperoni", 9,diavP);
-		
-		Set<Ingredient> skeb=new HashSet<Ingredient> ();
-		Collections.addAll(skeb, SauceTomate,Mozzarella,Kebab,Oignons,Tomates);
-		Recette sKebab = new Recette("Samouraï Kebab", 9,skeb);
-		
-		Set<Ingredient> pepp=new HashSet<Ingredient> ();
-		Collections.addAll(pepp, SauceTomate,Mozzarella,Oignons,Poivrons,Champignons,Tomates,Olives,Origan);
-		Recette peppina = new Recette("Peppina", 9,pepp);
+		Set<Ingredient> del = new HashSet<Ingredient>();
+		Collections.addAll(del, SauceTomate, Mozzarella, Boeuf, Champignons, Poivrons, Oignons);
+		Recette deluxe = new Recette("Deluxe", 9, del);
 
-		Set<Ingredient> racM=new HashSet<Ingredient> ();
-		Collections.addAll(racM, CremeFraiche,Mozzarella,Chevre,Fourme,Emmental);
-		Recette racletteMiel = new Recette("Surprenante Raclette-Miel", 9,racM);
+		Set<Ingredient> pech = new HashSet<Ingredient>();
+		Collections.addAll(pech, SauceTomate, Mozzarella, Thon, Oignons, Olives);
+		Recette pecheur = new Recette("Pêcheur", 9, pech);
 
-		Set<Ingredient> qf=new HashSet<Ingredient> ();
-		Collections.addAll(qf, CremeFraiche,Mozzarella,Chevre,Fourme,Emmental);
-		Recette qFro = new Recette("4 Fromages", 9,qf);
-		
-		Set<Ingredient> bg=new HashSet<Ingredient> ();
-		Collections.addAll(bg, CremeFraiche,Mozzarella,Bacon,Poulet,Oignons);
-		Recette baconGroovy = new Recette("Bacon Groovy", 9,bg);
+		Set<Ingredient> ind = new HashSet<Ingredient>();
+		Collections.addAll(ind, CremeFraiche, Mozzarella, Champignons, Oignons, Poulet, Emmental);
+		Recette indienne = new Recette("Indienne", 9, ind);
 
-		Set<Ingredient> can=new HashSet<Ingredient> ();
-		Collections.addAll(can, SauceBBQ,Mozzarella,Poulet,Merguez,Boeuf);
-		Recette cannibale = new Recette("Cannibale", 9,can);
+		Set<Ingredient> hypno = new HashSet<Ingredient>();
+		Collections.addAll(hypno, SauceTomate, Mozzarella, Poulet, Merguez, Champignons);
+		Recette hypnotika = new Recette("Hypnotika", 9, hypno);
 
-		Set<Ingredient> saum=new HashSet<Ingredient> ();
-		Collections.addAll(saum, CremeFraiche,Mozzarella,Patate,Oignons,Saumon);
-		Recette saumoneta = new Recette("Saumoneta", 9,saum);
+		Set<Ingredient> diavB = new HashSet<Ingredient>();
+		Collections.addAll(diavB, SauceTomate, Mozzarella, Boeuf, Piments, Oignons, Poivrons);
+		Recette diavolaB = new Recette("Diavola Boeuf", 9, diavB);
 
-		Set<Ingredient> extra=new HashSet<Ingredient> ();
-		Collections.addAll(extra, SauceTomate,Mozzarella,Jambon,Pepperoni,Boeuf,Oignons,Champignons,Poivrons,Olives);
-		Recette extravaganzza = new Recette("Extravaganza", 9,extra);
+		Set<Ingredient> diavP = new HashSet<Ingredient>();
+		Collections.addAll(diavP, SauceTomate, Mozzarella, Pepperoni, Piments, Oignons, Poivrons);
+		Recette diavolaP = new Recette("Diavola Pepperoni", 9, diavP);
 
-		Set<Ingredient> sav=new HashSet<Ingredient> ();
-		Collections.addAll(sav, CremeFraiche,Mozzarella,Patate,Lardons,Reblochon,Origan);
-		Recette savoyarde = new Recette("Savoyarde", 9,sav);
+		Set<Ingredient> skeb = new HashSet<Ingredient>();
+		Collections.addAll(skeb, SauceTomate, Mozzarella, Kebab, Oignons, Tomates);
+		Recette sKebab = new Recette("Samouraï Kebab", 9, skeb);
 
-		Set<Ingredient> fore=new HashSet<Ingredient> ();
-		Collections.addAll(fore, CremeFraiche,Mozzarella,Jambon,Lardons,Oignons,Champignons,Origan);
-		Recette forestiere = new Recette("Forestière", 9,fore);
+		Set<Ingredient> pepp = new HashSet<Ingredient>();
+		Collections.addAll(pepp, SauceTomate, Mozzarella, Oignons, Poivrons, Champignons, Tomates, Olives, Origan);
+		Recette peppina = new Recette("Peppina", 9, pepp);
+
+		Set<Ingredient> racM = new HashSet<Ingredient>();
+		Collections.addAll(racM, CremeFraiche, Mozzarella, Chevre, Fourme, Emmental);
+		Recette racletteMiel = new Recette("Surprenante Raclette-Miel", 9, racM);
+
+		Set<Ingredient> qf = new HashSet<Ingredient>();
+		Collections.addAll(qf, CremeFraiche, Mozzarella, Chevre, Fourme, Emmental);
+		Recette qFro = new Recette("4 Fromages", 9, qf);
+
+		Set<Ingredient> bg = new HashSet<Ingredient>();
+		Collections.addAll(bg, CremeFraiche, Mozzarella, Bacon, Poulet, Oignons);
+		Recette baconGroovy = new Recette("Bacon Groovy", 9, bg);
+
+		Set<Ingredient> can = new HashSet<Ingredient>();
+		Collections.addAll(can, SauceBBQ, Mozzarella, Poulet, Merguez, Boeuf);
+		Recette cannibale = new Recette("Cannibale", 9, can);
+
+		Set<Ingredient> saum = new HashSet<Ingredient>();
+		Collections.addAll(saum, CremeFraiche, Mozzarella, Patate, Oignons, Saumon);
+		Recette saumoneta = new Recette("Saumoneta", 9, saum);
+
+		Set<Ingredient> extra = new HashSet<Ingredient>();
+		Collections.addAll(extra, SauceTomate, Mozzarella, Jambon, Pepperoni, Boeuf, Oignons, Champignons, Poivrons,
+				Olives);
+		Recette extravaganzza = new Recette("Extravaganza", 9, extra);
+
+		Set<Ingredient> sav = new HashSet<Ingredient>();
+		Collections.addAll(sav, CremeFraiche, Mozzarella, Patate, Lardons, Reblochon, Origan);
+		Recette savoyarde = new Recette("Savoyarde", 9, sav);
+
+		Set<Ingredient> fore = new HashSet<Ingredient>();
+		Collections.addAll(fore, CremeFraiche, Mozzarella, Jambon, Lardons, Oignons, Champignons, Origan);
+		Recette forestiere = new Recette("Forestière", 9, fore);
 
 		recetteService.create(chickenDeLight);
 		recetteService.create(chevreMiel);
@@ -295,10 +315,51 @@ public class QuestPizzayoloSpring {
 		recetteService.create(savoyarde);
 		recetteService.create(forestiere);
 
+		Adresse a1 = new Adresse("Numvoie1", "NomVoie1", "complement1", "CP1", "ville1");
+		Utilisateur u1 = new Utilisateur("u1@u1", "mdp123", "prenom1", "nom1", a1, "client");
+		utilisateurservice.create(u1);
+
+		Adresse a2 = new Adresse("Numvoie2", "NomVoie2", "complement2", "CP2", "ville2");
+		Utilisateur u2 = new Utilisateur("u2@u2", "mdp123", "prenom2", "nom2", a2, "employe");
+		utilisateurservice.create(u2);
+
+		Pizza p1 = new Pizza(cannibale, Taille.Large, TypePate.Classique);
+		Pizza p2 = new Pizza(forestiere, Taille.XL, TypePate.Fine);
+		Pizza p3 = new Pizza(hypnotika, Taille.Medium, TypePate.MozzaCrust);
+
+		Livraison c1 = new Livraison();
+
+		Set<CommandeBoisson> boissons = new HashSet();
+		CommandeBoissonKey cbk1 = new CommandeBoissonKey(evian, c1);
+		CommandeBoisson cb1 = new CommandeBoisson(cbk1, 3);
+		boissons.add(cb1);
+
+		Set<CommandeDessert> desserts = new HashSet();
+		CommandeDessertKey cdk1 = new CommandeDessertKey(ChocoB, c1);
+		CommandeDessert cd1 = new CommandeDessert(cdk1, 1);
+		desserts.add(cd1);
+
+		Set<Pizza> pizzas = new HashSet();
+		pizzas.add(p1);
+		pizzas.add(p2);
+		pizzas.add(p2);
+
+		c1.setBoissons(boissons);
+		c1.setDesserts(desserts);
+		c1.setClientTicket(u1);
+		c1.setPizzas(pizzas);
+
+		commandeservice.create(c1);
+		
+		
+		
+		System.out.println(p1.getCommandePizza());
+
 	}
 
 	public void run(String... args) {
-		//init();
+		init();
+
 	}
 
 }

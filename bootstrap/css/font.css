@@ -7,3 +7,14 @@
 	font-size: 25px;
   font-family: myfont;
 }
+
+
+@font-face {
+  font-family: myFirstFont;
+  src: url("./font/Moonrising.ttf");
+  font-weight: bold;
+}
+
+.carousel-font {
+  font-family: myFirstFont;
+}
