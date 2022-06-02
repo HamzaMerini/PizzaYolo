@@ -15,18 +15,18 @@ public class Salle extends Commande {
 	@Enumerated(EnumType.STRING)
 	@Column(name = "emplacement")
 	@JsonView({JsonViews.CommandeWithItem.class})
-	private PlanSalle table;
+	private PlanSalle place;
 
 	public Salle() {
 
 	}
 
 	public PlanSalle getTable() {
-		return table;
+		return place;
 	}
 
-	public void setTable(PlanSalle table) {
-		this.table = table;
+	public void setTable(PlanSalle tableinstal) {
+		this.place = tableinstal;
 	}
 
 }
