@@ -13,13 +13,19 @@ import com.fasterxml.jackson.annotation.JsonView;
 @Table(name = "commande_dessert")
 public class CommandeDessert {
 	@EmbeddedId
-	@JsonView(JsonViews.Common.class)
+	@JsonView(JsonViews.CommandeWithItem.class)
 	@Column(name = "id_commande_dessert")
 	private CommandeDessertKey idCD;
+	
+	@JsonView(JsonViews.CommandeWithItem.class)
+	private double prix;
 
+	@JsonView(JsonViews.CommandeWithItem.class)
 	@Column(name = "quantite_dessert")
 	private int quantiteDessert;
 
+	
+	
 	public int getQuantiteDessert() {
 		return quantiteDessert;
 	}
@@ -37,12 +43,20 @@ public class CommandeDessert {
 		this.quantiteDessert = quantiteDessert;
 	}
 
-	public CommandeDessertKey getId() {
+	public CommandeDessertKey getIdCD() {
 		return idCD;
 	}
 
-	public void setId(CommandeDessertKey id) {
-		this.idCD = id;
+	public void setIdCD(CommandeDessertKey idCD) {
+		this.idCD = idCD;
+	}
+
+	public double getPrix() {
+		return prix;
+	}
+
+	public void setPrix(double prix) {
+		this.prix = prix;
 	}
 
 	@Override

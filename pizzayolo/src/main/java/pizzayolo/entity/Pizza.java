@@ -29,7 +29,7 @@ public class Pizza {
 
 	@ManyToOne
 	@JoinColumn(name = "recette", foreignKey = @ForeignKey(name = "PIZZA_RECETTE_ID_FK"))
-	@JsonView(JsonViews.CommandeWithItem.class)
+	@JsonView({JsonViews.Common.class,JsonViews.CommandeWithItem.class})
 	private Recette recette;
 
 	@ManyToOne
@@ -37,17 +37,17 @@ public class Pizza {
 	private Commande commandePizza;
 	
 	@Column(name = "prix")
-	@JsonView(JsonViews.CommandeWithItem.class)
+	@JsonView({JsonViews.Common.class,JsonViews.CommandeWithItem.class})
 	private double prix;
 
 	@Enumerated(EnumType.STRING)
 	@Column(name = "taille_pizza")
-	@JsonView(JsonViews.CommandeWithItem.class)	
+	@JsonView({JsonViews.Common.class,JsonViews.CommandeWithItem.class})
 	private Taille taille;
 	
 	@Enumerated(EnumType.STRING)
 	@Column(name = "type_pate")
-	@JsonView(JsonViews.CommandeWithItem.class)	
+	@JsonView({JsonViews.Common.class,JsonViews.CommandeWithItem.class})
 	private TypePate pate;
 
 	public Pizza() {
@@ -58,7 +58,8 @@ public class Pizza {
 		this.recette = recette;
 		this.taille = taille;
 		this.pate = pate;
-
+	
+		
 		if (taille == Taille.Medium) {
 			this.prix = recette.getPrixM();
 		} else if (taille == Taille.Large) {
@@ -66,14 +67,19 @@ public class Pizza {
 		} else {
 			this.prix = recette.getPrixXL();
 		}
-
-		if (pate == TypePate.MozzaCrust) {
-			this.prix = this.prix + pate.getPrix();
-		} else if (pate == TypePate.Pan) {
-			this.prix = this.prix + pate.getPrix();
-		} else {
-			this.prix = this.prix + pate.getPrix();
-		}
+		
+		this.prix = this.prix + pate.getPrix();
+		
+//		if(commande instanceof Livraison) {
+//			this.prix=this.prix+2;
+//		}
+//		if (pate == TypePate.MozzaCrust) {
+//			this.prix = this.prix + pate.getPrix();
+//		} else if (pate == TypePate.Pan) {
+//			this.prix = this.prix + pate.getPrix();
+//		} else {
+//			this.prix = this.prix + pate.getPrix();
+//		}
 
 	}
 
@@ -91,6 +97,9 @@ public class Pizza {
 
 	public void setCommandePizza(Commande commandePizza) {
 		this.commandePizza = commandePizza;
+//		if (commandePizza instanceof Livraison) {
+//			this.prix=this.prix+2;
+//		}
 	}
 
 	public double getPrix() {
@@ -142,4 +151,9 @@ public class Pizza {
 		return Objects.equals(id, other.id);
 	}
 
+	
+
+
+
+	
 }

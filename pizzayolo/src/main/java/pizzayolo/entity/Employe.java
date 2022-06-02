@@ -20,6 +20,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 @Table(name = "employe")
 @SequenceGenerator(name = "seqEmploye", sequenceName = "seq_employe", initialValue = 10, allocationSize = 1)
@@ -27,20 +29,32 @@ import javax.persistence.Table;
 public class Employe {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqEmploye")
-	@Column(name = "matricule", nullable = false, unique = true)
+	@Column(name = "matricule", nullable = false)
+	@JsonView(JsonViews.Common.class)
 	private Long matricule;
-	@Column(name = "nom", nullable = false, length = 200)
+
+	@Column(name = "nom", nullable = false)
+	@JsonView(JsonViews.Common.class)
 	private String nom;
-	@Column(name = "prenom", nullable = false, length = 200)
+
+	@JsonView(JsonViews.Common.class)
+	@Column(name = "prenom", nullable = false)
 	private String prenom;
-	@Column(name = "adresse", length = 200)
+
+	@Column(name = "adresse")
 	private String adresse;
-	@Column(name = "date_embauche", length = 200)
+
+	@JsonView(JsonViews.Common.class)
+	@Column(name = "date_embauche")
 	private Date dateEmbauche;
-	@Column(name = "salaire", nullable = false, length = 200)
+
+	@JsonView(JsonViews.Common.class)
+	@Column(name = "salaire")
 	private double salaire;
+
+	@JsonView(JsonViews.Common.class)
 	@Enumerated(EnumType.STRING)
-	@Column(name = "job", nullable = false, length = 10)
+	@Column(name = "job")
 	private Job job;
 
 	@OneToOne
@@ -48,13 +62,16 @@ public class Employe {
 	private Utilisateur utilisateur;
 
 	@ManyToMany(fetch = FetchType.LAZY)
-	@JoinTable(name = "creneau_employe",
-	joinColumns = @JoinColumn(name = "employe_id", foreignKey = @ForeignKey(name = "CRENEAU_EMPLOYE_ID_FK")), 
-	inverseJoinColumns = @JoinColumn(name = "creneau_id", foreignKey = @ForeignKey(name = "CRENEAU_CRENEAU_ID_FK")))
+	@JoinTable(name = "creneau_employe", joinColumns = @JoinColumn(name = "employe_id", foreignKey = @ForeignKey(name = "CRENEAU_EMPLOYE_ID_FK")), inverseJoinColumns = @JoinColumn(name = "creneau_id", foreignKey = @ForeignKey(name = "CRENEAU_CRENEAU_ID_FK")))
 	private Set<Creneau> creneaux;
 
 	public Employe() {
 
+	}
+
+	public Employe(String nom, String prenom) {
+		this.nom = nom.toUpperCase();
+		this.prenom = prenom.substring(0, 1).toUpperCase() + prenom.substring(1, prenom.length()).toLowerCase();
 	}
 
 	public Long getMatricule() {
@@ -70,7 +87,7 @@ public class Employe {
 	}
 
 	public void setNom(String nom) {
-		this.nom = nom;
+		this.nom = nom.toUpperCase();
 	}
 
 	public String getPrenom() {
@@ -78,7 +95,7 @@ public class Employe {
 	}
 
 	public void setPrenom(String prenom) {
-		this.prenom = prenom;
+		this.prenom = prenom.substring(0, 1).toUpperCase() + prenom.substring(1, prenom.length()).toLowerCase();
 	}
 
 	public String getAdresse() {
@@ -120,8 +137,6 @@ public class Employe {
 	public void setUtilisateur(Utilisateur utilisateur) {
 		this.utilisateur = utilisateur;
 	}
-
-
 
 	public Set<Creneau> getCreneaux() {
 		return creneaux;

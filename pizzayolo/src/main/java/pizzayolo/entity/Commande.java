@@ -64,26 +64,8 @@ public abstract class Commande {
 	protected double prixTotal;
 
 	public Commande() {
+		this.dateTicket=LocalDate.now();
 	}
-
-
-
-
-
-	public Commande(Set<CommandeBoisson> boissons, Set<CommandeDessert> desserts, Set<Pizza> pizzas,
-			Utilisateur clientTicket, LocalDate dateTicket, double prixTotal) {
-		super();
-		this.boissons = boissons;
-		this.desserts = desserts;
-		this.pizzas = pizzas;
-		this.clientTicket = clientTicket;
-		this.dateTicket = dateTicket;
-		this.prixTotal = prixTotal;
-	}
-
-
-
-
 
 	public Long getNumTicket() {
 		return numTicket;
@@ -141,12 +123,10 @@ public abstract class Commande {
 		this.prixTotal = prixTotal;
 	}
 
-
 	@Override
 	public int hashCode() {
 		return Objects.hash(numTicket);
 	}
-
 
 	@Override
 	public boolean equals(Object obj) {
@@ -159,8 +139,5 @@ public abstract class Commande {
 		Commande other = (Commande) obj;
 		return Objects.equals(numTicket, other.numTicket);
 	}
-
-	
-
 
 }
