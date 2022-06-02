@@ -1,5 +1,6 @@
 import { Creneau } from './creneau';
 import { Utilisateur } from './utilisateur';
+import { Adresse } from './adresse';
 
 export class Employe {
   public constructor(
@@ -47,11 +48,11 @@ export class Employe {
   }
 
   get dateEmbauche(): Date | undefined {
-    return this._adresse;
+    return this._dateEmbauche;
   }
 
   set dateEmbauche(value: Date | undefined) {
-    this._adresse = value;
+    this._dateEmbauche = value;
   }
 
   get salaire(): number | undefined {

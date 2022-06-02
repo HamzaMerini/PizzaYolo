@@ -1,8 +1,11 @@
+import { Ingredient } from './ingredient';
+import { Pizza } from './pizza';
+
 export class Recette {
   public constructor(
     private _nom?: string,
-    private _litesIngre: Ingredient[] = [],
-    private _pizzas: Pizza[] = [],
+    private _litesIngre?: Ingredient[],
+    private _pizzas?: Pizza[],
     private _prixM?: number,
     private _prixL?: number,
     private _prixXL?: number
@@ -39,11 +42,20 @@ export class Recette {
   set prixM(value: number | undefined) {
     this._prixM = value;
   }
+
   get prixL(): number | undefined {
-    return this._prixM;
+    return this._prixL;
   }
 
   set prixL(value: number | undefined) {
-    this._prixM = value;
+    this._prixL = value;
+  }
+
+  get prixXL(): number | undefined {
+    return this._prixXL;
+  }
+
+  set prixXL(value: number | undefined) {
+    this._prixXL = value;
   }
 }

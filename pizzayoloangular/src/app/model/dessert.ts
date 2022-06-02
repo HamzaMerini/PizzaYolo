@@ -5,12 +5,12 @@ export class Dessert {
     return this._nom;
   }
 
-  get prix(): number | undefined {
-    return this._prix;
-  }
-
   set nom(value: string | undefined) {
     this._nom = value;
+  }
+
+  get prix(): number | undefined {
+    return this._prix;
   }
 
   set prix(value: number | undefined) {

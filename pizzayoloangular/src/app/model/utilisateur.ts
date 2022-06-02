@@ -1,4 +1,7 @@
+import { Adresse } from './adresse';
 import { Employe } from './employe';
+import { Commande } from './commande';
+
 export class Utilisateur {
   public constructor(
     private _mail?: string,
@@ -6,7 +9,7 @@ export class Utilisateur {
     private _nom?: string,
     private _adresse?: Adresse,
     private _type?: string,
-    private _historiqueCommande?: Commande[],
+    private _historiqueCommande?: Commande,
     private _employe?: Employe
   ) {}
 
