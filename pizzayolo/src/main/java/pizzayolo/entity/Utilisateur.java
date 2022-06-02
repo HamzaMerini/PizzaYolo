@@ -1,57 +1,5 @@
 package pizzayolo.entity;
 
-<<<<<<< HEAD
-import java.util.Objects;
-import java.util.Set;
-
-import javax.persistence.Embedded;
-import javax.persistence.Entity;
-import javax.persistence.ForeignKey;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import javax.persistence.SequenceGenerator;
-
-import com.fasterxml.jackson.annotation.JsonView;
-
-import quest.entity.JsonViews;
-
-@Entity
-@SequenceGenerator(name="seqUtilisateur",sequenceName = "seq_utilisateur", initialValue = 1, allocationSize = 1)
-public class Utilisateur {
-	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator ="seqUtilisateur" )
-		private Long id;
-		
-		private String mail;
-		private String mdp;
-		private String nom;
-		//@JsonView(JsonViews.UtilisateurWithAdress.class)
-		@Embedded
-		private Adresse adresse;
-		private String type; // client employe ou responsable 
-		
-		@OneToMany(mappedBy = "clientTicket")
-		Set<Commande> historiqueCommande;
-		
-	
-		@OneToOne(mappedBy = "utilisateur")
-	    private Employe employe;
-		
-	public Utilisateur() {
-		
-	}
-
-	public Utilisateur(Long id, String mail, String mdp, String nom, Adresse adresse, String type) {
-		
-		this.id = id;
-		this.mail = mail;
-		this.mdp = mdp;
-		this.nom = nom;
-=======
 import java.lang.annotation.Repeatable;
 import java.util.Arrays;
 import java.util.Collection;
@@ -131,16 +79,10 @@ public class Utilisateur implements UserDetails {
 		this.mdp = mdp;
 		this.nom = nom.toUpperCase();
 		this.prenom=prenom.substring(0, 1).toUpperCase() + prenom.substring(1,prenom.length()).toLowerCase();
->>>>>>> main
 		this.adresse = adresse;
 		this.type = type;
 	}
 
-<<<<<<< HEAD
-	
-
-=======
->>>>>>> main
 	public Long getId() {
 		return id;
 	}
@@ -170,11 +112,7 @@ public class Utilisateur implements UserDetails {
 	}
 
 	public void setNom(String nom) {
-<<<<<<< HEAD
-		this.nom = nom;
-=======
 		this.nom = nom.toUpperCase();
->>>>>>> main
 	}
 
 	public Adresse getAdresse() {
@@ -193,8 +131,6 @@ public class Utilisateur implements UserDetails {
 		this.type = type;
 	}
 
-<<<<<<< HEAD
-=======
 	public String getPrenom() {
 		return prenom;
 	}
@@ -203,7 +139,6 @@ public class Utilisateur implements UserDetails {
 		this.prenom = prenom.substring(0, 1).toUpperCase() + prenom.substring(1,prenom.length()).toLowerCase();
 	}
 
->>>>>>> main
 	public Set<Commande> getHistoriqueCommande() {
 		return historiqueCommande;
 	}
@@ -228,9 +163,6 @@ public class Utilisateur implements UserDetails {
 		Utilisateur other = (Utilisateur) obj;
 		return Objects.equals(id, other.id);
 	}
-<<<<<<< HEAD
-	
-=======
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -266,6 +198,5 @@ public class Utilisateur implements UserDetails {
 	public boolean isEnabled() {
 		return true;
 	}
->>>>>>> main
 
 }
