@@ -9,7 +9,7 @@ public class JsonViews {
 		
 	}
 	
-	public static class CommandeWithItem extends Common {
+	public static class CommandeWithItem{
 		
 	}
 }

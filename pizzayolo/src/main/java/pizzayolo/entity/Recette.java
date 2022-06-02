@@ -30,7 +30,8 @@ public class Recette {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqRecette")
 	@Column(name="id")
 	private Long id;
-	@JsonView(JsonViews.Common.class)
+	
+	@JsonView({JsonViews.Common.class,JsonViews.CommandeWithItem.class})
 	@Column(name="nom")
 	private String nom;
 
@@ -46,9 +47,11 @@ public class Recette {
 	@JsonView(JsonViews.Common.class)
 	@Column(name="prix_m")
 	private double prixM;
+	
 	@JsonView(JsonViews.Common.class)
 	@Column(name="prix_l")
 	private double prixL;
+	
 	@JsonView(JsonViews.Common.class)
 	@Column(name="prix_xl")
 	private double prixXL;
@@ -88,7 +91,7 @@ public class Recette {
 
 	public Recette(Set<Ingredient> listeIngre) {
 
-		this.nom = "Composée";
+		this.nom = "Composï¿½e";
 		this.prixM = 10;
 		this.prixL = prixM+3;
 		this.prixXL = prixL+3;

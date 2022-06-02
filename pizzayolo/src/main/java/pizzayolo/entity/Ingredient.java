@@ -26,15 +26,19 @@ public class Ingredient {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqIngredient")
 	@Column(name="id")
 	private Long id;
+	
 	@JsonView(JsonViews.Common.class)
 	@Column(name="libelle")
 	private String libelle;
+	
 	@JsonView(JsonViews.Common.class)
 	@Column(name="prix_sup_m")
 	private double prixSupM;
+	
 	@JsonView(JsonViews.Common.class)
 	@Column(name="prix_sup_l")
 	private double prixSupL;
+	
 	@JsonView(JsonViews.Common.class)
 	@Column(name="prix_sup_xl")
 	private double prixSupXL;

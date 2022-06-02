@@ -22,13 +22,16 @@ public class Creneau {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqCreneau")
-	@Column(name="id")
+	@Column(name = "id")
 	private Long id;
-	@Column(name="date")
+
+	@Column(name = "date")
 	private LocalDate date;
-	@Column(name="debut")
+
+	@Column(name = "debut")
 	private LocalTime debut;
-	@Column(name="fin")
+
+	@Column(name = "fin")
 	private LocalTime fin;
 
 	@ManyToMany(mappedBy = "creneaux")
@@ -36,18 +39,12 @@ public class Creneau {
 
 	public Creneau() {
 	}
-	
-	
-	
 
 	public Creneau(LocalDate date, LocalTime debut, LocalTime fin) {
 		this.date = date;
 		this.debut = debut;
 		this.fin = fin;
 	}
-
-
-
 
 	public Long getId() {
 		return id;
@@ -69,16 +66,16 @@ public class Creneau {
 		return debut;
 	}
 
-	public void setDebut(LocalTime debut) {
-		this.debut = debut;
+	public void setDebut(int h, int m) {
+		this.debut = LocalTime.of(h, m);
 	}
 
 	public LocalTime getFin() {
 		return fin;
 	}
 
-	public void setFin(LocalTime fin) {
-		this.fin = fin;
+	public void setFin(int h, int m) {
+		this.fin = LocalTime.of(h, m);
 	}
 
 	public Set<Employe> getEmploye() {

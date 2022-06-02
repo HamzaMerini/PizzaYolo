@@ -14,7 +14,7 @@ public class Salle extends Commande {
 
 	@Enumerated(EnumType.STRING)
 	@Column(name = "emplacement")
-	@JsonView(JsonViews.CommandeWithItem.class)
+	@JsonView({JsonViews.CommandeWithItem.class})
 	private PlanSalle table;
 
 	public Salle() {
