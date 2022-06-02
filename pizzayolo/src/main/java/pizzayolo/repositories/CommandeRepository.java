@@ -12,6 +12,7 @@ public interface CommandeRepository extends JpaRepository<Commande, Long>{
 	@Query("select c from Commande as c left join fetch c.pizzas as p "+
 									   "left join fetch c.boissons as b"+
 									   "left join fetch c.desserts as d")
+	
 	List<Commande>findAllWithItem();
 	
 

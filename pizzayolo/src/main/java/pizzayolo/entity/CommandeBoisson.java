@@ -14,12 +14,18 @@ import com.fasterxml.jackson.annotation.JsonView;
 public class CommandeBoisson {
 	@EmbeddedId
 	@Column(name = "id_commande_boisson")
+	@JsonView(JsonViews.CommandeWithItem.class)
 	private CommandeBoissonKey idCB;
 
+	@JsonView(JsonViews.CommandeWithItem.class)
+	private double prix;
+	
 	@Column(name = "quantite_boisson")
 	@JsonView(JsonViews.CommandeWithItem.class)
 	private int quantiteBoisson;
 
+
+	
 	public CommandeBoisson() {
 	}
 
@@ -44,6 +50,14 @@ public class CommandeBoisson {
 		this.quantiteBoisson = quantiteBoisson;
 	}
 
+	public double getPrix() {
+		return prix;
+	}
+
+	public void setPrix(double prix) {
+		this.prix = prix;
+	}
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(idCB);
@@ -59,6 +73,11 @@ public class CommandeBoisson {
 			return false;
 		CommandeBoisson other = (CommandeBoisson) obj;
 		return Objects.equals(idCB, other.idCB);
+	}
+
+	@Override
+	public String toString() {
+		return "CommandeBoisson [idCB=" + idCB + ", quantiteBoisson=" + quantiteBoisson + "]";
 	}
 
 	

@@ -22,9 +22,11 @@ public class Dessert {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqDessert")
 	@Column(name = "id")
 	private int id;
+	
 	@Column(name = "nom")
-	@JsonView(JsonViews.Common.class)
+	@JsonView({JsonViews.Common.class,JsonViews.CommandeWithItem.class})
 	private String nom;
+	
 	@Column(name = "prix")
 	@JsonView(JsonViews.Common.class)
 	private double prix;

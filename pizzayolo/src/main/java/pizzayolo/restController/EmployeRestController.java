@@ -23,59 +23,55 @@ import org.springframework.web.bind.annotation.RestController;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import pizzayolo.entity.JsonViews;
-import pizzayolo.entity.Utilisateur;
-import pizzayolo.services.UtilisateurService;
+import pizzayolo.entity.Employe;
+import pizzayolo.services.EmployeService;
 
 @RestController
 @CrossOrigin(origins = "*")
-@RequestMapping("/api/utilisateur")
-public class UtilisateurRestController {
+@RequestMapping("/api/employe")
+public class EmployeRestController {
 
 	@Autowired
-	private UtilisateurService utilisateurService;
+	private EmployeService employeService;
 
 	@GetMapping("")
 	@JsonView(JsonViews.Common.class)
-	public List<Utilisateur> getAll() {
-		return utilisateurService.getAll();
+	public List<Employe> getAll() {
+		return employeService.getAll();
 	}
 
 	@PostMapping("")
 	@ResponseStatus(code = HttpStatus.CREATED)
 	@JsonView(JsonViews.Common.class)
-	public Utilisateur create(@Valid @RequestBody Utilisateur utilisateur, BindingResult br) {
-		return utilisateurService.create(utilisateur);
+	public void create(@Valid @RequestBody Employe employe, BindingResult br) {
+		employeService.create(employe);
 	}
 
 	@GetMapping("/{id}")
 	@JsonView(JsonViews.Common.class)
-	public Utilisateur getById(@PathVariable Long id) {
-		return utilisateurService.getById(id);
+	public Employe getById(@PathVariable Long id) {
+		return employeService.getById(id);
 	}
 
-	@GetMapping("/{id}/adresse")
-	@JsonView(JsonViews.UtilisateurWithAdresse.class)
-	public Utilisateur getByIdWithAdresse(@PathVariable Long id) {
-		return utilisateurService.getByIdWithAdresse(id);
-	}
+	
 
 	@PatchMapping("/{id}")
 	@JsonView(JsonViews.Common.class)
-	public Utilisateur partialUpdate(@RequestBody Map<String, Object> fields, @PathVariable Long id) {
-		Utilisateur utilisateur = utilisateurService.getById(id);
-		// utilisateur.setNom(fields.get("nom").toString());
+	public Employe partialUpdate(@RequestBody Map<String, Object> fields, @PathVariable Long id) {
+		Employe employe = employeService.getById(id);
+		// employe.setNom(fields.get("nom").toString());
 
 		fields.forEach((k, v) -> {
 //			if (k.equals("attributQuiPoseProbleme")) {   //adresse et employ�
 //				;
 //			}else {
-			Field field = ReflectionUtils.findField(Utilisateur.class, k);
+			Field field = ReflectionUtils.findField(Employe.class, k);
 			ReflectionUtils.makeAccessible(field);
-			ReflectionUtils.setField(field, utilisateur, v);
+			ReflectionUtils.setField(field, employe, v);
 			// }
 		});
 
-		return utilisateurService.update(utilisateur);
+		return employeService.update(employe);
 	}
 
 }

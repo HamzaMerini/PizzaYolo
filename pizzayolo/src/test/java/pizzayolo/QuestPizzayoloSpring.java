@@ -1,10 +1,10 @@
 package pizzayolo;
 
+import java.time.LocalDate;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -16,21 +16,27 @@ import pizzayolo.entity.CommandeBoisson;
 import pizzayolo.entity.CommandeBoissonKey;
 import pizzayolo.entity.CommandeDessert;
 import pizzayolo.entity.CommandeDessertKey;
+import pizzayolo.entity.Creneau;
 import pizzayolo.entity.Dessert;
+import pizzayolo.entity.Employe;
 import pizzayolo.entity.Ingredient;
+import pizzayolo.entity.Job;
 import pizzayolo.entity.Livraison;
 import pizzayolo.entity.Pizza;
 import pizzayolo.entity.Recette;
+import pizzayolo.entity.Salle;
 import pizzayolo.entity.Taille;
 import pizzayolo.entity.TypePate;
 import pizzayolo.entity.Utilisateur;
-import pizzayolo.repositories.PizzaRepository;
 import pizzayolo.services.BoissonService;
 import pizzayolo.services.CommandeBoissonService;
 import pizzayolo.services.CommandeDessertService;
 import pizzayolo.services.CommandeService;
+import pizzayolo.services.CreneauService;
 import pizzayolo.services.DessertService;
+import pizzayolo.services.EmployeService;
 import pizzayolo.services.IngredientService;
+import pizzayolo.services.PizzaService;
 import pizzayolo.services.RecetteService;
 import pizzayolo.services.UtilisateurService;
 
@@ -56,7 +62,7 @@ public class QuestPizzayoloSpring {
 	private CommandeService commandeservice;
 
 	@Autowired
-	private PizzaRepository pizzaRepository;
+	private PizzaService pizzaService;
 
 	@Autowired
 	private CommandeBoissonService commandeBoissonService;
@@ -67,11 +73,14 @@ public class QuestPizzayoloSpring {
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 
+	@Autowired
+	private EmployeService employeService;
 	
-	
+	@Autowired
+	private CreneauService creneauService;
 	
 	@Test
-	@Disabled
+	//@Disabled
 	public void init() {
 		
 		System.out.println("BDD");
@@ -341,15 +350,16 @@ public class QuestPizzayoloSpring {
 		recetteService.create(forestiere);
 
 		Adresse a1 = new Adresse("Numvoie1", "NomVoie1", "complement1", "CP1", "ville1");
-		Utilisateur u1 = new Utilisateur("u1@u1", "Mdp1234", "prenom1", "nom1", a1, "client");
+		Utilisateur u1 = new Utilisateur("u1@u1", "!Mdp1234", "prenom1", "nom1", a1, "client");
 		utilisateurservice.create(u1);
-
-		Adresse a2 = new Adresse("Numvoie2", "NomVoie2", "complement2", "CP2", "ville2");
-		Utilisateur u2 = new Utilisateur("u2@u2", "Mdp1234", "prenom2", "nom2", a2, "employe");
+		System.out.println("user created");
+		
+		Adresse a2 = new Adresse();
+		Utilisateur u2 = new Utilisateur("u2@u2", "!Mdp1234", "prenom2", "nom2", a2, "employe");
 		utilisateurservice.create(u2);
 		
 		Adresse a3 = new Adresse("Numvoie3", "NomVoie3", "complement3", "CP3", "ville3");
-		Utilisateur u3 = new Utilisateur("u3@u3", "Mdp1234", "prenom3", "nom3", a3, "employe");
+		Utilisateur u3 = new Utilisateur("u3@u3", "!Mdp1234", "prenom3", "nom3", a3, "employe");
 		utilisateurservice.create(u3);
 
 		
@@ -357,40 +367,158 @@ public class QuestPizzayoloSpring {
 			c.setMdp(passwordEncoder.encode(c.getMdp()));
 			utilisateurservice.update(c);
 		});
+		System.out.println("encodage ok");
 		
+		Livraison c1 = new Livraison();
+		Salle c2 = new Salle();
+		Livraison c3 = new Livraison();
+		
+		commandeservice.create(c1);
+		commandeservice.create(c2);
+		commandeservice.create(c3);
+
+
 		Pizza p1 = new Pizza(cannibale, Taille.Large, TypePate.Classique);
 		Pizza p2 = new Pizza(forestiere, Taille.XL, TypePate.Fine);
 		Pizza p3 = new Pizza(hypnotika, Taille.Medium, TypePate.MozzaCrust);
-
-		Livraison c1 = new Livraison();
 		
-		commandeservice.create(c1);
 		
-		Set<CommandeBoisson> boissons = new HashSet();
+		pizzaService.create(p1);
+		pizzaService.create(p2);
+		pizzaService.create(p3);
+		
+		
+		
+		Set<CommandeBoisson> boissons = new HashSet<CommandeBoisson>();
 		CommandeBoissonKey cbk1 = new CommandeBoissonKey(evian, c1);
-		CommandeBoisson cb1 = new CommandeBoisson(cbk1, 3);
-		boissons.add(cb1);
+		CommandeBoissonKey cbk2 = new CommandeBoissonKey(cocaB, c1);
+		CommandeBoisson cb1 = new CommandeBoisson(cbk1, 2);
+		CommandeBoisson cb2 = new CommandeBoisson(cbk2, 1);
+		Collections.addAll(boissons, cb1,cb2);
+		System.out.println(boissons);
 
-		Set<CommandeDessert> desserts = new HashSet();
+		Set<CommandeDessert> desserts = new HashSet<CommandeDessert>();
 		CommandeDessertKey cdk1 = new CommandeDessertKey(ChocoB, c1);
-		CommandeDessert cd1 = new CommandeDessert(cdk1, 1);
-		desserts.add(cd1);
+		CommandeDessertKey cdk2 = new CommandeDessertKey(GlaceCookieg,c1);
+		CommandeDessert cd1 = new CommandeDessert(cdk1, 2);
+		CommandeDessert cd2 = new CommandeDessert(cdk2, 1);
+		Collections.addAll(desserts, cd1,cd2);
 
-		Set<Pizza> pizzas = new HashSet();
-		pizzas.add(p1);
-		pizzas.add(p2);
-		pizzas.add(p2);
-
+		
+		Set<Pizza> pizzas = new HashSet<Pizza>();
+		Collections.addAll(pizzas, p1,p2,p3);	
+		
+		System.out.println(pizzas);
+		
+		
 		c1.setBoissons(boissons);
+		System.out.println("boisson ok");
 		c1.setDesserts(desserts);
-		c1.setClientTicket(u1);
+		System.out.println("dessert ok");
 		c1.setPizzas(pizzas);
-		
+		System.out.println("pizza ok");
+		c1.setClientTicket(u1);
+		System.out.println("user ok");
 		commandeservice.update(c1);
+		System.out.println("update ok");
+		
+		Pizza p12 = new Pizza(indienne, Taille.Medium, TypePate.Pan);
+		Pizza p22 = new Pizza(chickenDeLight, Taille.Medium, TypePate.MozzaCrust);
+		pizzaService.create(p12);
+		pizzaService.create(p22);
+		
+		
+		
+		
+		Set<CommandeBoisson> boissons2 = new HashSet<CommandeBoisson>();
+		CommandeBoissonKey cbk12 = new CommandeBoissonKey(evian, c2);
+		CommandeBoissonKey cbk22 = new CommandeBoissonKey(cocaB, c2);
+		CommandeBoisson cb12 = new CommandeBoisson(cbk12, 1);
+		CommandeBoisson cb22 = new CommandeBoisson(cbk22, 1);
+		Collections.addAll(boissons2, cb12,cb22);
+
+
+		Set<CommandeDessert> desserts2 = new HashSet<CommandeDessert>();
+		CommandeDessertKey cdk12 = new CommandeDessertKey(ChocoB, c2);
+		CommandeDessertKey cdk22 = new CommandeDessertKey(GlaceCookieg,c2);
+		CommandeDessertKey cdk32 = new CommandeDessertKey(GlaceCookiep,c2);
+		CommandeDessert cd12 = new CommandeDessert(cdk12, 1);
+		CommandeDessert cd22 = new CommandeDessert(cdk22, 1);
+		CommandeDessert cd32 = new CommandeDessert(cdk32, 1);
+		Collections.addAll(desserts2, cd12,cd22,cd32);
+		
+		
+		Set<Pizza> pizzas2 = new HashSet<Pizza>();
+		Collections.addAll(pizzas2, p12,p22);	
+		
+		c2.setBoissons(boissons2);
+		c2.setDesserts(desserts2);
+		c2.setPizzas(pizzas2);
+		c2.setClientTicket(u2);
+		commandeservice.update(c2);		
+
+
+		System.out.println("gg");
+		
+		Pizza p13 = new Pizza(kebab, Taille.XL, TypePate.MozzaCrust);
+		Set<Pizza> pizzas3 = new HashSet<Pizza>();
+		Collections.addAll(pizzas3, p13);	
+		pizzaService.create(p13);
+		
+		
+		c3.setPizzas(pizzas3);
+		c3.setClientTicket(u3);
+		commandeservice.update(c3);
+		
+		
+		System.out.println(c1.getPrixTotal());
+		System.out.println(c2.getPrixTotal());
 		
 
 		
 		
+		Employe e1=new Employe("merini","haMza");
+		Employe e2=new Employe("AbiD","jorDan");
+		employeService.create(e1);
+		employeService.create(e2);
+	
+		e1.setJob(Job.Livreur);
+		employeService.update(e1);
+	
+		Set<Employe> emp=new HashSet<>();
+		emp.add(e1);emp.add(e2);
+		System.out.println(emp);
+		
+		Creneau c=new Creneau();
+		c.setDebut(18, 00);
+		c.setFin(20, 00);
+		c.setDate(LocalDate.now());
+		c.setEmploye(emp);
+		
+		
+		Creneau cren2=new Creneau();
+		cren2.setDebut(10, 00);
+		cren2.setFin(14, 00);
+		cren2.setDate(LocalDate.now());
+		cren2.setEmploye(emp);
+
+		creneauService.create(cren2);
+
+		creneauService.create(c);
+		
+		Set<Creneau> cr=new HashSet<>();
+		cr.add(c);
+		cr.add(cren2);
+		
+		e1.setCreneaux(cr);
+		e2.setCreneaux(cr);
+
+		
+		employeService.update(e1);
+		employeService.update(e2);
+		creneauService.update(c);
+		
+		System.out.println("gg");
 		
 	}
 

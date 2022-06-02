@@ -21,9 +21,11 @@ public class Boisson {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqBoisson")
 	@Column(name = "id")
 	private Integer id;
-	@JsonView(JsonViews.Common.class)
+	
+	@JsonView({JsonViews.Common.class,JsonViews.CommandeWithItem.class})
 	@Column(name = "nom")
 	private String nom;
+	
 	@JsonView(JsonViews.Common.class)
 	@Column(name = "prix")
 	private double prix;

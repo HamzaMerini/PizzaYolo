@@ -3,6 +3,7 @@ package pizzayolo.restController;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -16,6 +17,7 @@ import pizzayolo.entity.JsonViews;
 import pizzayolo.services.DessertService;
 
 @RestController
+@CrossOrigin(origins = "*")
 @RequestMapping("/api/dessert")
 public class DessertRestController {
 
@@ -26,7 +28,7 @@ public class DessertRestController {
 	@GetMapping("")
 	public List<Dessert> getAll() {
 		return dessertService.getAll();
-}
+	}
 
 	@JsonView(JsonViews.Common.class)
 	@PostMapping("")

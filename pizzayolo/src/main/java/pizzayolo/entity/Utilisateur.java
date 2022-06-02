@@ -1,5 +1,6 @@
 package pizzayolo.entity;
 
+import java.lang.annotation.Repeatable;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Objects;
@@ -37,22 +38,23 @@ public class Utilisateur implements UserDetails {
 	
 	@Column(name = "mail")
 	@NotEmpty
-	@JsonView(JsonViews.Common.class)
+	@JsonView({JsonViews.Common.class,JsonViews.CommandeWithItem.class})
 	@Email
 	private String mail;
 	
 	@Column(name = "mdp")
 	@NotEmpty
-	//@ValidPassword
+	@ValidPassword
 	private String mdp;
 	
 	@Column(name = "nom")
-	@JsonView(JsonViews.Common.class)
+	@JsonView({JsonViews.Common.class,JsonViews.CommandeWithItem.class})
 	private String nom;
 	
 	@Column(name="prenom")
 	@JsonView(JsonViews.Common.class)
 	private String prenom;
+	
 	@Embedded
 	@JsonView(JsonViews.UtilisateurWithAdresse.class)
 	private Adresse adresse;
@@ -75,8 +77,8 @@ public class Utilisateur implements UserDetails {
 		
 		this.mail = mail;
 		this.mdp = mdp;
-		this.nom = nom;
-		this.prenom=prenom;
+		this.nom = nom.toUpperCase();
+		this.prenom=prenom.substring(0, 1).toUpperCase() + prenom.substring(1,prenom.length()).toLowerCase();
 		this.adresse = adresse;
 		this.type = type;
 	}
@@ -110,7 +112,7 @@ public class Utilisateur implements UserDetails {
 	}
 
 	public void setNom(String nom) {
-		this.nom = nom;
+		this.nom = nom.toUpperCase();
 	}
 
 	public Adresse getAdresse() {
@@ -134,7 +136,7 @@ public class Utilisateur implements UserDetails {
 	}
 
 	public void setPrenom(String prenom) {
-		this.prenom = prenom;
+		this.prenom = prenom.substring(0, 1).toUpperCase() + prenom.substring(1,prenom.length()).toLowerCase();
 	}
 
 	public Set<Commande> getHistoriqueCommande() {
