@@ -61,7 +61,11 @@
 			</plugin>
 		</plugins>
 		<finalName>
+<<<<<<< HEAD:pizza/pizzayoloFront/pom.xml
 			pizzayolo
+=======
+		    py
+>>>>>>> Khadidja:pizzayoloFront/pom.xml
 		</finalName>
 	</build>
 </project>
