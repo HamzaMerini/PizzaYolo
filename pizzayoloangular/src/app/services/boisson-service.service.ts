@@ -4,21 +4,12 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
-<<<<<<< Updated upstream
   providedIn: 'root',
-=======
-  providedIn: 'root'
->>>>>>> Stashed changes
 })
 export class BoissonServiceService {
   private url: string = 'http://localhost:8080/pizzayolo/api/boisson';
 
-<<<<<<< Updated upstream
   constructor(private httpClient: HttpClient) {}
-=======
-  constructor(private httpClient: HttpClient) { }
-
->>>>>>> Stashed changes
 
   public getAll(): Observable<Boisson[]> {
     return this.httpClient.get<Boisson[]>(this.url);
@@ -44,11 +35,7 @@ export class BoissonServiceService {
       nom: boisson.nom,
       prix: boisson.prix,
     };
-<<<<<<< Updated upstream
 
-=======
-    
->>>>>>> Stashed changes
     if (boisson.id) {
       Object.assign(obj, { id: boisson.id });
     }
@@ -58,8 +45,4 @@ export class BoissonServiceService {
   public create(boisson: Boisson): Observable<Boisson> {
     return this.httpClient.post<Boisson>(this.url, this.boissonToJson(boisson));
   }
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
 }
