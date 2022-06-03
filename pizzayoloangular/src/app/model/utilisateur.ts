@@ -4,6 +4,7 @@ import { Commande } from './commande';
 
 export class Utilisateur {
   public constructor(
+    private _id?: number,
     private _mail?: string,
     private _prenom?: string,
     private _nom?: string,
@@ -13,6 +14,13 @@ export class Utilisateur {
     private _employe?: Employe
   ) {}
 
+  get id(): number | undefined {
+    return this._id;
+  }
+
+  set id(value: number | undefined) {
+    this._id = value;
+  }
   get mail(): string | undefined {
     return this._mail;
   }
