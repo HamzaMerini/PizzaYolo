@@ -1,5 +1,9 @@
 export class Dessert {
-  public constructor(private _nom?: string, private _prix?: number) {}
+  public constructor(
+    private _nom?: string,
+    private _prix?: number,
+    private _id?: number
+  ) {}
 
   get nom(): string | undefined {
     return this._nom;
@@ -14,6 +18,13 @@ export class Dessert {
   }
 
   set prix(value: number | undefined) {
+    this._prix = value;
+  }
+  get id(): number | undefined {
+    return this._prix;
+  }
+
+  set id(value: number | undefined) {
     this._prix = value;
   }
 }
