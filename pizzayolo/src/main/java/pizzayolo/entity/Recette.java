@@ -31,14 +31,16 @@ public class Recette {
 	@Column(name="id")
 	private Long id;
 	
-	@JsonView({JsonViews.Common.class,JsonViews.CommandeWithItem.class})
+	@JsonView({JsonViews.Common.class,JsonViews.CommandeWithItem.class,JsonViews.RecetteWithIngredient.class})
 	@Column(name="nom")
+	
 	private String nom;
 
 	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "lien_recette_ingredients", 
 			   joinColumns = @JoinColumn(name = "recette_id", foreignKey = @ForeignKey(name = "INGREDIENT_RECETTE_ID_FK")), 
 			   inverseJoinColumns = @JoinColumn(name = "ingredient_id", foreignKey = @ForeignKey(name = "INGREDIENT_INGREDIENT_ID_FK")))
+	@JsonView(JsonViews.RecetteWithIngredient.class)
 	private Set<Ingredient> listeIngre;
 
 	@OneToMany(mappedBy = "recette")

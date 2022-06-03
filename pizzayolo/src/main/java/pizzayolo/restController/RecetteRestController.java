@@ -26,7 +26,7 @@ public class RecetteRestController {
 	@Autowired
 	RecetteService recetteservice;
 
-	@JsonView(JsonViews.Common.class)
+	@JsonView(JsonViews.RecetteWithIngredient.class)
 	@GetMapping("")
 	public List<Recette> getAll() {
 		return recetteservice.getAll();

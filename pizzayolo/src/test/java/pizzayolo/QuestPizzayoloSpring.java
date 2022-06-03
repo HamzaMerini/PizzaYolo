@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -80,7 +81,7 @@ public class QuestPizzayoloSpring {
 	private CreneauService creneauService;
 	
 	@Test
-	//@Disabled
+	@Disabled
 	public void init() {
 		
 		System.out.println("BDD");
