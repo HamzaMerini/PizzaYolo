@@ -4,13 +4,12 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-export class BoissonServiceService {
+export class BoissonService {
   private url: string = 'http://localhost:8080/pizzayolo/api/boisson';
 
-  constructor(private httpClient: HttpClient) { }
-
+  constructor(private httpClient: HttpClient) {}
 
   public getAll(): Observable<Boisson[]> {
     return this.httpClient.get<Boisson[]>(this.url);
@@ -36,7 +35,7 @@ export class BoissonServiceService {
       nom: boisson.nom,
       prix: boisson.prix,
     };
-    
+
     if (boisson.id) {
       Object.assign(obj, { id: boisson.id });
     }
@@ -46,5 +45,4 @@ export class BoissonServiceService {
   public create(boisson: Boisson): Observable<Boisson> {
     return this.httpClient.post<Boisson>(this.url, this.boissonToJson(boisson));
   }
-
 }

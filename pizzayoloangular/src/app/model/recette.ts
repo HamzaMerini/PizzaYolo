@@ -4,7 +4,7 @@ import { Pizza } from './pizza';
 export class Recette {
   public constructor(
     private _nom?: string,
-    private _litesIngre?: Ingredient[],
+    private _listeIngre?: Ingredient[],
     private _pizzas?: Pizza[],
     private _prixM?: number,
     private _prixL?: number,
@@ -19,12 +19,12 @@ export class Recette {
     this._nom = value;
   }
 
-  get litesIngre(): Array<Ingredient> | undefined {
-    return this._litesIngre;
+  get listeIngre(): Array<Ingredient> | undefined {
+    return this._listeIngre;
   }
 
-  set litesIngre(value: Array<Ingredient> | undefined) {
-    this._litesIngre = value;
+  set listeIngre(value: Array<Ingredient> | undefined) {
+    this._listeIngre = value;
   }
 
   get pizzas(): Array<Pizza> | undefined {
