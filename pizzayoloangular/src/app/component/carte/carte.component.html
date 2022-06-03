@@ -3,6 +3,8 @@
 <table class="table">
   <tr *ngFor="let recette of recettes | async">
     <td>{{ recette.nom }}</td>
-    <td>{{ recette.litesIngre }}</td>
+    <td *ngFor="let ingredient of recette.listeIngre">
+      <p>{{ ingredient.libelle }}</p>
+    </td>
   </tr>
 </table>
