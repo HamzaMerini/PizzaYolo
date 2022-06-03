@@ -1,10 +1,14 @@
 import { Utilisateur } from './utilisateur';
+import { Boisson } from './boisson';
+import { Dessert } from './dessert';
+import { Pizza } from './pizza';
+
 export abstract class Commande {
   public constructor(
     private _numTicket?: number,
-    private _boissons: Boisson[] = [],
-    private _desserts: Dessert[] = [],
-    private _pizzas: Pizza[] = [],
+    private _boissons?: Boisson[],
+    private _desserts?: Dessert[],
+    private _pizzas?: Pizza[],
     private _clientTicket?: Utilisateur,
     private _dateTicket?: Date,
     private _prixTotal?: number
@@ -25,6 +29,7 @@ export abstract class Commande {
   set boissons(value: Array<Boisson> | undefined) {
     this._boissons = value;
   }
+
   get desserts(): Array<Dessert> | undefined {
     return this._desserts;
   }

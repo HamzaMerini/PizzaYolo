@@ -1,4 +1,5 @@
 import { Commande } from './commande';
+import { Recette } from './recette';
 
 export class Pizza {
   public constructor(
