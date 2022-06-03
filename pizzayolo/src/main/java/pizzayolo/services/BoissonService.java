@@ -23,11 +23,8 @@ public class BoissonService {
 	}
 
 	public Boisson create(Boisson boisson) {
-<<<<<<< HEAD
 		return boissonRepository.save(boisson);
-=======
-	return	boissonRepository.save(boisson);
->>>>>>> Khadidja
+
 	}
 
 	public Boisson update(Boisson boisson) {

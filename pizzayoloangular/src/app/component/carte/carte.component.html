@@ -1,1 +1,8 @@
 <p>carte works!</p>
+<p>Nos Pizzas :</p>
+<table class="table">
+  <tr *ngFor="let recette of recettes | async">
+    <td>{{ recette.nom }}</td>
+    <td>{{ recette.litesIngre }}</td>
+  </tr>
+</table>

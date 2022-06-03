@@ -12,4 +12,9 @@ public class JsonViews {
 	public static class CommandeWithItem{
 		
 	}
-}
+	
+	
+public static class RecetteWithIngredient{
+		
+	}
+}	

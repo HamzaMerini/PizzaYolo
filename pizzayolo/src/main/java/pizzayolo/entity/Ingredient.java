@@ -27,7 +27,7 @@ public class Ingredient {
 	@Column(name="id")
 	private Long id;
 	
-	@JsonView(JsonViews.Common.class)
+	@JsonView({JsonViews.Common.class,JsonViews.RecetteWithIngredient.class})
 	@Column(name="libelle")
 	private String libelle;
 	

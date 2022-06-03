@@ -22,7 +22,7 @@ public class SecurityConfig {
 				.and()
 				.authorizeHttpRequests()
 					.antMatchers(HttpMethod.POST, "/api/auth/incription").permitAll()
-					.antMatchers(HttpMethod.GET,"/api/**").authenticated()
+					.antMatchers(HttpMethod.GET,"/api/**").permitAll()
 				.and()
 				.httpBasic();
 		// @formatter:on
