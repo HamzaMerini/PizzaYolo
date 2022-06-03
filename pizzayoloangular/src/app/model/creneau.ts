@@ -3,6 +3,7 @@ import { Employe } from './employe';
 
 export class Creneau {
   public constructor(
+    private _id?: number,
     private _date?: string,
     private _debut?: Time,
     private _fin?: Time,
@@ -10,6 +11,13 @@ export class Creneau {
     private _employe?: string
   ) {}
 
+  get id(): number | undefined {
+    return this._id;
+  }
+
+  set id(value: number | undefined) {
+    this._id = value;
+  }
   get date(): string | undefined {
     return this._date;
   }

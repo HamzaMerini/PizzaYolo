@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root',
 })
-export class BoissonServiceService {
+export class BoissonService {
   private url: string = 'http://localhost:8080/pizzayolo/api/boisson';
 
   constructor(private httpClient: HttpClient) {}

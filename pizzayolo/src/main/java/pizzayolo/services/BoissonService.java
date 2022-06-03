@@ -24,7 +24,6 @@ public class BoissonService {
 
 	public Boisson create(Boisson boisson) {
 		return boissonRepository.save(boisson);
-
 	}
 
 	public Boisson update(Boisson boisson) {
@@ -41,6 +40,5 @@ public class BoissonService {
 	public void deleteById(Long id) {
 		boissonRepository.deleteById(id);
 	}
-
 
 }
