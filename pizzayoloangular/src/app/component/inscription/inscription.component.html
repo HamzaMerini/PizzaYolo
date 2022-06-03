@@ -1,1 +1,53 @@
-<p>inscription works!</p>
+<div class="container">
+  <form (ngSubmit)="submit()" [formGroup]="monForm">
+    <div>mail:<input formControlName="mail" /></div>
+
+    <div
+      *ngIf="monForm.get('mail')?.dirty && monForm.get('mail')?.invalid"
+      class="alert alert-danger"
+    >
+      <ng-container *ngIf="monForm.get('mail')?.hasError('required')">
+        champ obligatoire
+      </ng-container>
+      <ng-container *ngIf="monForm.get('mail')?.hasError('mailExist')">
+        ce Mail est deja utilisé
+      </ng-container>
+      <ng-container *ngIf="monForm.get('mail')?.hasError('email')">
+        champ obligatoire de type mail avec un @ !
+      </ng-container>
+    </div>
+
+    <div>
+      prenom:<input formControlName="prenom" /><ng-container
+        *ngIf="monForm.get('prenom')?.hasError('required')"
+      >
+        champ obligatoire
+      </ng-container>
+    </div>
+    <div>
+      nom:<input formControlName="nom" /><ng-container
+        *ngIf="monForm.get('nom')?.hasError('required')"
+      >
+        champ obligatoire
+      </ng-container>
+    </div>
+
+    <ng-container formGroupName="confirmPasswordGroup">
+      <div>
+        mot de passe:<input formControlName="password" /><ng-container
+          *ngIf="monForm.get('password')?.hasError('required')"
+        >
+          champ obligatoire
+        </ng-container>
+      </div>
+      <div>confirm password:<input formControlName="confirmPassword" /></div>
+      <span *ngIf="monForm.get('confirmPasswordGroup')?.hasError('equals')">
+        mdp different</span
+      >
+    </ng-container>
+
+    <div>
+      <button type="submit" [disabled]="monForm.invalid">valider</button>
+    </div>
+  </form>
+</div>

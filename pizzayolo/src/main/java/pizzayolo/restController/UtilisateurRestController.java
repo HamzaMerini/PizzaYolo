@@ -78,5 +78,12 @@ public class UtilisateurRestController {
 
 		return utilisateurService.update(utilisateur);
 	}
+	
+	
+	@GetMapping("/mail/{mail}")
+	@JsonView(JsonViews.Common.class)
+	public boolean checkMail(@PathVariable String mail) {
+		return utilisateurService.checkMailExist(mail);
+	}
 
 }

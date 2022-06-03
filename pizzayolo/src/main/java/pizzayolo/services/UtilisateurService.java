@@ -3,6 +3,7 @@ package pizzayolo.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import pizzayolo.entity.Utilisateur;
@@ -14,6 +15,9 @@ public class UtilisateurService {
 	@Autowired
 	private UtilisateurRepository utilisateurRepository;
 
+	@Autowired
+	private PasswordEncoder passwordEncoder;
+	
 	public List<Utilisateur> getAll() {
 		return utilisateurRepository.findAll();
 	}
@@ -31,6 +35,8 @@ public class UtilisateurService {
 		if (!(utilisateurRepository.findByMail(mail).isEmpty())) {
 			return null;
 		} else {
+			
+			utilisateur.setPassword(passwordEncoder.encode(utilisateur.getPassword()));
 			return utilisateurRepository.save(utilisateur);
 		}
 	}
@@ -56,6 +62,13 @@ public class UtilisateurService {
 
 	public Utilisateur getByIdWithAdresse(Long id) {
 		return utilisateurRepository.findByIdWithAdresse(id).orElseThrow(RuntimeException::new);
+	}
+
+	public boolean checkMailExist(String mail) {
+		if(getByMail(mail) != null) {
+			return true;
+		}
+		return false;
 	}
 
 }

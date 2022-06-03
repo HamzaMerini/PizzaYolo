@@ -35,30 +35,30 @@ public class Utilisateur implements UserDetails {
 	@Column(name = "id")
 	@JsonView(JsonViews.Common.class)
 	private Long id;
-	
-	@Column(name = "mail")
+
+	@Column(name = "mail", unique = true)
 	@NotEmpty
-	@JsonView({JsonViews.Common.class,JsonViews.CommandeWithItem.class})
+	@JsonView({ JsonViews.Common.class, JsonViews.CommandeWithItem.class })
 	@Email
 	private String mail;
-	
+
 	@Column(name = "mdp")
 	@NotEmpty
 	@ValidPassword
-	private String mdp;
-	
+	private String password;
+
 	@Column(name = "nom")
-	@JsonView({JsonViews.Common.class,JsonViews.CommandeWithItem.class})
+	@JsonView({ JsonViews.Common.class, JsonViews.CommandeWithItem.class })
 	private String nom;
-	
-	@Column(name="prenom")
+
+	@Column(name = "prenom")
 	@JsonView(JsonViews.Common.class)
 	private String prenom;
-	
+
 	@Embedded
 	@JsonView(JsonViews.UtilisateurWithAdresse.class)
 	private Adresse adresse;
-	
+
 	@Column(name = "type")
 	@JsonView(JsonViews.Common.class)
 	private String type; // client employe ou responsable
@@ -66,19 +66,19 @@ public class Utilisateur implements UserDetails {
 	@OneToMany(mappedBy = "clientTicket")
 	Set<Commande> historiqueCommande;
 
-	@OneToOne(mappedBy = "utilisateur")// PAS TOUJOURS VRAI DANS LE SENS OU UN UTILSATEUR NEST PAS FORCEMENT UN EMPLYE
+	@OneToOne(mappedBy = "utilisateur") // PAS TOUJOURS VRAI DANS LE SENS OU UN UTILSATEUR NEST PAS FORCEMENT UN EMPLYE
 	private Employe employe;
 
 	public Utilisateur() {
 
 	}
 
-	public Utilisateur( String mail, String mdp, String prenom,String nom, Adresse adresse, String type) {
-		
+	public Utilisateur(String mail, String password, String prenom, String nom, Adresse adresse, String type) {
+
 		this.mail = mail;
-		this.mdp = mdp;
+		this.password = password;
 		this.nom = nom.toUpperCase();
-		this.prenom=prenom.substring(0, 1).toUpperCase() + prenom.substring(1,prenom.length()).toLowerCase();
+		this.prenom = prenom.substring(0, 1).toUpperCase() + prenom.substring(1, prenom.length()).toLowerCase();
 		this.adresse = adresse;
 		this.type = type;
 	}
@@ -99,12 +99,8 @@ public class Utilisateur implements UserDetails {
 		this.mail = mail;
 	}
 
-	public String getMdp() {
-		return mdp;
-	}
-
-	public void setMdp(String mdp) {
-		this.mdp = mdp;
+	public void setPassword(String mdp) {
+		this.password = mdp;
 	}
 
 	public String getNom() {
@@ -136,7 +132,7 @@ public class Utilisateur implements UserDetails {
 	}
 
 	public void setPrenom(String prenom) {
-		this.prenom = prenom.substring(0, 1).toUpperCase() + prenom.substring(1,prenom.length()).toLowerCase();
+		this.prenom = prenom.substring(0, 1).toUpperCase() + prenom.substring(1, prenom.length()).toLowerCase();
 	}
 
 	public Set<Commande> getHistoriqueCommande() {
@@ -166,12 +162,12 @@ public class Utilisateur implements UserDetails {
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		return Arrays.asList(new SimpleGrantedAuthority("ROLE_"+type));
+		return Arrays.asList(new SimpleGrantedAuthority("ROLE_" + type));
 	}
 
 	@Override
 	public String getPassword() {
-		return mdp;
+		return password;
 	}
 
 	@Override

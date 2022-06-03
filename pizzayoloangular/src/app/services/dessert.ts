@@ -4,17 +4,15 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class DessertService {
-  private url: string = 'http://localhost:8080/pizzayolo/api/dessert'
+  private url: string = 'http://localhost:8080/pizzayolo/api/dessert';
 
   constructor(private httpClient: HttpClient) {}
 
-
-  public getAll(): Observable <Dessert[]> {
-    return this.httpClient.get.<Dessert[]>(this.url);
-
+  public getAll(): Observable<Dessert[]> {
+    return this.httpClient.get<Dessert[]>(this.url);
   }
   public getById(id: number): Observable<Dessert> {
     return this.httpClient.get<Dessert>(`${this.url}/${id}`);
@@ -46,5 +44,4 @@ export class DessertService {
   public create(dessert: Dessert): Observable<Dessert> {
     return this.httpClient.post<Dessert>(this.url, this.dessertToJson(dessert));
   }
-
 }

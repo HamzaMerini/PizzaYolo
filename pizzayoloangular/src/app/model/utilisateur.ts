@@ -8,6 +8,7 @@ export class Utilisateur {
     private _mail?: string,
     private _prenom?: string,
     private _nom?: string,
+    private _password?: string,
     private _adresse?: Adresse,
     private _type?: string,
     private _historiqueCommande?: Commande,
@@ -25,10 +26,16 @@ export class Utilisateur {
     return this._mail;
   }
 
+  set password(value: string | undefined) {
+    this._password = value;
+  }
+  get password(): string | undefined {
+    return this._password;
+  }
+
   set mail(value: string | undefined) {
     this._mail = value;
   }
-
   get prenom(): string | undefined {
     return this._prenom;
   }
