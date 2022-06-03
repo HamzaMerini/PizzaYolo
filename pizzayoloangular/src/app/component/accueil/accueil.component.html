@@ -1,2 +1,28 @@
-<p>accueil works!!</p>
-<a routerLink="/connexion" routerLinkActive="active" ngLink>Connexion</a>
+<nav>
+  <a routerLink="/home" routerLinkActive="active" ngLink> Home </a>
+
+  <a routerLink="/carte" routerLinkActive="active" class="btn btn-link">
+    La carte
+  </a>
+
+  <a
+    *ngIf="!logged"
+    routerLink="/login"
+    routerLinkActive="active"
+    class="btn btn-link"
+  >
+    Inscription
+  </a>
+  <a
+    *ngIf="!logged"
+    routerLink="/connexion"
+    routerLinkActive="active"
+    class="btn btn-link"
+    >Login</a
+  >
+
+  <span *ngIf="logged"
+    >Bonjour {{ utilisateur?.prenom }}
+    <button (click)="logout()" class="btn btn-link">Deconnexion</button>
+  </span>
+</nav>
