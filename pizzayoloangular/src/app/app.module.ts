@@ -11,6 +11,12 @@ import { NousComponent } from './component/nous/nous.component';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { ConnexionComponent } from './component/connexion/connexion.component';
+import { PanierComponent } from './component/panier/panier.component';
+import { CompteComponent } from './component/compte/compte.component';
+import { PlanningComponent } from './component/planning/planning.component';
+import { GestionPlanningComponent } from './component/gestion-planning/gestion-planning.component';
+import { InscriptionComponent } from './component/inscription/inscription.component';
+import { CommandeComponent } from './component/commande/commande.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +26,12 @@ import { ConnexionComponent } from './component/connexion/connexion.component';
     CarteComponent,
     NousComponent,
     ConnexionComponent,
+    PanierComponent,
+    CompteComponent,
+    PlanningComponent,
+    GestionPlanningComponent,
+    InscriptionComponent,
+    CommandeComponent,
   ],
   imports: [
     BrowserModule,
