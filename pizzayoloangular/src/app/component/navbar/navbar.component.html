@@ -1,1 +1,46 @@
-<p>navbar works!</p>
+<nav>
+  <a routerLink="/home" routerLinkActive="active" ngLink> Home </a>
+
+  <a routerLink="/carte" routerLinkActive="active" class="btn btn-link">
+    La carte
+  </a>
+
+  <a routerLink="/nous" routerLinkActive="active" class="btn btn-link">
+    Nous
+  </a>
+
+  <a routerLink="/compte" routerLinkActive="active" class="btn btn-link">
+    Compte
+  </a>
+
+  <a routerLink="/planning" routerLinkActive="active" class="btn btn-link">
+    Planning
+  </a>
+  <a routerLink="/gestionP" routerLinkActive="active" class="btn btn-link">
+    GP
+  </a>
+
+  <a routerLink="/commande" routerLinkActive="active" class="btn btn-link">
+    Commande
+  </a>
+  <a
+    *ngIf="!logged"
+    routerLink="/inscription"
+    routerLinkActive="active"
+    class="btn btn-link"
+  >
+    Inscription
+  </a>
+  <a
+    *ngIf="!logged"
+    routerLink="/connexion"
+    routerLinkActive="active"
+    class="btn btn-link"
+    >Login</a
+  >
+
+  <span *ngIf="logged"
+    >Bonjour {{ utilisateur?.prenom }}
+    <button (click)="logout()" class="btn btn-link">Deconnexion</button>
+  </span>
+</nav>
