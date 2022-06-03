@@ -8,7 +8,7 @@ import { NavbarComponent } from './component/navbar/navbar.component';
 import { AccueilComponent } from './component/accueil/accueil.component';
 import { CarteComponent } from './component/carte/carte.component';
 import { NousComponent } from './component/nous/nous.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { ConnexionComponent } from './component/connexion/connexion.component';
 import { PanierComponent } from './component/panier/panier.component';
@@ -36,6 +36,7 @@ import { CommandeComponent } from './component/commande/commande.component';
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(routes),
     HttpClientModule,
   ],

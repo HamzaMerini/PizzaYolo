@@ -41,7 +41,7 @@ public class AuthController {
 		if (br.hasErrors()) {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
 		}
-		user.setMdp(passwordEncoder.encode(user.getMdp()));
+		user.setPassword(passwordEncoder.encode(user.getPassword()));
 
 		Utilisateur result = userService.create(user);
 

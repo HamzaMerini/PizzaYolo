@@ -46,6 +46,7 @@ export class UtilisateurService {
       mail: utilisateur.mail,
       prenom: utilisateur.prenom,
       nom: utilisateur.nom,
+      password: utilisateur.password,
       adresse: utilisateur.adresse,
       type: utilisateur.type,
       historiqueCommande: utilisateur.historiqueCommande,

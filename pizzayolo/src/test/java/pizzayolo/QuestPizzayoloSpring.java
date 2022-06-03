@@ -365,7 +365,7 @@ public class QuestPizzayoloSpring {
 
 		
 		utilisateurservice.getAll().forEach(c -> {
-			c.setMdp(passwordEncoder.encode(c.getMdp()));
+			c.setPassword(passwordEncoder.encode(c.getPassword()));
 			utilisateurservice.update(c);
 		});
 		System.out.println("encodage ok");
