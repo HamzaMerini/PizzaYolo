@@ -1,0 +1,9 @@
+@font-face {
+  font-family: myFirstFont;
+  src: url("../font/Moonrising.ttf");
+  font-weight: bold;
+}
+
+.carousel-font {
+  font-family: myFirstFont;
+}
