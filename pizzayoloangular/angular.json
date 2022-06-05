@@ -24,19 +24,15 @@
             "tsConfig": "tsconfig.app.json",
             "assets": ["src/assets"],
             "styles": [
-              "src/assets/css/style.css",
-              "src/assets/css/connexion.css",
-              "src/assets/css/carousel.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "node_modules/animate.css/animate.min.css"
+              "src/assets/css/carousel.css",
+              "src/assets/css/gmaps.css",
+              "src/assets/css/test.css",
+              "src/assets/css/style.css",
+              "src/assets/vendor/animate.css/animate.min.css"
             ],
             "scripts": [
-              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
-              "node_modules/wowjs/dist/wow.min.js",
-              "node_modules/waypoints/lib/jquery.waypoints.min.js",
-              "node_modules/owl.carousel/dist/assets/owl.carousel.min.css",
-              "src/assets/js/main.js",
-              "src/assets/lib/easing/easing.min.js"
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
             ]
           },
           "configurations": {

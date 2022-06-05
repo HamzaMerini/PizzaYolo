@@ -4,9 +4,11 @@ import { Component, OnInit } from '@angular/core';
   selector: 'app-accueil',
   templateUrl: './accueil.component.html',
   styleUrls: [
-    './accueil.component.css',
-    '../../../../node_modules/animate.css/animate.min.css',
+    '../../../assets/css/carousel.css',
+    '../../../assets/css/gmaps.css',
+    '../../../assets/css/test.css',
     '../../../assets/css/style.css',
+    '../../../assets/vendor/animate.css/animate.min.css',
   ],
 })
 export class AccueilComponent implements OnInit {
