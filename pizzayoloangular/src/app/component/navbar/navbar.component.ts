@@ -5,11 +5,7 @@ import { Utilisateur } from 'src/app/model/utilisateur';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
-  styleUrls: [
-    './navbar.component.css',
-    '../../../../node_modules/animate.css/animate.min.css',
-    '../../../assets/css/style.css',
-  ],
+  styleUrls: ['./navbar.component.css', '../../../assets/css/style.css'],
 })
 export class NavbarComponent implements OnInit {
   constructor(private router: Router) {}

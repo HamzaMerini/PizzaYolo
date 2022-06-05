@@ -4,9 +4,7 @@ import { Component, OnInit } from '@angular/core';
   selector: 'app-accueil',
   templateUrl: './accueil.component.html',
   styleUrls: [
-    '../../../assets/css/carousel.css',
-    '../../../assets/css/gmaps.css',
-    '../../../assets/css/test.css',
+    './accueil.component.css',
     '../../../assets/css/style.css',
     '../../../assets/vendor/animate.css/animate.min.css',
   ],

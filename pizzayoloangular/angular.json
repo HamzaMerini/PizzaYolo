@@ -25,10 +25,7 @@
             "assets": ["src/assets"],
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "src/assets/css/carousel.css",
-              "src/assets/css/gmaps.css",
-              "src/assets/css/test.css",
-              "src/assets/css/style.css",
+
               "src/assets/vendor/animate.css/animate.min.css"
             ],
             "scripts": [

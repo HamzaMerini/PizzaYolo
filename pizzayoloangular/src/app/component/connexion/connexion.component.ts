@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-connexion',
   templateUrl: './connexion.component.html',
-  styleUrls: ['../../../assets/css/connexion.css'],
+  styleUrls: ['./connexion.component.css'],
 })
 export class ConnexionComponent implements OnInit {
   mail = '';
