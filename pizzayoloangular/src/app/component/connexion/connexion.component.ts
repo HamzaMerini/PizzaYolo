@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-connexion',
   templateUrl: './connexion.component.html',
-  styleUrls: ['./connexion.component.css'],
+  styleUrls: ['../../../assets/css/connexion.css'],
 })
 export class ConnexionComponent implements OnInit {
   mail = '';
@@ -27,7 +27,7 @@ export class ConnexionComponent implements OnInit {
       },
       error: (error: any) => {
         console.log(error);
-        this.message = "erreur d'autentification";
+        this.message = "Erreur d'autentification";
         this.showError = true;
       },
     });

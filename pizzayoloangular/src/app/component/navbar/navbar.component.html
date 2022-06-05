@@ -1,3 +1,15 @@
+<!-- JavaScript Libraries -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script> -->
+
+<script src="node_modules/wowjs/dist/wow.min.js"></script>
+<script src="../../../assets/lib/easing/easing.min.js"></script>
+<script src="node_modules/waypoints/lib/jquery.waypoints.min.js"></script>
+<script src="node_modules/owl.carousel/dist/assets/owl.carousel.min.css"></script>
+
+<!-- Template Javascript -->
+<script src="../../../assets/js/main.js"></script>
+
 <nav>
   <a routerLink="/acceuil" routerLinkActive="active" ngLink> Home </a>
 
@@ -46,3 +58,61 @@
     <button (click)="logout()" class="btn btn-link">Deconnexion</button>
   </span>
 </nav>
+
+<!-- Navbar Start -->
+<div class="container-fluid fixed-top px-0 wow fadeIn" data-wow-delay="0.1s">
+  <nav
+    class="navbar navbar-expand-lg py-lg-0 px-lg-5 wow fadeIn"
+    data-wow-delay="0.1s"
+  >
+    <a
+      routerLink="/acceuil"
+      routerLinkActive="active"
+      class="navbar-brand ms-4 ms-lg-0"
+    >
+      <img src="assets/img/logo.png" width="90px" />
+    </a>
+    <button
+      type="button"
+      class="navbar-toggler me-4"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarCollapse"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <div class="navbar-nav ms-auto p-4 p-lg-0">
+        <a
+          routerLink="/acceuil"
+          routerLinkActive="active"
+          class="nav-item nav-link"
+          >Acceuil</a
+        >
+        <a
+          routerLink="/nous"
+          routerLinkActive="active"
+          class="nav-item nav-link"
+          >Nous</a
+        >
+        <a
+          routerLink="/carte"
+          routerLinkActive="active"
+          class="nav-item nav-link"
+          >Carte</a
+        >
+      </div>
+      <div class="d-none d-lg-flex ms-2">
+        <div class="nav-item dropdown">
+          <a
+            routerLink="/connexion"
+            routerLinkActive="active"
+            class="btn-sm-square bg-white rounded-circle ms-3"
+          >
+            <img src="assets/img/user_icon.png" width="24px" />
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+</div>
+<!-- Navbar End -->

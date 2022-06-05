@@ -21,6 +21,11 @@ import { CustomValidator } from 'src/app/validation/custom-validator';
 export class InscriptionComponent implements OnInit {
   monForm: FormGroup;
 
+  // Validators.compose([
+  // 	UsernameValidator.validUsername,
+  // 	Validators.maxLength(25),
+  // 	Validators.minLength(5),
+
   constructor(
     private utilisateurService: UtilisateurService,
     private inscriptionService: InscriptionService,
@@ -29,16 +34,36 @@ export class InscriptionComponent implements OnInit {
     this.monForm = new FormGroup({
       mail: new FormControl(
         '',
-        [Validators.required, Validators.email],
-        this.checkMail()
+        Validators.compose([Validators.required, Validators.email])
+        //this.checkMail()
       ),
-      prenom: new FormControl('', [Validators.required]),
-      nom: new FormControl('', [Validators.required]),
+      prenom: new FormControl(
+        '',
+        Validators.compose([Validators.required, Validators.minLength(2)])
+      ),
+      nom: new FormControl(
+        '',
+        Validators.compose([Validators.required, Validators.minLength(2)])
+      ),
 
       confirmPasswordGroup: new FormGroup(
         {
-          password: new FormControl('', Validators.required),
-          confirmPassword: new FormControl('', Validators.required),
+          password: new FormControl(
+            '',
+            Validators.compose([
+              Validators.required,
+              Validators.minLength(8),
+              //Validators.pattern('^(?=.*[a-zA-Z])(?=.*[0-9])[a-zA-Z0-9]+$'),
+            ])
+          ),
+          confirmPassword: new FormControl(
+            '',
+            Validators.compose([
+              Validators.required,
+              Validators.minLength(8),
+              // Validators.pattern('^(?=.*[a-zA-Z])(?=.*[0-9])[a-zA-Z0-9]+$'),
+            ])
+          ),
         },
         CustomValidator.equals
       ),
