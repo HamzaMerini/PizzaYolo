@@ -1,0 +1,117 @@
+.u-align-center {
+  text-align: center;
+}
+
+ .u-section-2 {
+  background-image: none;
+}
+
+
+.u-clearfix:after,
+.u-clearfix:before {
+  content: '';
+  display: table;
+}
+.u-clearfix:after {
+  clear: both;
+}
+
+
+.u-grey-10,
+.u-body.u-grey-10,
+section.u-grey-10:before,
+.u-grey-10 > .u-container-layout:before,
+.u-grey-10 > .u-inner-container-layout:before,
+.u-container-layout.u-container-layout.u-grey-10:before,
+.u-table-alt-grey-10 tr:nth-child(even) {
+  color: #111111;
+  background-color: #e5e5e5;
+}
+
+
+
+
+.u-shape {
+  position: relative;
+}
+
+
+.u-shape-circle,
+.u-shape-circle:before,
+.u-shape-circle > .u-container-layout {
+  border-radius: 50%;
+}
+
+.u-section-2 .u-sheet-1 {
+  min-height: 805px;
+}
+
+.u-section-2 .u-shape-1 {
+  width: 228px;
+  height: 228px;
+  background-image: none;
+  margin: 60px auto 0 850px;
+}
+
+
+
+.u-section-2 .u-image-1 {
+  height: 489px;
+  width: 576px;
+  object-position: 50% 9.57%;
+  margin: -125px auto 0 387px;
+}
+
+
+
+.u-palette-2-base,
+.u-body.u-palette-2-base,
+section.u-palette-2-base:before,
+.u-palette-2-base > .u-container-layout:before,
+.u-palette-2-base > .u-inner-container-layout:before,
+.u-container-layout.u-container-layout.u-palette-2-base:before,
+.u-table-alt-palette-2-base tr:nth-child(even) {
+  color: #ffffff;
+  background-color: #db545a;
+}
+.u-button-style.u-palette-2-base,
+.u-button-style.u-palette-2-base[class*="u-border-"] {
+  color: #ffffff !important;
+  background-color: #db545a !important;
+}
+.u-button-style.u-palette-2-base:hover,
+.u-button-style.u-palette-2-base[class*="u-border-"]:hover,
+.u-button-style.u-palette-2-base:focus,
+.u-button-style.u-palette-2-base[class*="u-border-"]:focus,
+.u-button-style.u-button-style.u-palette-2-base:active,
+.u-button-style.u-button-style.u-palette-2-base[class*="u-border-"]:active,
+.u-button-style.u-button-style.u-palette-2-base.active,
+.u-button-style.u-button-style.u-palette-2-base[class*="u-border-"].active,
+li.active > .u-button-style.u-button-style.u-palette-2-base,
+li.active > .u-button-style.u-button-style.u-palette-2-base[class*="u-border-"] {
+  color: #ffffff !important;
+  background-color: #d63b42 !important;
+}
+.u-hover-palette-2-base:hover,
+.u-hover-palette-2-base[class*="u-border-"]:hover,
+.u-hover-palette-2-base:focus,
+.u-hover-palette-2-base[class*="u-border-"]:focus,
+.u-active-palette-2-base.u-active.u-active,
+.u-active-palette-2-base[class*="u-border-"].u-active.u-active,
+a.u-button-style.u-hover-palette-2-base:hover,
+a.u-button-style.u-hover-palette-2-base[class*="u-border-"]:hover,
+a.u-button-style:hover > .u-hover-palette-2-base,
+a.u-button-style:hover > .u-hover-palette-2-base[class*="u-border-"],
+a.u-button-style.u-hover-palette-2-base:focus,
+a.u-button-style.u-hover-palette-2-base[class*="u-border-"]:focus,
+a.u-button-style.u-button-style.u-active-palette-2-base:active,
+a.u-button-style.u-button-style.u-active-palette-2-base[class*="u-border-"]:active,
+a.u-button-style.u-button-style.u-active-palette-2-base.active,
+a.u-button-style.u-button-style.u-active-palette-2-base[class*="u-border-"].active,
+a.u-button-style.u-button-style.active > .u-active-palette-2-base,
+a.u-button-style.u-button-style.active > .u-active-palette-2-base[class*="u-border-"],
+li.active > a.u-button-style.u-button-style.u-active-palette-2-base,
+li.active > a.u-button-style.u-button-style.u-active-palette-2-base[class*="u-border-"] {
+  color: #ffffff !important;
+  background-color: #db545a !important;
+}

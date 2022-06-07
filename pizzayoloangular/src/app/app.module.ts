@@ -8,7 +8,7 @@ import { NavbarComponent } from './component/navbar/navbar.component';
 import { AccueilComponent } from './component/accueil/accueil.component';
 import { CarteComponent } from './component/carte/carte.component';
 import { NousComponent } from './component/nous/nous.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { ConnexionComponent } from './component/connexion/connexion.component';
 import { PanierComponent } from './component/panier/panier.component';
@@ -17,6 +17,9 @@ import { PlanningComponent } from './component/planning/planning.component';
 import { GestionPlanningComponent } from './component/gestion-planning/gestion-planning.component';
 import { InscriptionComponent } from './component/inscription/inscription.component';
 import { CommandeComponent } from './component/commande/commande.component';
+
+import { NgwWowModule } from 'ngx-wow';
+import { ScrollDirective } from './directive/scroll.directive';
 
 @NgModule({
   declarations: [
@@ -32,12 +35,15 @@ import { CommandeComponent } from './component/commande/commande.component';
     GestionPlanningComponent,
     InscriptionComponent,
     CommandeComponent,
+    ScrollDirective,
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(routes),
     HttpClientModule,
+    NgwWowModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

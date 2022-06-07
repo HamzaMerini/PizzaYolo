@@ -1,1 +1,259 @@
-<p>compte works!</p>
+<app-navbar></app-navbar>
+<!-- <div class="container">
+  <table class="table">
+    <tr>
+      Nom:
+      {{
+        utilisateur?.nom
+      }}
+    </tr>
+    <tr>
+      Prenom:
+      {{
+        utilisateur?.prenom
+      }}
+    </tr>
+    <tr>
+      Mail:
+      {{
+        utilisateur?.mail
+      }}
+    </tr>
+    <tr>
+      mdp:
+      {{
+        utilisateur?.password
+      }}
+    </tr>
+    <tr>
+      Adresse:
+      {{
+        utilisateur?.adresse
+      }}
+    </tr>
+  </table>
+</div> -->
+
+<link
+  href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700"
+  rel="stylesheet"
+/>
+
+<div class="main-content">
+  <!-- Page Header Start -->
+  <div class="container-fluid page-header wow fadeIn" data-wow-delay="0.1s">
+    <!-- Header container -->
+    <div class="container-fluid d-flex align-items-center">
+      <div class="row">
+        <div class="col-lg-7 col-md-10">
+          <h1 class="display-2 text-white">Salut {{ utilisateur?.prenom }}</h1>
+          <p class="text-white mt-0 mb-5">
+            This is your profile page. You can see the progress you've made with
+            your work and manage your projects or assigned tasks
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-fluid mt--7">
+    <div class="row">
+      <div class="col-xl-4 order-xl-2 mb-5 mb-xl-0">
+        <div class="card card-profile shadow">
+          <div class="row justify-content-center">
+            <div class="col-lg-3 order-lg-2">
+              <div class="card-profile-image">
+                <a>
+                  <img
+                    src="https://www.shareicon.net/data/512x512/2015/09/24/106423_user_512x512.png"
+                    class="rounded-circle"
+                  />
+                </a>
+              </div>
+            </div>
+          </div>
+          <div
+            class="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4"
+          ></div>
+          <div class="card-body pt-0 pt-md-4">
+            <div class="row">
+              <div class="col">
+                <div
+                  class="card-profile-stats d-flex justify-content-center mt-md-5"
+                >
+                  <div>
+                    <span class="heading">25</span>
+                    <span class="description">Commandes</span>
+                  </div>
+
+                  <div>
+                    <span class="heading">560,45</span>
+                    <span class="description">Euros</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="text-center">
+              <h3>{{ utilisateur?.prenom }} {{ utilisateur?.nom }}</h3>
+              <div class="h5 font-weight-300">
+                <i class="ni location_pin mr-2"></i>XXXXX, France
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-8 order-xl-1">
+        <div class="card bg-secondary shadow">
+          <div class="card-header bg-white border-0">
+            <div class="row align-items-center">
+              <div class="col-8">
+                <h3 class="mb-0">Mon compte</h3>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <form (ngSubmit)="submit()" [formGroup]="monForm">
+              <h6 class="heading-small text-muted mb-4">
+                Informations de l'utilisateur
+              </h6>
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="form-group focused">
+                    <label class="form-control-label" for="input-first-name"
+                      >Nom</label
+                    >
+                    <input
+                      type="text"
+                      class="form-control form-control-alternative"
+                      placeholder="Nom"
+                      value="{{ utilisateur?.nom }}"
+                    />
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-group focused">
+                    <label class="form-control-label" for="input-last-name"
+                      >Prenom</label
+                    >
+                    <input
+                      type="text"
+                      class="form-control form-control-alternative"
+                      placeholder="Prenom"
+                      value="{{ utilisateur?.prenom }}"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="form-group focused">
+                    <label class="form-control-label" for="input-first-name"
+                      >Nouveau Mot de passe</label
+                    >
+                    <input
+                      type="password"
+                      class="form-control form-control-alternative"
+                      placeholder="Mot de passe"
+                    />
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-group focused">
+                    <label class="form-control-label" for="input-last-name"
+                      >Confirmation Mot de passe</label
+                    >
+                    <input
+                      type="password"
+                      class="form-control form-control-alternative"
+                      placeholder="Confirmation Mot de passe"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="pl-lg-6">
+                <div class="row">
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                      <label class="form-control-label" for="input-email"
+                        >Mail</label
+                      >
+                      <input
+                        readonly="true"
+                        type="email"
+                        class="form-control form-control-alternative"
+                        placeholder="Mail"
+                        value="{{ utilisateur?.mail }}"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="pl-lg-6">
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group focused">
+                      <label class="form-control-label" for="input-address"
+                        >Adresse</label
+                      >
+                      <input
+                        id="input-address"
+                        class="form-control form-control-alternative"
+                        placeholder="Adresse"
+                        value="{{ utilisateur?.adresse }}"
+                        type="text"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-6">
+                    <div class="form-group focused">
+                      <label class="form-control-label" for="input-city"
+                        >Ville</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control form-control-alternative"
+                        placeholder="Ville"
+                        value="{{ utilisateur?.adresse }}"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                      <label class="form-control-label" for="input-country"
+                        >Code postal</label
+                      >
+                      <input
+                        type="number"
+                        class="form-control form-control-alternative"
+                        placeholder="Code postal"
+                        value="{{ utilisateur?.adresse }}"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                <div>
+                  <button type="submit" class="btn btn-info">
+                    Sauvegarder
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<br /><br /><br /><br /><br />
+
+<input
+  type="text"
+  class="form-control form-control-alternative"
+  placeholder="Ville"
+  value="{{ utilisateur?.id }}"
+/>
+
+<button>SUPPRIMER LE COMPTE</button>

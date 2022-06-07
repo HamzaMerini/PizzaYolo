@@ -29,6 +29,7 @@ public class Recette {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqRecette")
 	@Column(name="id")
+	@JsonView(JsonViews.RecetteWithIngredient.class)
 	private Long id;
 	
 	@JsonView({JsonViews.Common.class,JsonViews.CommandeWithItem.class,JsonViews.RecetteWithIngredient.class})
@@ -46,15 +47,15 @@ public class Recette {
 	@OneToMany(mappedBy = "recette")
 	private Set<Pizza> pizzas;
 	
-	@JsonView(JsonViews.Common.class)
+	@JsonView({JsonViews.Common.class,JsonViews.RecetteWithIngredient.class})
 	@Column(name="prix_m")
 	private double prixM;
 	
-	@JsonView(JsonViews.Common.class)
+	@JsonView({JsonViews.Common.class,JsonViews.RecetteWithIngredient.class})
 	@Column(name="prix_l")
 	private double prixL;
-	
-	@JsonView(JsonViews.Common.class)
+
+	@JsonView({JsonViews.Common.class,JsonViews.RecetteWithIngredient.class})
 	@Column(name="prix_xl")
 	private double prixXL;
 	

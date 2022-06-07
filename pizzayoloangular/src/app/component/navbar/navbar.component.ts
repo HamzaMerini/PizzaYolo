@@ -5,7 +5,7 @@ import { Utilisateur } from 'src/app/model/utilisateur';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.css'],
+  styleUrls: ['./navbar.component.css', '../../../assets/css/style.css'],
 })
 export class NavbarComponent implements OnInit {
   constructor(private router: Router) {}
@@ -25,6 +25,6 @@ export class NavbarComponent implements OnInit {
 
   logout() {
     sessionStorage.clear();
-    this.router.navigateByUrl('/home');
+    this.router.navigateByUrl('/acceuil');
   }
 }

@@ -1,10 +1,93 @@
-<p>carte works!</p>
-<p>Nos Pizzas :</p>
+<h1>Notre carte</h1>
+<h2>Nos Pizzas :</h2>
 <table class="table">
   <tr *ngFor="let recette of recettes | async">
-    <td>{{ recette.nom }}</td>
-    <td *ngFor="let ingredient of recette.listeIngre">
-      <p>{{ ingredient.libelle }}</p>
+    <div>
+      <td>{{ recette.nom }}</td>
+
+      <td *ngFor="let ingredient of recette.listeIngre">
+        <p>{{ ingredient.libelle }}</p>
+      </td>
+    </div>
+    <td>{{ recette.prixM }} €</td>
+    <td>
+      <button
+        type="button"
+        (click)="showFormPizza(recette)"
+        class="btn btn-outline-success"
+      >
+        Ajouter au panier
+      </button>
+    </td>
+  </tr>
+</table>
+
+<div *ngIf="showformPizza" class="form-group">
+  <form (ngSubmit)="savePizza(formPizza)" #formPizza="ngForm">
+    <label>Pate:</label>
+    <select
+      [(ngModel)]="pizza.pate"
+      class="form-control"
+      id="pate"
+      name="pate"
+      #pateCtrl="ngModel"
+    >
+      <option value="Classique">Classique</option>
+      <option value="Fine">Fine</option>
+      <option value="Pan">Pan (+1.50€)</option>
+      <option value="MozzaCrust">MozzaCrust (+2.90€)</option>
+    </select>
+    {{ pizza.pate }}
+
+    <label>Taille:</label>
+    <select
+      [(ngModel)]="pizza.taille"
+      class="form-control"
+      name="taille"
+      id="taille"
+      #tailleCtrl="ngModel"
+    >
+      <option value="Medium">Medium</option>
+      <option value="Large">Large</option>
+      <option value="XL">XL</option>
+    </select>
+
+    <div class="form-group">
+      <button class="btn btn-primary" type="submit">enregistrer</button>
+    </div>
+  </form>
+</div>
+
+<h2>Nos Desserts :</h2>
+<table class="table">
+  <tr *ngFor="let dessert of desserts | async">
+    <td>{{ dessert.nom }}</td>
+    <td>{{ dessert.prix }} €</td>
+    <td>
+      <button
+        (click)="ajouterdessert(dessert)"
+        type="button"
+        class="btn btn-outline-success"
+      >
+        Ajouter au panier
+      </button>
+    </td>
+  </tr>
+</table>
+
+<h2>Nos boissons :</h2>
+<table class="table">
+  <tr *ngFor="let boisson of boissons | async">
+    <td>{{ boisson.nom }}</td>
+    <td>{{ boisson.prix }} €</td>
+    <td>
+      <button
+        (click)="ajouterboisson(boisson)"
+        type="button"
+        class="btn btn-outline-success"
+      >
+        Ajouter au panier
+      </button>
     </td>
   </tr>
 </table>
