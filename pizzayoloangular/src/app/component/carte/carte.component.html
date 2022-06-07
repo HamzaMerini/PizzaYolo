@@ -3,7 +3,6 @@
 <table class="table">
   <tr *ngFor="let recette of recettes | async">
     <div>
-      <td>{{ recette.id }}</td>
       <img
         src="https://raw.githubusercontent.com/HamzaMerini/PizzaYolo/main/pizzayoloangular/src/assets/img/pizza/{{
           recette.id
@@ -20,6 +19,8 @@
       src="https://raw.githubusercontent.com/HamzaMerini/PizzaYolo/main/pizzayoloangular/src/assets/img/pizza/{{
         recette.id
       }}.png"
+      height="42"
+      width="42"
     />
 
     <td>
@@ -73,7 +74,6 @@
 <h2>Nos Desserts :</h2>
 <table class="table">
   <tr *ngFor="let dessert of desserts | async">
-    <td>{{ dessert.id }}</td>
     <td>{{ dessert.nom }}</td>
     <td>{{ dessert.prix }} €</td>
     <td>
@@ -81,6 +81,8 @@
         src="https://raw.githubusercontent.com/HamzaMerini/PizzaYolo/main/pizzayoloangular/src/assets/img/dessert/{{
           dessert.id
         }}.png"
+        height="42"
+        width="42"
       />
       <button
         (click)="ajouterdessert(dessert)"
@@ -96,7 +98,6 @@
 <h2>Nos boissons :</h2>
 <table class="table">
   <tr *ngFor="let boisson of boissons | async">
-    <td>{{ boisson.id }}</td>
     <td>{{ boisson.nom }}</td>
     <td>{{ boisson.prix }} €</td>
     <td>
@@ -104,6 +105,8 @@
         src="https://raw.githubusercontent.com/HamzaMerini/PizzaYolo/main/pizzayoloangular/src/assets/img/boisson/{{
           boisson.id
         }}.png"
+        height="42"
+        width="42"
       />
       <button
         (click)="ajouterboisson(boisson)"
