@@ -21,10 +21,10 @@ export class Dessert {
     this._prix = value;
   }
   get id(): number | undefined {
-    return this._prix;
+    return this._id;
   }
 
   set id(value: number | undefined) {
-    this._prix = value;
+    this._id = value;
   }
 }

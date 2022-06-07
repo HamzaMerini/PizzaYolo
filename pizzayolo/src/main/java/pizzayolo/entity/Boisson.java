@@ -20,6 +20,7 @@ public class Boisson {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqBoisson")
 	@Column(name = "id")
+	@JsonView(JsonViews.Common.class)
 	private Integer id;
 	
 	@JsonView({JsonViews.Common.class,JsonViews.CommandeWithItem.class})
