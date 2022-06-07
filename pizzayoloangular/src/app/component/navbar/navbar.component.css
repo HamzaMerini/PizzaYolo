@@ -1,4 +1,9 @@
 /*** Navbar ***/
+.new-nav {
+  background-color: rgb(255, 255, 255);
+  position: sticky;
+}
+
 .fixed-top {
   transition: 0.5s;
 }

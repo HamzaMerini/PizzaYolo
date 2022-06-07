@@ -37,7 +37,7 @@ export class UtilisateurService {
     );
   }
 
-  public delete(id: number): Observable<void> {
+  public delete(id: number | undefined): Observable<void> {
     return this.httpClient.delete<void>(`${this.url}/${id}`);
   }
 

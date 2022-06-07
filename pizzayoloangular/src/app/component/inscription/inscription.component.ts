@@ -8,7 +8,7 @@ import {
   AsyncValidatorFn,
   ValidationErrors,
 } from '@angular/forms';
-import { Observable, map } from 'rxjs';
+import { Observable, map, debounceTime } from 'rxjs';
 import { UtilisateurService } from 'src/app/services/utilisateur.service';
 import { InscriptionService } from 'src/app/services/inscription.service';
 import { CustomValidator } from 'src/app/validation/custom-validator';
@@ -21,11 +21,6 @@ import { CustomValidator } from 'src/app/validation/custom-validator';
 export class InscriptionComponent implements OnInit {
   monForm: FormGroup;
 
-  // Validators.compose([
-  // 	UsernameValidator.validUsername,
-  // 	Validators.maxLength(25),
-  // 	Validators.minLength(5),
-
   constructor(
     private utilisateurService: UtilisateurService,
     private inscriptionService: InscriptionService,
@@ -34,36 +29,27 @@ export class InscriptionComponent implements OnInit {
     this.monForm = new FormGroup({
       mail: new FormControl(
         '',
-        Validators.compose([Validators.required, Validators.email])
-        //this.checkMail()
+        [Validators.required, Validators.email],
+        this.checkMail()
       ),
-      prenom: new FormControl(
-        '',
-        Validators.compose([Validators.required, Validators.minLength(2)])
-      ),
-      nom: new FormControl(
-        '',
-        Validators.compose([Validators.required, Validators.minLength(2)])
-      ),
+      prenom: new FormControl('', [
+        Validators.required,
+        Validators.minLength(2),
+      ]),
+      nom: new FormControl('', [Validators.required, Validators.minLength(2)]),
 
       confirmPasswordGroup: new FormGroup(
         {
-          password: new FormControl(
-            '',
-            Validators.compose([
-              Validators.required,
-              Validators.minLength(8),
-              //Validators.pattern('^(?=.*[a-zA-Z])(?=.*[0-9])[a-zA-Z0-9]+$'),
-            ])
-          ),
-          confirmPassword: new FormControl(
-            '',
-            Validators.compose([
-              Validators.required,
-              Validators.minLength(8),
-              // Validators.pattern('^(?=.*[a-zA-Z])(?=.*[0-9])[a-zA-Z0-9]+$'),
-            ])
-          ),
+          password: new FormControl('', [
+            Validators.required,
+            Validators.minLength(8),
+            //Validators.pattern('^(?=.*[a-zA-Z])(?=.*[0-9])[a-zA-Z0-9]+$'),
+          ]),
+          confirmPassword: new FormControl('', [
+            Validators.required,
+            Validators.minLength(8),
+            // Validators.pattern('^(?=.*[a-zA-Z])(?=.*[0-9])[a-zA-Z0-9]+$'),
+          ]),
         },
         CustomValidator.equals
       ),
@@ -73,6 +59,8 @@ export class InscriptionComponent implements OnInit {
   ngOnInit(): void {}
 
   submit() {
+    console.log(this.monForm);
+
     let utilisateur = {
       mail: this.monForm.get('mail')?.value,
       prenom: this.monForm.get('prenom')?.value,
@@ -93,6 +81,7 @@ export class InscriptionComponent implements OnInit {
   checkMail(): AsyncValidatorFn {
     return (control: AbstractControl): Observable<ValidationErrors | null> => {
       return this.inscriptionService.checkMail(control.value).pipe(
+        debounceTime(1000),
         map((bool) => {
           return bool ? { mailExist: true } : null;
         })

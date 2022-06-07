@@ -22,14 +22,21 @@
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
-            "assets": ["src/assets"],
+            "assets": [
+              "src/img/logo_icon.png",
+              "src/favicon.ico",
+              "src/assets"
+            ],
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
-
-              "src/assets/vendor/animate.css/animate.min.css"
+              "src/assets/css/style.css",
+              "src/assets/vendor/animate.css/animate.min.css",
+              "node_modules/wowjs/css/libs/animate.css"
             ],
             "scripts": [
-              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
+              "node_modules/jquery/dist/jquery.js",
+              "node_modules/wowjs/dist/wow.js"
             ]
           },
           "configurations": {
