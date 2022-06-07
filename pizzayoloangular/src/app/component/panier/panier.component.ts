@@ -1,5 +1,4 @@
 import { Pizza } from './../../model/pizza';
-import { Router } from '@angular/router';
 import { Boisson } from './../../model/boisson';
 import { Dessert } from './../../model/dessert';
 import { Component, OnInit } from '@angular/core';
@@ -17,8 +16,9 @@ export class PanierComponent implements OnInit {
   showMessageBoisson: boolean = false;
   showMessagePizza: boolean = false;
   prixtotalpanier: number = 0;
+  showBontonCommande: boolean = false;
 
-  constructor(private router: Router) {}
+  constructor() {}
 
   public afficherDessertsPanier() {
     if (sessionStorage.getItem('dessertsPanier')) {
@@ -28,6 +28,9 @@ export class PanierComponent implements OnInit {
       this.showMessageDessert = true;
     }
     this.calculTotalPrixCommande();
+    if (sessionStorage.getItem('dessertsPanier')) {
+      this.showBontonCommande = true;
+    }
   }
 
   public afficherBoissonsPanier() {
@@ -38,6 +41,9 @@ export class PanierComponent implements OnInit {
       this.showMessageBoisson = true;
     }
     this.calculTotalPrixCommande();
+    if (sessionStorage.getItem('boissonsPanier')) {
+      this.showBontonCommande = true;
+    }
   }
 
   public afficherPizzasPanier() {
@@ -48,9 +54,14 @@ export class PanierComponent implements OnInit {
       this.showMessagePizza = true;
     }
     this.calculTotalPrixCommande();
+    
+    if (sessionStorage.getItem('pizzasPanier')) {
+      this.showBontonCommande = true;
+    }
   }
 
   ngOnInit(): void {
+    this.showBontonCommande = false;
     this.afficherDessertsPanier();
     this.afficherBoissonsPanier();
     this.afficherPizzasPanier();
@@ -59,20 +70,17 @@ export class PanierComponent implements OnInit {
     this.desserts.splice(this.desserts.indexOf(dessert), 1);
     sessionStorage.setItem('dessertsPanier', JSON.stringify(this.desserts));
     this.afficherDessertsPanier();
-    this.router.navigate(['/panier']);
   }
   public supprimerBoisson(boisson: Boisson) {
     this.boissons.splice(this.boissons.indexOf(boisson), 1);
     sessionStorage.setItem('boissonsPanier', JSON.stringify(this.boissons));
     this.afficherBoissonsPanier();
-    this.router.navigate(['/panier']);
   }
 
   public supprimerPizza(pizza: Pizza) {
     this.pizzas.splice(this.pizzas.indexOf(pizza), 1);
     sessionStorage.setItem('pizzasPanier', JSON.stringify(this.pizzas));
     this.afficherPizzasPanier();
-    this.router.navigate(['/panier']);
   }
 
   public calculTotalPrixCommande() {

@@ -3,6 +3,11 @@
 <table class="table">
   <tr *ngFor="let recette of recettes | async">
     <div>
+      <img
+        src="https://raw.githubusercontent.com/HamzaMerini/PizzaYolo/6a62b37ae30ba334b4e8b145dd78c2d56d91789f/pizzayoloangular/src/assets/img/pizza/{{
+          recette.nom
+        }}.png"
+      />
       <td>{{ recette.nom }}</td>
 
       <td *ngFor="let ingredient of recette.listeIngre">
