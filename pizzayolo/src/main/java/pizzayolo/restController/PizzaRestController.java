@@ -50,7 +50,9 @@ public class PizzaRestController {
 	@PostMapping("")
 	@ResponseStatus(code = HttpStatus.CREATED)
 	@JsonView(JsonViews.Common.class)
-	public Pizza create(@Valid @RequestBody Pizza pizza, BindingResult br) {
+	public Pizza create(@RequestBody Pizza pizza) {
+		System.out.println("rest controler create pizza");
+		System.out.println(pizza.getRecette().getId());
 		return pizzaService.create(pizza);
 	}
 

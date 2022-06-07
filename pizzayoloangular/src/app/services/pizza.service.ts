@@ -29,7 +29,7 @@ export class PizzaService {
     );
   }
 
-  private pizzaToJson(pizza: Pizza): any {
+  public pizzaToJson(pizza: Pizza): any {
     let obj = {
       recette: pizza.recette,
       commandePizza: pizza.commandePizza,

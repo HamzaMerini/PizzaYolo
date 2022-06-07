@@ -22,4 +22,5 @@ export const routes: Routes = [
   { path: 'gestionP', component: GestionPlanningComponent },
   { path: 'commande', component: CommandeComponent },
   { path: 'inscription', component: InscriptionComponent },
+  
 ];

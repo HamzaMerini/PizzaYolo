@@ -1,7 +1,7 @@
 package pizzayolo.entity;
 
 public enum TypePate {
-	Classique(0), Fine(0), Pan(1.5), MozzaCrust(2.9);
+	Classique(0), Fine(0), Pan(1.50), MozzaCrust(2.90);
 
 	private double prix;
 
