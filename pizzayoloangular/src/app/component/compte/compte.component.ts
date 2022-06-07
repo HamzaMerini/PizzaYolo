@@ -69,14 +69,6 @@ export class CompteComponent implements OnInit {
     return null;
   }
 
-  delete() {
-    //OBSERVABLE ?
-    console.log('deleteFunc');
-    this.utilisateurService.delete(this.utilisateur?.id).subscribe((data) => {
-      this.router.navigate(['/acceuil']);
-    });
-  }
-
   submit() {
     let utilisateur = {
       prenom: this.monForm.get('prenom')?.value,

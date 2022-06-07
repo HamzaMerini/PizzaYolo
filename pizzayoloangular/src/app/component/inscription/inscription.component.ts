@@ -8,7 +8,7 @@ import {
   AsyncValidatorFn,
   ValidationErrors,
 } from '@angular/forms';
-import { Observable, map, debounceTime } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { UtilisateurService } from 'src/app/services/utilisateur.service';
 import { InscriptionService } from 'src/app/services/inscription.service';
 import { CustomValidator } from 'src/app/validation/custom-validator';
@@ -59,8 +59,6 @@ export class InscriptionComponent implements OnInit {
   ngOnInit(): void {}
 
   submit() {
-    console.log(this.monForm);
-
     let utilisateur = {
       mail: this.monForm.get('mail')?.value,
       prenom: this.monForm.get('prenom')?.value,
@@ -81,7 +79,6 @@ export class InscriptionComponent implements OnInit {
   checkMail(): AsyncValidatorFn {
     return (control: AbstractControl): Observable<ValidationErrors | null> => {
       return this.inscriptionService.checkMail(control.value).pipe(
-        debounceTime(1000),
         map((bool) => {
           return bool ? { mailExist: true } : null;
         })
