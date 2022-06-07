@@ -86,4 +86,10 @@ export class CompteComponent implements OnInit {
       this.router.navigate(['/acceuil']);
     });
   }
+
+  public supprimerCompte() {
+    this.utilisateurService.delete(this.utilisateur?.id).subscribe((data) => {
+      this.router.navigate(['/acceuil']);
+    });
+  }
 }
