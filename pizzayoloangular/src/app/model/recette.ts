@@ -3,6 +3,7 @@ import { Pizza } from './pizza';
 
 export class Recette {
   public constructor(
+    private _id?: number,
     private _nom?: string,
     private _listeIngre?: Ingredient[],
     private _pizzas?: Pizza[],
@@ -10,6 +11,14 @@ export class Recette {
     private _prixL?: number,
     private _prixXL?: number
   ) {}
+
+  get id(): number | undefined {
+    return this._id;
+  }
+
+  set id(value: number | undefined) {
+    this._id = value;
+  }
 
   get nom(): string | undefined {
     return this._nom;
