@@ -32,13 +32,24 @@ export class InscriptionComponent implements OnInit {
         [Validators.required, Validators.email],
         this.checkMail()
       ),
-      prenom: new FormControl('', [Validators.required]),
-      nom: new FormControl('', [Validators.required]),
+      prenom: new FormControl('', [
+        Validators.required,
+        Validators.minLength(2),
+      ]),
+      nom: new FormControl('', [Validators.required, Validators.minLength(2)]),
 
       confirmPasswordGroup: new FormGroup(
         {
-          password: new FormControl('', Validators.required),
-          confirmPassword: new FormControl('', Validators.required),
+          password: new FormControl('', [
+            Validators.required,
+            Validators.minLength(8),
+            //Validators.pattern('^(?=.*[a-zA-Z])(?=.*[0-9])[a-zA-Z0-9]+$'),
+          ]),
+          confirmPassword: new FormControl('', [
+            Validators.required,
+            Validators.minLength(8),
+            // Validators.pattern('^(?=.*[a-zA-Z])(?=.*[0-9])[a-zA-Z0-9]+$'),
+          ]),
         },
         CustomValidator.equals
       ),

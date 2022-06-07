@@ -23,6 +23,7 @@ public class SecurityConfig {
 				.authorizeHttpRequests()
 					.antMatchers(HttpMethod.POST, "/api/auth/incription").permitAll()
 					.antMatchers(HttpMethod.GET,"/api/**").permitAll()
+					.antMatchers(HttpMethod.PUT,"/api/**").permitAll()
 				.and()
 				.httpBasic();
 		// @formatter:on

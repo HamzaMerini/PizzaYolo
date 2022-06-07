@@ -19,6 +19,10 @@ export class UtilisateurService {
     return this.httpClient.get<Utilisateur>(`${this.url}/${id}`);
   }
 
+  public getByMail(mail: string): Observable<Utilisateur> {
+    return this.httpClient.get<Utilisateur>(`${this.url}/${mail}`);
+  }
+
   public create(utilisateur: Utilisateur): Observable<Utilisateur> {
     return this.httpClient.post<Utilisateur>(
       this.url,
@@ -33,7 +37,7 @@ export class UtilisateurService {
     );
   }
 
-  public delete(id: number): Observable<void> {
+  public delete(id: number | undefined): Observable<void> {
     return this.httpClient.delete<void>(`${this.url}/${id}`);
   }
 

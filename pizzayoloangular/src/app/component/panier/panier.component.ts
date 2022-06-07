@@ -16,6 +16,7 @@ export class PanierComponent implements OnInit {
   showMessageDessert: boolean = false;
   showMessageBoisson: boolean = false;
   showMessagePizza: boolean = false;
+  prixtotalpanier: number = 0;
 
   constructor(private router: Router) {}
 
@@ -26,6 +27,7 @@ export class PanierComponent implements OnInit {
     } else {
       this.showMessageDessert = true;
     }
+    this.calculTotalPrixCommande();
   }
 
   public afficherBoissonsPanier() {
@@ -35,6 +37,7 @@ export class PanierComponent implements OnInit {
     } else {
       this.showMessageBoisson = true;
     }
+    this.calculTotalPrixCommande();
   }
 
   public afficherPizzasPanier() {
@@ -44,6 +47,7 @@ export class PanierComponent implements OnInit {
     } else {
       this.showMessagePizza = true;
     }
+    this.calculTotalPrixCommande();
   }
 
   ngOnInit(): void {
@@ -69,5 +73,19 @@ export class PanierComponent implements OnInit {
     sessionStorage.setItem('pizzasPanier', JSON.stringify(this.pizzas));
     this.afficherPizzasPanier();
     this.router.navigate(['/panier']);
+  }
+
+  public calculTotalPrixCommande() {
+    this.prixtotalpanier = 0;
+    this.pizzas.forEach((pizza) => {
+      this.prixtotalpanier = this.prixtotalpanier + pizza.prix!;
+    });
+    this.boissons.forEach((boisson) => {
+      this.prixtotalpanier = this.prixtotalpanier + boisson.prix!;
+    });
+    this.desserts.forEach((dessert) => {
+      this.prixtotalpanier = this.prixtotalpanier + dessert.prix!;
+    });
+    this.prixtotalpanier = Math.round(this.prixtotalpanier * 100) / 100;
   }
 }
