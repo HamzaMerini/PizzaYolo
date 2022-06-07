@@ -29,6 +29,7 @@ public class Recette {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqRecette")
 	@Column(name="id")
+	@JsonView(JsonViews.RecetteWithIngredient.class)
 	private Long id;
 	
 	@JsonView({JsonViews.Common.class,JsonViews.CommandeWithItem.class,JsonViews.RecetteWithIngredient.class})
