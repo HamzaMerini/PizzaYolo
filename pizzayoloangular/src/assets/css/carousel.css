@@ -1,0 +1,15 @@
+.carousel .carousel-item {
+  height: 700px;
+}
+
+.carousel-content {
+  text-align: center;
+  margin-top: 60px;
+}
+
+.item img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-height: 500px;
+}

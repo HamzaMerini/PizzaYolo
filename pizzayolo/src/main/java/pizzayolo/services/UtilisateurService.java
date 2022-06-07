@@ -42,9 +42,7 @@ public class UtilisateurService {
 	}
 
 	public Utilisateur update(Utilisateur utilisateur) {
-		// si version dans utilisateur
-		// Utilisateur utilisateurEnBase = getById(utilisateur.getId());
-		// utilisateur.setVersion(utilisateurEnBase.getVersion());
+	
 		return utilisateurRepository.save(utilisateur);
 	}
 
@@ -65,10 +63,7 @@ public class UtilisateurService {
 	}
 
 	public boolean checkMailExist(String mail) {
-		if(getByMail(mail) != null) {
-			return true;
-		}
-		return false;
+		return utilisateurRepository.findByMail(mail).isPresent();
 	}
 
 }

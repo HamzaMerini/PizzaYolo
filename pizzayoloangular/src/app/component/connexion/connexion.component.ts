@@ -27,7 +27,7 @@ export class ConnexionComponent implements OnInit {
       },
       error: (error: any) => {
         console.log(error);
-        this.message = "erreur d'autentification";
+        this.message = "Erreur d'autentification";
         this.showError = true;
       },
     });

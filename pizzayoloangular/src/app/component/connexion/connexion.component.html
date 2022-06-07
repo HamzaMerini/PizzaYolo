@@ -1,5 +1,18 @@
-<p>connexion works!</p>
-<div>
+<app-navbar></app-navbar>
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" />
+<link
+  href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@600&display=swap"
+  rel="stylesheet"
+/>
+
+<link
+  rel="stylesheet"
+  href="https://unicons.iconscout.com/release/v2.1.9/css/unicons.css"
+/>
+
+<!-- <div>
   <div *ngIf="showError">{{ message }}</div>
   <form (ngSubmit)="submit(form)" #form="ngForm">
     <div class="form-group">
@@ -27,9 +40,143 @@
       <button type="submit" class="btn btn-primary" [disabled]="form.invalid">
         envoyer
       </button>
-      <a routerLink="/acceuil" routerLinkActive="active" class="btn btn-warning"
-        >annuler</a
-      >
     </div>
   </form>
+</div> -->
+
+<div class="section">
+  <div class="container">
+    <div class="row full-height justify-content-center">
+      <div class="col-12 text-center align-self-center py-5">
+        <div class="section pb-5 pt-5 pt-sm-2 text-center">
+          <h6 class="mb-0 pb-3">
+            <span>Connexion</span><span>Inscription</span>
+          </h6>
+          <input class="checkbox" type="checkbox" id="reg-log" name="reg-log" />
+          <label for="reg-log"></label>
+          <div class="card-3d-wrap mx-auto">
+            <div class="card-3d-wrapper">
+              <div class="card-front">
+                <div class="center-wrap">
+                  <div class="section text-center">
+                    <h4 class="mb-4 pb-3">Connexion</h4>
+                    <form (ngSubmit)="submit(form)" #form="ngForm">
+                      <div class="form-group">
+                        <input
+                          type="email"
+                          name="logemail"
+                          class="form-style"
+                          placeholder="Email"
+                          id="logemail"
+                          autocomplete="off"
+                          [(ngModel)]="mail"
+                          #mailCtrl="ngModel"
+                          required
+                        />
+                        <i class="input-icon uil uil-at"></i>
+                      </div>
+                      <div class="form-group mt-2">
+                        <input
+                          type="password"
+                          name="logpass"
+                          class="form-style"
+                          placeholder="Mot de passe"
+                          id="logpass"
+                          autocomplete="off"
+                          [(ngModel)]="password"
+                          #passwordCtrl="ngModel"
+                          required
+                        />
+                        <i class="input-icon uil uil-lock-alt"></i>
+                      </div>
+                      <div>
+                        <a>
+                          <button
+                            type="submit"
+                            class="btn-login mt-4"
+                            [disabled]="form.invalid"
+                          >
+                            Se connecter
+                          </button>
+                        </a>
+                      </div>
+                      <br />
+                      <div *ngIf="showError" style="color: #ee3939">
+                        {{ message }}
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+              <div class="card-back">
+                <div class="center-wrap">
+                  <div class="section text-center">
+                    <h4 class="mb-4 pb=4">Inscription</h4>
+                    <div class="form-group">
+                      <input
+                        type="text"
+                        name="logname"
+                        class="form-style"
+                        placeholder="Votre Nom"
+                        id="lognom"
+                        style="text-transform: capitalize"
+                        autocomplete="off"
+                      />
+                      <i class="input-icon uil uil-user"></i>
+                    </div>
+                    <div class="form-group mt-2">
+                      <input
+                        type="text"
+                        name="logname"
+                        class="form-style"
+                        placeholder="Votre Prenom"
+                        id="logprenom"
+                        style="text-transform: capitalize"
+                        autocomplete="off"
+                      />
+                      <i class="input-icon uil uil-user"></i>
+                    </div>
+                    <div class="form-group mt-2">
+                      <input
+                        type="email"
+                        name="logemail"
+                        class="form-style"
+                        placeholder="Votre Email"
+                        id="logemail"
+                        autocomplete="off"
+                      />
+                      <i class="input-icon uil uil-at"></i>
+                    </div>
+                    <div class="form-group mt-2">
+                      <input
+                        type="password"
+                        name="logpass"
+                        class="form-style"
+                        placeholder="Votre Mot de passe"
+                        id="logpass"
+                        autocomplete="off"
+                      />
+                      <i class="input-icon uil uil-lock-alt"></i>
+                    </div>
+                    <div class="form-group mt-2">
+                      <input
+                        type="password"
+                        name="logpass"
+                        class="form-style"
+                        placeholder="Confirmer Mot de passe"
+                        id="logpass"
+                        autocomplete="off"
+                      />
+                      <i class="input-icon uil uil-lock-alt"></i>
+                    </div>
+                    <a href="#" class="btn-login mt-4">S'inscrire</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

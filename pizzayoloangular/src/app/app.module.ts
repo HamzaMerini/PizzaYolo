@@ -18,6 +18,9 @@ import { GestionPlanningComponent } from './component/gestion-planning/gestion-p
 import { InscriptionComponent } from './component/inscription/inscription.component';
 import { CommandeComponent } from './component/commande/commande.component';
 
+import { NgwWowModule } from 'ngx-wow';
+import { ScrollDirective } from './directive/scroll.directive';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,6 +35,7 @@ import { CommandeComponent } from './component/commande/commande.component';
     GestionPlanningComponent,
     InscriptionComponent,
     CommandeComponent,
+    ScrollDirective,
   ],
   imports: [
     BrowserModule,
@@ -39,6 +43,7 @@ import { CommandeComponent } from './component/commande/commande.component';
     ReactiveFormsModule,
     RouterModule.forRoot(routes),
     HttpClientModule,
+    NgwWowModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
