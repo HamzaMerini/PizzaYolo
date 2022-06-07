@@ -3,11 +3,6 @@
 <table class="table">
   <tr *ngFor="let recette of recettes | async">
     <div>
-      <img
-        src="https://raw.githubusercontent.com/HamzaMerini/PizzaYolo/main/pizzayoloangular/src/assets/img/pizza/{{
-          recette.id
-        }}.png"
-      />
       <td>{{ recette.nom }}</td>
 
       <td *ngFor="let ingredient of recette.listeIngre">
@@ -19,8 +14,7 @@
       src="https://raw.githubusercontent.com/HamzaMerini/PizzaYolo/main/pizzayoloangular/src/assets/img/pizza/{{
         recette.id
       }}.png"
-      height="42"
-      width="42"
+      height="200"
     />
 
     <td>
@@ -81,8 +75,7 @@
         src="https://raw.githubusercontent.com/HamzaMerini/PizzaYolo/main/pizzayoloangular/src/assets/img/dessert/{{
           dessert.id
         }}.png"
-        height="42"
-        width="42"
+        height="200"
       />
       <button
         (click)="ajouterdessert(dessert)"
@@ -105,8 +98,7 @@
         src="https://raw.githubusercontent.com/HamzaMerini/PizzaYolo/main/pizzayoloangular/src/assets/img/boisson/{{
           boisson.id
         }}.png"
-        height="42"
-        width="42"
+        height="200"
       />
       <button
         (click)="ajouterboisson(boisson)"
