@@ -31,12 +31,15 @@ export class CommandeService {
 
   private commandeToJson(commande: Commande): any {
     let obj = {
+      //On risque d'avoir besoin du typeCommande attention !
       boissons: commande.boissons,
       desserts: commande.desserts,
       pizzas: commande.pizzas,
-      clientTicket: commande.clientTicket,
-      dateTicket: commande.dateTicket,
+      typeCommande: commande.typeCommande,
       prixTotal: commande.prixTotal,
+      heureSouhaite: commande.heureSouhaite,
+      place: commande.place,
+      clientTicket: commande.clientTicket,
     };
 
     if (commande.numTicket) {
@@ -46,8 +49,9 @@ export class CommandeService {
   }
 
   public create(commande: Commande): Observable<Commande> {
+    console.log(this.commandeToJson(commande), 'commande to json');
     return this.httpClient.post<Commande>(
-      this.url,
+      `${this.url}/create`,
       this.commandeToJson(commande)
     );
   }

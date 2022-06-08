@@ -35,9 +35,7 @@ public class CommandeBoissonKey implements Serializable {
 		return boisson;
 	}
 
-	public void setboisson(Boisson boisson) {
-		this.boisson = boisson;
-	}
+	
 
 	public Commande getCommandeBoisson() {
 		return commandeBoisson;

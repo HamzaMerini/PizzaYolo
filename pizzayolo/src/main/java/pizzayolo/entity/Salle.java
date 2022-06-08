@@ -12,21 +12,23 @@ import com.fasterxml.jackson.annotation.JsonView;
 @DiscriminatorValue("S")
 public class Salle extends Commande {
 
-	@Enumerated(EnumType.STRING)
+	
 	@Column(name = "emplacement")
 	@JsonView({JsonViews.CommandeWithItem.class})
-	private PlanSalle place;
+	private String place;
 
 	public Salle() {
 
 	}
 
-	public PlanSalle getTable() {
+	public String getPlace() {
 		return place;
 	}
 
-	public void setTable(PlanSalle tableinstal) {
-		this.place = tableinstal;
+	public void setPlace(String place) {
+		this.place = place;
 	}
+
+
 
 }

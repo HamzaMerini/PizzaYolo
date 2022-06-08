@@ -1,5 +1,7 @@
 package pizzayolo.entity;
 
+import java.time.LocalTime;
+
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
@@ -21,7 +23,7 @@ public class Livraison extends Commande {
 		return heureSouhaite;
 	}
 
-	public void setHeureSouhaite(String heureSouhaite) {
-		this.heureSouhaite = heureSouhaite;
+	public void setHeureSouhaite(String localTime) {
+		this.heureSouhaite = localTime;
 	}
 }

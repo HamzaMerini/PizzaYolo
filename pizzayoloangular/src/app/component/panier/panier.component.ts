@@ -19,6 +19,7 @@ export class PanierComponent implements OnInit {
   prixtotalpanier: number = 0;
   showBontonCommande: boolean = false;
 
+
   constructor(private router: Router) {}
 
   public afficherDessertsPanier() {
@@ -152,12 +153,14 @@ export class PanierComponent implements OnInit {
     this.prixtotalpanier = Math.round(this.prixtotalpanier * 100) / 100;
   }
 
+
   public Pagecommander() {
     this.router.navigateByUrl('/commande');
   }
 
   public totalLigne(article: any): number {
     let prixLigne: number = article.prix! * article.quantite!;
+    prixLigne = Math.round(prixLigne * 100) / 100;
     return prixLigne;
   }
 }
