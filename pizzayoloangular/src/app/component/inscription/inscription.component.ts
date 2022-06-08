@@ -42,13 +42,15 @@ export class InscriptionComponent implements OnInit {
         {
           password: new FormControl('', [
             Validators.required,
-            Validators.minLength(8),
-            //Validators.pattern('^(?=.*[a-zA-Z])(?=.*[0-9])[a-zA-Z0-9]+$'),
+            Validators.pattern(
+              '(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-zd$@$!%*?&].{7,}'
+            ),
           ]),
           confirmPassword: new FormControl('', [
             Validators.required,
-            Validators.minLength(8),
-            // Validators.pattern('^(?=.*[a-zA-Z])(?=.*[0-9])[a-zA-Z0-9]+$'),
+            Validators.pattern(
+              '(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-zd$@$!%*?&].{7,}'
+            ),
           ]),
         },
         CustomValidator.equals

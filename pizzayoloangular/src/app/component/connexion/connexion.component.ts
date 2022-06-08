@@ -14,6 +14,7 @@ import { Observable, map } from 'rxjs';
 import { InscriptionService } from 'src/app/services/inscription.service';
 import { UtilisateurService } from 'src/app/services/utilisateur.service';
 import { CustomValidator } from 'src/app/validation/custom-validator';
+import { Adresse } from 'src/app/model/adresse';
 
 @Component({
   selector: 'app-connexion',
@@ -27,6 +28,7 @@ export class ConnexionComponent implements OnInit {
   message = '';
 
   FormInscription: FormGroup;
+  adresseVide = new Adresse();
 
   constructor(
     private authservice: AuthService,
@@ -50,13 +52,15 @@ export class ConnexionComponent implements OnInit {
         {
           password: new FormControl('', [
             Validators.required,
-            Validators.minLength(8),
-            //Validators.pattern('^(?=.*[a-zA-Z])(?=.*[0-9])[a-zA-Z0-9]+$'),
+            Validators.pattern(
+              '(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-zd$@$!%*?&].{7,}'
+            ),
           ]),
           confirmPassword: new FormControl('', [
             Validators.required,
-            Validators.minLength(8),
-            // Validators.pattern('^(?=.*[a-zA-Z])(?=.*[0-9])[a-zA-Z0-9]+$'),
+            Validators.pattern(
+              '(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-zd$@$!%*?&].{7,}'
+            ),
           ]),
         },
         CustomValidator.equals
@@ -90,8 +94,8 @@ export class ConnexionComponent implements OnInit {
       password: this.FormInscription.get('confirmPasswordGroup.password')
         ?.value,
       id: undefined,
-      adresse: undefined,
-      type: undefined,
+      adresse: this.adresseVide,
+      type: 'client',
       historiqueCommande: undefined,
       employe: undefined,
     };

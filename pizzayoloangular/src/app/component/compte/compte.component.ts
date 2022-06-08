@@ -1,3 +1,4 @@
+import { Adresse } from './../../model/adresse';
 import { Utilisateur } from './../../model/utilisateur';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -12,6 +13,7 @@ import {
   ValidationErrors,
 } from '@angular/forms';
 import { CustomValidator } from 'src/app/validation/custom-validator';
+import { NavbarService } from 'src/app/services/navbar.service';
 
 @Component({
   selector: 'app-compte',
@@ -23,6 +25,7 @@ export class CompteComponent implements OnInit {
 
   constructor(
     private utilisateurService: UtilisateurService,
+    private navbarService: NavbarService,
     private router: Router
   ) {
     this.monForm = new FormGroup({
@@ -60,12 +63,15 @@ export class CompteComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log('user', this.utilisateur);
+  }
 
   get utilisateur(): Utilisateur | null {
     if (sessionStorage.getItem('utilisateur')) {
       return JSON.parse(sessionStorage.getItem('utilisateur')!) as Utilisateur;
     }
+
     return null;
   }
 
@@ -83,6 +89,19 @@ export class CompteComponent implements OnInit {
     };
 
     this.utilisateurService.update(utilisateur).subscribe((data) => {
+      this.router.navigate(['/acceuil']);
+    });
+  }
+
+  save() {
+    console.log('update', this.utilisateur?.id);
+    this.utilisateurService.update(this.utilisateur!).subscribe(() => {});
+  }
+
+  delete(id: number) {
+    console.log('delete', id);
+    this.utilisateurService.delete(id).subscribe(() => {
+      this.navbarService.logout();
       this.router.navigate(['/acceuil']);
     });
   }
