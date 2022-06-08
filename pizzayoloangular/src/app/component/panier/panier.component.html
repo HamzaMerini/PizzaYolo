@@ -25,8 +25,20 @@
 <table class="table">
   <tr *ngFor="let dessert of desserts">
     <td>{{ dessert.nom }}</td>
-    <td>{{ dessert.prix }} €</td>
+
+    <td>{{ dessert.quantite }}</td>
+
+    <td>{{ dessert.prix }}€ prix unitaire</td>
+    <td>{{ totalLigne(dessert) }}</td>
+
     <td>
+      <button
+        (click)="supprimerUnDessert(dessert)"
+        type="button"
+        class="btn btn-outline-danger"
+      >
+        Supprimer un article du panier
+      </button>
       <button
         (click)="supprimerDessert(dessert)"
         type="button"
@@ -43,8 +55,17 @@
 <table class="table">
   <tr *ngFor="let boisson of boissons">
     <td>{{ boisson.nom }}</td>
-    <td>{{ boisson.prix }} €</td>
+    <td>{{ boisson.quantite }}</td>
+    <td>{{ boisson.prix }} prix unitaire €</td>
+    <td>{{ totalLigne(boisson) }}</td>
     <td>
+      <button
+        (click)="supprimerUneBoisson(boisson)"
+        type="button"
+        class="btn btn-outline-danger"
+      >
+        Supprimer une boisson du panier
+      </button>
       <button
         (click)="supprimerBoisson(boisson)"
         type="button"
@@ -58,4 +79,11 @@
   <h1>Montant total du panier : {{ prixtotalpanier }} €</h1>
 </table>
 
-<button *ngIf="showBontonCommande"      type="button" class="btn btn-outline-success">Passer Commande !</button>
+<button
+  *ngIf="showBontonCommande"
+  (click)="Pagecommander()"
+  type="button"
+  class="btn btn-outline-success"
+>
+  Passer Commande !
+</button>

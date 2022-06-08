@@ -1,1 +1,61 @@
 <p>commande works!</p>
+<form (ngSubmit)="submit()" [formGroup]="monForm">
+  <legend>Select a maintenance drone:</legend>
+
+  <h6 class="heading-small text-muted mb-4">Type de commande :</h6>
+  <div>
+    <input type="radio" id="Livraison" name="TypeCommande" value="Livraison" />
+    <label for="contactChoice1">Livraison</label>
+
+    <input type="radio" id="Emporter" name="TypeCommande" value="Emporter" />
+    <label for="Emporter">Emporter</label>
+  </div>
+
+  <h6 class="heading-small text-muted mb-4">Vérification de l'adresse :</h6>
+  <div class="pl-lg-6">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group focused">
+          <label class="form-control-label" for="input-address">Adresse</label>
+          <input
+            id="input-address"
+            class="form-control form-control-alternative"
+            placeholder="Adresse"
+            value="{{ utilisateur?.adresse }}"
+            type="text"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="form-group focused">
+          <label class="form-control-label" for="input-city">Ville</label>
+          <input
+            type="text"
+            class="form-control form-control-alternative"
+            placeholder="Ville"
+            value="{{ utilisateur?.adresse }}"
+          />
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="form-group">
+          <label class="form-control-label" for="input-country"
+            >Code postal</label
+          >
+          <input
+            type="number"
+            class="form-control form-control-alternative"
+            placeholder="Code postal"
+            value="{{ utilisateur?.adresse }}"
+          />
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <button type="submit" class="btn btn-info">Valider la commande</button>
+    </div>
+  </div>
+</form>

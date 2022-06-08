@@ -2,7 +2,8 @@ export class Boisson {
   public constructor(
     private _id?: number,
     private _nom?: string,
-    private _prix?: number
+    private _prix?: number,
+    private _quantite?: number
   ) {}
 
   get id(): number | undefined {
@@ -27,5 +28,12 @@ export class Boisson {
 
   set prix(value: number | undefined) {
     this._prix = value;
+  }
+  get quantite(): number | undefined {
+    return this._quantite;
+  }
+
+  set quantite(value: number | undefined) {
+    this._quantite = value;
   }
 }

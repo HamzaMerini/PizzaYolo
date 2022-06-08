@@ -2,7 +2,8 @@ export class Dessert {
   public constructor(
     private _nom?: string,
     private _prix?: number,
-    private _id?: number
+    private _id?: number,
+    private _quantite?: number
   ) {}
 
   get nom(): string | undefined {
@@ -26,5 +27,13 @@ export class Dessert {
 
   set id(value: number | undefined) {
     this._id = value;
+  }
+
+  get quantite(): number | undefined {
+    return this._quantite;
+  }
+
+  set quantite(value: number | undefined) {
+    this._quantite = value;
   }
 }
