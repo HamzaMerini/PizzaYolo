@@ -31,7 +31,8 @@ export class UtilisateurService {
   }
 
   public update(utilisateur: Utilisateur): Observable<Utilisateur> {
-    return this.httpClient.put<Utilisateur>(
+    console.log('service', utilisateur);
+    return this.httpClient.patch<Utilisateur>(
       `${this.url}/${utilisateur.id}`,
       this.utilisateurToJson(utilisateur)
     );
@@ -51,10 +52,15 @@ export class UtilisateurService {
       prenom: utilisateur.prenom,
       nom: utilisateur.nom,
       password: utilisateur.password,
-      adresse: utilisateur.adresse,
+      adresse: {
+        numVoie: utilisateur.adresse?.numVoie,
+        nomVoie: utilisateur.adresse?.nomVoie,
+        cp: utilisateur.adresse?.cp,
+        ville: utilisateur.adresse?.ville,
+      },
       type: utilisateur.type,
-      historiqueCommande: utilisateur.historiqueCommande,
-      employe: utilisateur.employe,
+      historiqueCommande: undefined,
+      employe: undefined,
     };
 
     if (utilisateur.id) {

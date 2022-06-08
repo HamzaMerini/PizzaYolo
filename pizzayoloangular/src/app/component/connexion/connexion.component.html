@@ -101,7 +101,10 @@
                         </a>
                       </div>
                       <br />
-                      <div *ngIf="showError" style="color: #ee3939">
+                      <div
+                        *ngIf="showError"
+                        style="font-size: x-small; color: #ff5b5b"
+                      >
                         {{ message }}
                       </div>
                     </form>
@@ -187,9 +190,10 @@
                                 'confirmPasswordGroup.password'
                               )?.hasError('pattern')
                             "
-                          >
-                            Le mot de passe doit contenir au moins <br />
-                            1 Maj 1Num 1CarSp taille 8
+                            ><p style="font-size: x-small; color: #ff5b5b">
+                              Le mot de passe doit contenir au moins <br />
+                              1 Maj 1Num 1CarSps taille 8
+                            </p>
                           </ng-container>
                           <i class="input-icon uil uil-lock-alt"></i>
                         </div>
