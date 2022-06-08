@@ -1,3 +1,4 @@
+import { AuthenticatedGuardService } from './services/authenticated-guard.service';
 import { CarteComponent } from './component/carte/carte.component';
 import { ConnexionComponent } from './component/connexion/connexion.component';
 import { AccueilComponent } from './component/accueil/accueil.component';
@@ -20,7 +21,10 @@ export const routes: Routes = [
   { path: 'compte', component: CompteComponent },
   { path: 'planning', component: PlanningComponent },
   { path: 'gestionP', component: GestionPlanningComponent },
-  { path: 'commande', component: CommandeComponent },
   { path: 'inscription', component: InscriptionComponent },
-  
+  {
+    path: 'commande',
+    component: CommandeComponent,
+    canActivate: [AuthenticatedGuardService],
+  },
 ];
