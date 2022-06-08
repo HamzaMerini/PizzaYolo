@@ -21,6 +21,7 @@ public class Dessert {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqDessert")
 	@Column(name = "id")
+	@JsonView(JsonViews.Common.class)
 	private int id;
 	
 	@Column(name = "nom")

@@ -10,6 +10,13 @@
       </td>
     </div>
     <td>{{ recette.prixM }} €</td>
+    <img
+      src="https://raw.githubusercontent.com/HamzaMerini/PizzaYolo/main/pizzayoloangular/src/assets/img/pizza/{{
+        recette.id
+      }}.png"
+      height="200"
+    />
+
     <td>
       <button
         type="button"
@@ -64,6 +71,12 @@
     <td>{{ dessert.nom }}</td>
     <td>{{ dessert.prix }} €</td>
     <td>
+      <img
+        src="https://raw.githubusercontent.com/HamzaMerini/PizzaYolo/main/pizzayoloangular/src/assets/img/dessert/{{
+          dessert.id
+        }}.png"
+        height="200"
+      />
       <button
         (click)="ajouterdessert(dessert)"
         type="button"
@@ -81,6 +94,12 @@
     <td>{{ boisson.nom }}</td>
     <td>{{ boisson.prix }} €</td>
     <td>
+      <img
+        src="https://raw.githubusercontent.com/HamzaMerini/PizzaYolo/main/pizzayoloangular/src/assets/img/boisson/{{
+          boisson.id
+        }}.png"
+        height="200"
+      />
       <button
         (click)="ajouterboisson(boisson)"
         type="button"
