@@ -81,7 +81,7 @@ public class QuestPizzayoloSpring {
 	private CreneauService creneauService;
 	
 	@Test
-	@Disabled
+//	@Disabled
 	public void init() {
 		
 		System.out.println("BDD");
