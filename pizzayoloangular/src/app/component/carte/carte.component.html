@@ -1,5 +1,6 @@
 <h1>Notre carte</h1>
 <h2>Nos Pizzas :</h2>
+
 <table class="table">
   <tr *ngFor="let recette of recettes | async">
     <div>
@@ -44,7 +45,6 @@
       <option value="Pan">Pan (+1.50€)</option>
       <option value="MozzaCrust">MozzaCrust (+2.90€)</option>
     </select>
-    {{ pizza.pate }}
 
     <label>Taille:</label>
     <select

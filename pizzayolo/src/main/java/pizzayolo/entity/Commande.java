@@ -1,8 +1,6 @@
 package pizzayolo.entity;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
@@ -17,12 +15,14 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import org.hibernate.annotations.ManyToAny;
 
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonSubTypes.Type;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonView;
 
 @Entity
@@ -30,6 +30,10 @@ import com.fasterxml.jackson.annotation.JsonView;
 @SequenceGenerator(name = "seqCommande", sequenceName = "seq_commande", initialValue = 1, allocationSize = 1)
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "type_commande", discriminatorType = DiscriminatorType.STRING, length = 5)
+
+@JsonTypeInfo(use=JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property="typeCommande")
+
+@JsonSubTypes({@Type(value=Livraison.class, name="Livraison"),@Type(value=Salle.class, name="Salle")})
 
 public abstract class Commande {
 	@Id

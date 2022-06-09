@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import pizzayolo.entity.Commande;
+import pizzayolo.entity.CommandeAngular;
 import pizzayolo.entity.CommandeBoisson;
+import pizzayolo.entity.CommandeBoissonKey;
 import pizzayolo.entity.CommandeDessert;
 import pizzayolo.entity.Livraison;
 import pizzayolo.entity.Pizza;
@@ -57,83 +59,13 @@ public class CommandeService {
 	}
 
 	public Commande create(Commande commande) {
-		if (!(commande.getBoissons()==null)) {
-			for (CommandeBoisson cb : commande.getBoissons()) {commandeBoissonService.create(cb);
-			}}
-		if (!(commande.getDesserts()==null)) {
-			for (CommandeDessert cd : commande.getDesserts()) {	commandeDessertService.create(cd);
-			}}	
-		if (!(commande.getPizzas()==null)) {
-			for (Pizza p : commande.getPizzas()) {
-				p.setCommandePizza(commande);}}
-
-
-		return commandeRepository.save(commande);
-	}
-
+		
+		return commandeRepository.save(commande);}
+		
+		
 
 	public Commande update(Commande commande) {
-		double prix=0;
-		if (!(commande.getBoissons()==null)) {
-			for (CommandeBoisson cb : commande.getBoissons()) {
-
-				if(commande.getClientTicket().getType().equals("employe") && commande instanceof Salle) {
-					if (cb.getIdCB().getBoisson().getNom().contains("33") || cb.getIdCB().getBoisson().getNom().contains("50")) {
-						cb.getIdCB().getBoisson().setPrix(1);
-					}else {
-						cb.getIdCB().getBoisson().setPrix(2);
-					}
-				}
-				cb.setPrix(cb.getIdCB().getBoisson().getPrix());
-				prix=prix+cb.getPrix()*cb.getQuantiteBoisson();
-				commandeBoissonService.create(cb);
-			}
-		}
-
-		if (!(commande.getDesserts()==null)) {
-			for (CommandeDessert cd : commande.getDesserts()) {
-				if(commande.getClientTicket().getType().equals("employe") && commande instanceof Salle) {
-					if (cd.getIdCD().getDessert().getNom().contains("465ml")) {
-						cd.getIdCD().getDessert().setPrix(5);
-					}else if (cd.getIdCD().getDessert().getNom().contains("100ml")) {
-						cd.getIdCD().getDessert().setPrix(2);
-					}else {
-						cd.getIdCD().getDessert().setPrix(1.8);
-					}
-
-				}
-
-				cd.setPrix(cd.getIdCD().getDessert().getPrix());
-				prix=prix+cd.getPrix()*cd.getQuantiteDessert();
-				commandeDessertService.create(cd);
-			}
-		}
-
-		if (!(commande.getPizzas()==null)) {
-			for (Pizza p : commande.getPizzas()) {
-				p.setCommandePizza(commande);
-
-				if(commande.getClientTicket().getType().equals("employe") && commande instanceof Salle) {
-					if (p.getTaille().equals(Taille.Medium)) {
-						p.setPrix(5);
-					} else if (p.getTaille().equals(Taille.Large)) {
-						p.setPrix(6);
-					} else {
-						p.setPrix(8);
-					}
-				}
-
-
-				if(commande instanceof Livraison) {
-					p.setPrix(p.getPrix()+2);
-				}
-
-				prix=prix+p.getPrix();
-				pizzaService.update(p);
-			}
-		}
-
-		commande.setPrixTotal(prix);
+	
 		return commandeRepository.save(commande);
 	}
 

@@ -75,10 +75,8 @@ public class CommandeBoisson {
 		return Objects.equals(idCB, other.idCB);
 	}
 
-	@Override
-	public String toString() {
-		return "CommandeBoisson [idCB=" + idCB + ", quantiteBoisson=" + quantiteBoisson + "]";
-	}
+	
+
 
 	
 	

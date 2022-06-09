@@ -3,15 +3,18 @@ import { Boisson } from './boisson';
 import { Dessert } from './dessert';
 import { Pizza } from './pizza';
 
-export abstract class Commande {
+export class Commande {
   public constructor(
     private _numTicket?: number,
+
     private _boissons?: Boisson[],
     private _desserts?: Dessert[],
     private _pizzas?: Pizza[],
     private _clientTicket?: Utilisateur,
-    private _dateTicket?: Date,
-    private _prixTotal?: number
+    private _prixTotal?: number,
+    private _typeCommande?: String,
+    private _heureSouhaite?: String,
+    private _place?: String
   ) {}
 
   get numTicket(): number | undefined {
@@ -54,19 +57,35 @@ export abstract class Commande {
     this._clientTicket = value;
   }
 
-  get dateTicket(): Date | undefined {
-    return this._dateTicket;
-  }
-
-  set dateTicket(value: Date | undefined) {
-    this._dateTicket = value;
-  }
-
   get prixTotal(): number | undefined {
     return this._prixTotal;
   }
 
   set prixTotal(value: number | undefined) {
     this._prixTotal = value;
+  }
+
+  get heureSouhaite(): String | undefined {
+    return this._heureSouhaite;
+  }
+
+  set heureSouhaite(value: String | undefined) {
+    this._heureSouhaite = value;
+  }
+
+  get place(): String | undefined {
+    return this._place;
+  }
+
+  set place(value: String | undefined) {
+    this._place = value;
+  }
+
+  get typeCommande(): String | undefined {
+    return this._typeCommande;
+  }
+
+  set typeCommande(value: String | undefined) {
+    this._typeCommande = value;
   }
 }

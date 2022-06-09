@@ -20,7 +20,7 @@ public class CommandeBoissonService {
 
 	public CommandeBoisson create(CommandeBoisson commandeBoisson) {// faire en sorte que au moment on on créer une commande on créer aussi les commandeBoisson associé et les CommandeDessert il faut aussi mettre la commande dans pizza et save 
 		//commande.getBoissons(); <- renvoi la liste des commandeBoisson pour cette commande
-		
+		System.out.println(commandeBoisson);
 		return commandeBoissonRepository.save(commandeBoisson);
 	}
 
@@ -28,6 +28,7 @@ public class CommandeBoissonService {
 		// si version dans commande
 		// Commande commandeEnBase = getById(commande.getId());
 		// commande.setVersion(commandeEnBase.getVersion());
+		
 		return commandeBoissonRepository.save(commandeBoisson);
 	}
 

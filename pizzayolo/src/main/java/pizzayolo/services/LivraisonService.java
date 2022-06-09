@@ -12,32 +12,32 @@ import pizzayolo.repositories.LivraisonRepository;
 @Service
 public class LivraisonService {
 	@Autowired
-	private LivraisonRepository livraisonRepository;
+    private LivraisonRepository livraisonRepository;
 
-	public List<Livraison> getAll() {
-		return livraisonRepository.findAll();
-	}
+    public List<Livraison> getAll() {
+        return livraisonRepository.findAll();
+    }
 
-	public Livraison getById(Long id) {
-		return livraisonRepository.findById(id).orElseThrow(ExceptionPizzayolo::new);
-	}
+    public Livraison getById(Long id) {
+        return livraisonRepository.findById(id).orElseThrow(ExceptionPizzayolo::new);
+    }
 
-	public void create(Livraison livraison) {
-		livraisonRepository.save(livraison);
-	}
+    public void create(Livraison livraison) {
+        livraisonRepository.save(livraison);
+    }
 
-	public Livraison update(Livraison livraison) {
-		// si version dans livraison
-		// Livraison livraisonEnBase = getById(livraison.getId());
-		// livraison.setVersion(livraisonEnBase.getVersion());
-		return livraisonRepository.save(livraison);
-	}
+    public Livraison update(Livraison livraison) {
+        // si version dans livraison
+        // Livraison livraisonEnBase = getById(livraison.getId());
+        // livraison.setVersion(livraisonEnBase.getVersion());
+        return livraisonRepository.save(livraison);
+    }
 
-	public void delete(Livraison livraison) {
-		livraisonRepository.delete(livraison);
-	}
+    public void delete(Livraison livraison) {
+        livraisonRepository.delete(livraison);
+    }
 
-	public void deleteById(Long id) {
-		livraisonRepository.deleteById(id);
-	}
+    public void deleteById(Long id) {
+        livraisonRepository.deleteById(id);
+    }
 }
