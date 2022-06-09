@@ -46,10 +46,10 @@
 
     <span *ngIf="typeCommande == 'Livraison'">
       <h6>Votre adresse :</h6>
-      <div>{{ utilisateur.adresse?.numVoie! }}</div>
-      <div>{{ utilisateur.adresse?.nomVoie! }}</div>
-      <div>{{ utilisateur.adresse?.cp! }}</div>
-      <div>{{ utilisateur.adresse?.ville! }}</div>
+      <div>Numéro de Voie : {{ utilisateur.adresse?.numVoie! }}</div>
+      <div>Nom de voie : {{ utilisateur.adresse?.nomVoie! }}</div>
+      <div>Code Postale : {{ utilisateur.adresse?.cp! }}</div>
+      <div>Ville : {{ utilisateur.adresse?.ville! }}</div>
       <button
         type="button"
         class="btn btn-outline-danger"

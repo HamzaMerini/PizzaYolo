@@ -1,130 +1,24 @@
-<h1>Notre carte</h1>
-<h2>Nos Pizzas :</h2>
-
-<table class="table">
-  <tr *ngFor="let recette of recettes | async">
-    <div>
-      <td>{{ recette.nom }}</td>
-
-      <td *ngFor="let ingredient of recette.listeIngre">
-        <p>{{ ingredient.libelle }}</p>
-      </td>
-    </div>
-    <td>{{ recette.prixM }} €</td>
-    <img
-      src="https://raw.githubusercontent.com/HamzaMerini/PizzaYolo/main/pizzayoloangular/src/assets/img/pizza/{{
-        recette.id
-      }}.png"
-      height="200"
-    />
-
-    <td>
-      <button
-        type="button"
-        (click)="showFormPizza(recette)"
-        class="btn btn-outline-success"
-      >
-        Ajouter au panier
-      </button>
-    </td>
-  </tr>
-</table>
-
-<div *ngIf="showformPizza" class="form-group">
-  <form (ngSubmit)="savePizza(formPizza)" #formPizza="ngForm">
-    <label>Pate:</label>
-    <select
-      [(ngModel)]="pizza.pate"
-      class="form-control"
-      id="pate"
-      name="pate"
-      #pateCtrl="ngModel"
-    >
-      <option value="Classique">Classique</option>
-      <option value="Fine">Fine</option>
-      <option value="Pan">Pan (+1.50€)</option>
-      <option value="MozzaCrust">MozzaCrust (+2.90€)</option>
-    </select>
-
-    <label>Taille:</label>
-    <select
-      [(ngModel)]="pizza.taille"
-      class="form-control"
-      name="taille"
-      id="taille"
-      #tailleCtrl="ngModel"
-    >
-      <option value="Medium">Medium</option>
-      <option value="Large">Large</option>
-      <option value="XL">XL</option>
-    </select>
-
-    <div class="form-group">
-      <button class="btn btn-primary" type="submit">enregistrer</button>
-    </div>
-  </form>
-</div>
-
-<h2>Nos Desserts :</h2>
-<table class="table">
-  <tr *ngFor="let dessert of desserts | async">
-    <td>{{ dessert.nom }}</td>
-    <td>{{ dessert.prix }} €</td>
-    <td>{{ dessert.id }} €</td>
-    <td>
-      <img
-        src="https://raw.githubusercontent.com/HamzaMerini/PizzaYolo/main/pizzayoloangular/src/assets/img/dessert/{{
-          dessert.id
-        }}.png"
-        height="200"
-      />
-      <button
-        (click)="ajouterdessert(dessert)"
-        type="button"
-        class="btn btn-outline-success"
-      >
-        Ajouter au panier
-      </button>
-    </td>
-  </tr>
-</table>
-
-<h2>Nos boissons :</h2>
-<table class="table">
-  <tr *ngFor="let boisson of boissons | async">
-    <td>{{ boisson.nom }}</td>
-    <td>{{ boisson.prix }} €</td>
-    <td>
-      <img
-        src="https://raw.githubusercontent.com/HamzaMerini/PizzaYolo/main/pizzayoloangular/src/assets/img/boisson/{{
-          boisson.id
-        }}.png"
-        height="200"
-      />
-      <button
-        (click)="ajouterboisson(boisson)"
-        type="button"
-        class="btn btn-outline-success"
-      >
-        Ajouter au panier
-      </button>
-    </td>
-  </tr>
-</table>
-
 <section class="food_section layout_padding">
   <div class="container">
     <div class="heading_container heading_center">
       <h2>Menu</h2>
     </div>
 
-    <!-- <ul class="filters_menu">
-    <li class="active" data-filter="*">Tout</li>
-    <li data-filter=".pizza">Pizza</li>
-    <li data-filter=".boisson">Boissons</li>
-    <li data-filter=".dessert">Desserts</li
-    </ul> -->
-    <div class="row row-cols-2 row-cols-lg-3 g-0">
+    <ul class="filters_menu">
+      <li class="active" data-filter="*">Tout</li>
+      <li data-filter=".pizza">Pizza</li>
+      <li data-filter=".boisson">Boissons</li>
+      <li data-filter=".dessert">Desserts</li>
+    </ul>
+
+    <!--<div class="row row-cols-2 row-cols-lg-3 g-0">
+      <a href="#recettes" target="_self" class="col">Nos Pizza </a>
+      <a href="#desserts" target="_self" class="col"> Nos desserts</a>
+      <a href="#boissons" target="_self" class="col">Nos boissons</a>
+    </div> -->
+
+    <h2>Nos Pizzas :</h2>
+    <div class="row row-cols-2 row-cols-lg-3 g-0" id="recettes">
       <div class="col" *ngFor="let recette of recettes | async">
         <div class="filters-content p-3">
           <div class="all pizza">
@@ -211,39 +105,113 @@
         </div>
       </div>
     </div>
-  </div>
-  <div *ngIf="showformPizza" class="form-group">
-    <form (ngSubmit)="savePizza(formPizza)" #formPizza="ngForm">
-      <label>Pate:</label>
-      <select
-        [(ngModel)]="pizza.pate"
-        class="form-control"
-        id="pate"
-        name="pate"
-        #pateCtrl="ngModel"
+    <div *ngIf="showformPizza">
+      <form
+        (ngSubmit)="savePizza(formPizza)"
+        #formPizza="ngForm"
+        class="form-group"
       >
-        <option value="Classique">Classique</option>
-        <option value="Fine">Fine</option>
-        <option value="Pan">Pan (+1.50€)</option>
-        <option value="MozzaCrust">MozzaCrust (+2.90€)</option>
-      </select>
+        <label>Pate:</label>
+        <select
+          [(ngModel)]="pizza.pate"
+          class="form-control"
+          id="pate"
+          name="pate"
+          #pateCtrl="ngModel"
+        >
+          <option value="Classique">Classique</option>
+          <option value="Fine">Fine</option>
+          <option value="Pan">Pan (+1.50€)</option>
+          <option value="MozzaCrust">MozzaCrust (+2.90€)</option>
+        </select>
 
-      <label>Taille:</label>
-      <select
-        [(ngModel)]="pizza.taille"
-        class="form-control"
-        name="taille"
-        id="taille"
-        #tailleCtrl="ngModel"
-      >
-        <option value="Medium">Medium</option>
-        <option value="Large">Large</option>
-        <option value="XL">XL</option>
-      </select>
+        <label>Taille:</label>
+        <select
+          [(ngModel)]="pizza.taille"
+          class="form-control"
+          name="taille"
+          id="taille"
+          #tailleCtrl="ngModel"
+        >
+          <option value="Medium">Medium {{ pizza.recette!.prixM }} €</option>
+          <option value="Large">Large {{ pizza.recette!.prixL }} €</option>
+          <option value="XL">XL {{ pizza.recette!.prixXL }} €</option>
+        </select>
 
-      <div class="form-group">
-        <button class="btn btn-primary" type="submit">Enregistrer</button>
+        <div class="form-group">
+          <button class="btn btn-primary" type="submit">Enregistrer</button>
+        </div>
+      </form>
+    </div>
+
+    <h2>Nos Desserts</h2>
+    <div class="row row-cols-2 row-cols-lg-3 g-0" id="desserts">
+      <div class="col" *ngFor="let dessert of desserts | async">
+        <div class="filters-content p-3">
+          <div class="all desserts">
+            <div class="box">
+              <div>
+                <div class="img-box">
+                  <img
+                    src="https://raw.githubusercontent.com/HamzaMerini/PizzaYolo/main/pizzayoloangular/src/assets/img/dessert/{{
+                      dessert.id
+                    }}.png"
+                    height="200"
+                  />
+                </div>
+                <div class="detail-box">
+                  <h5>{{ dessert.nom }}</h5>
+
+                  <h6>{{ dessert.prix }}€</h6>
+
+                  <button
+                    (click)="ajouterdessert(dessert)"
+                    type="button"
+                    class="btn btn-outline-success"
+                  >
+                    Ajouter au panier
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-    </form>
+    </div>
+
+    <h2>Nos Boissons</h2>
+    <div class="row row-cols-2 row-cols-lg-3 g-0" id="boissons">
+      <div class="col" *ngFor="let boisson of boissons | async">
+        <div class="filters-content p-3">
+          <div class="all boissons">
+            <div class="box">
+              <div>
+                <div class="img-box">
+                  <img
+                    src="https://raw.githubusercontent.com/HamzaMerini/PizzaYolo/main/pizzayoloangular/src/assets/img/boisson/{{
+                      boisson.id
+                    }}.png"
+                    height="200"
+                  />
+                </div>
+                <div class="detail-box">
+                  <h5>{{ boisson.nom }}</h5>
+
+                  <h6>{{ boisson.prix }}€</h6>
+
+                  <button
+                    (click)="ajouterboisson(boisson)"
+                    type="button"
+                    class="btn btn-outline-success"
+                  >
+                    Ajouter au panier
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
