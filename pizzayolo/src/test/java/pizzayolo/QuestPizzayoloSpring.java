@@ -297,9 +297,6 @@ public class QuestPizzayoloSpring {
 		Collections.addAll(pepp, SauceTomate, Mozzarella, Oignons, Poivrons, Champignons, Tomates, Olives, Origan);
 		Recette peppina = new Recette("Peppina", 9, pepp);
 
-		Set<Ingredient> racM = new HashSet<Ingredient>();
-		Collections.addAll(racM, CremeFraiche, Mozzarella, Chevre, Fourme, Emmental);
-		Recette racletteMiel = new Recette("Surprenante Raclette-Miel", 9, racM);
 
 		Set<Ingredient> qf = new HashSet<Ingredient>();
 		Collections.addAll(qf, CremeFraiche, Mozzarella, Chevre, Fourme, Emmental);
@@ -341,7 +338,6 @@ public class QuestPizzayoloSpring {
 		recetteService.create(diavolaP);
 		recetteService.create(sKebab);
 		recetteService.create(peppina);
-		recetteService.create(racletteMiel);
 		recetteService.create(qFro);
 		recetteService.create(baconGroovy);
 		recetteService.create(cannibale);

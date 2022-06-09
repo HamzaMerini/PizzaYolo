@@ -14,4 +14,8 @@ export class RecetteService {
   public getAll(): Observable<Recette[]> {
     return this.httpClient.get<Recette[]>(this.url);
   }
+
+  public getById(id: number): Observable<Recette[]> {
+    return this.httpClient.get<Recette[]>(`${this.url}/${id}`);
+  }
 }

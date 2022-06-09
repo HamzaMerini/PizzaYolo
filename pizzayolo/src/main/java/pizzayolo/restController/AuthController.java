@@ -55,6 +55,6 @@ public class AuthController {
 	@GetMapping("")
 	@JsonView(JsonViews.Common.class)
 	public Utilisateur getUser(@AuthenticationPrincipal Utilisateur user) {
-		return user;
+		return userService.getById(user.getId());
 	}
 }

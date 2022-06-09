@@ -1,5 +1,6 @@
 package pizzayolo.repositories;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -12,6 +13,5 @@ public interface UtilisateurRepository extends JpaRepository<Utilisateur, Long>{
 	@Query("select u from Utilisateur u left join fetch u.adresse where u.id=:id")
     Optional<Utilisateur> findByIdWithAdresse(@Param("id") Long id);
    
-
-    Optional<Utilisateur> findByMail(String mail);
+	Optional<Utilisateur> findByMail(String mail);
 }

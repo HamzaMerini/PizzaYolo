@@ -9,23 +9,23 @@ import com.fasterxml.jackson.annotation.JsonView;
 public class Adresse {
 	
 	@Column(name="numero")
-	@JsonView(JsonViews.UtilisateurWithAdresse.class)
+	@JsonView({JsonViews.UtilisateurWithAdresse.class,JsonViews.Common.class})
 	private String numVoie;
 	
 	@Column(name="rue")
-	@JsonView(JsonViews.UtilisateurWithAdresse.class)
+	@JsonView({JsonViews.UtilisateurWithAdresse.class,JsonViews.Common.class})
 	private String nomVoie;
 	
 	@Column(name="complement")
-	@JsonView(JsonViews.UtilisateurWithAdresse.class)
+	@JsonView({JsonViews.UtilisateurWithAdresse.class,JsonViews.Common.class})
 	private String complement;
 	
 	@Column(name="code_postale")
-	@JsonView(JsonViews.UtilisateurWithAdresse.class)
+	@JsonView({JsonViews.UtilisateurWithAdresse.class,JsonViews.Common.class})
 	private String cp;
 	
 	@Column(name="ville")
-	@JsonView(JsonViews.UtilisateurWithAdresse.class)
+	@JsonView({JsonViews.UtilisateurWithAdresse.class,JsonViews.Common.class})
 	private String ville;
 
 	public Adresse() {
