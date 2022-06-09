@@ -131,7 +131,7 @@ export class CommandeComponent implements OnInit {
     console.log(commandeAngular, 'commandeAngular click submit');
 
     this.commandeService.create(commandeAngular).subscribe(() => {
-      alert("Toute l'équipe de PIZZA YOLO vous remercie de votre commande ! ");
+      this.router.navigateByUrl('/commandevalidee');
     });
   }
 

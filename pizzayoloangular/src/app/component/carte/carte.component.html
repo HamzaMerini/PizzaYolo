@@ -42,7 +42,12 @@
 
                   <div class="options">
                     <h6>{{ recette.prixM }}€</h6>
-                    <a (click)="showFormPizza(recette)">
+                    <a
+                      (click)="showFormPizza(recette)"
+                      data-toggle="modal"
+                      data-target="#exampleModal"
+                      type="button"
+                    >
                       <svg
                         version="1.1"
                         id="Capa_1"
@@ -148,7 +153,7 @@
     <div class="row row-cols-2 row-cols-lg-3 g-0" id="desserts">
       <div class="col" *ngFor="let dessert of desserts | async">
         <div class="filters-content p-3">
-          <div class="all desserts">
+          <div class="all dessert">
             <div class="box">
               <div>
                 <div class="img-box">
@@ -183,7 +188,7 @@
     <div class="row row-cols-2 row-cols-lg-3 g-0" id="boissons">
       <div class="col" *ngFor="let boisson of boissons | async">
         <div class="filters-content p-3">
-          <div class="all boissons">
+          <div class="all boisson">
             <div class="box">
               <div>
                 <div class="img-box">

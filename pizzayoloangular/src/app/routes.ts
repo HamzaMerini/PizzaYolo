@@ -1,3 +1,4 @@
+import { CommandevalideeComponent } from './component/commandevalidee/commandevalidee.component';
 import { AuthenticatedGuardService } from './services/authenticated-guard.service';
 import { CarteComponent } from './component/carte/carte.component';
 import { ConnexionComponent } from './component/connexion/connexion.component';
@@ -22,6 +23,7 @@ export const routes: Routes = [
   { path: 'planning', component: PlanningComponent },
   { path: 'gestionP', component: GestionPlanningComponent },
   { path: 'inscription', component: InscriptionComponent },
+  { path: 'commandevalidee', component: CommandevalideeComponent },
   {
     path: 'commande',
     component: CommandeComponent,
