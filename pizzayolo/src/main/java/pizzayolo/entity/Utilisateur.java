@@ -66,6 +66,7 @@ public class Utilisateur implements UserDetails {
 	@OneToMany(mappedBy = "clientTicket")
 	Set<Commande> historiqueCommande;
 
+	@JsonView({JsonViews.Common.class,JsonViews.UtilisateurWithAdresse.class})
 	@OneToOne(mappedBy = "utilisateur") // PAS TOUJOURS VRAI DANS LE SENS OU UN UTILSATEUR NEST PAS FORCEMENT UN EMPLYE
 	private Employe employe;
 

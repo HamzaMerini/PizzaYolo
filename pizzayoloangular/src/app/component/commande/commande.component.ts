@@ -108,6 +108,7 @@ export class CommandeComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log(this.utilisateur);
     this.afficherDessertsPanier();
     this.afficherBoissonsPanier();
     this.afficherPizzasPanier();

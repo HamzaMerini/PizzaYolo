@@ -35,7 +35,7 @@ public class AuthController {
 
 	@PostMapping("/inscription")
 	@PreAuthorize("isAnonymous()")
-	@JsonView(JsonViews.Common.class)
+	@JsonView(JsonViews.UtilisateurWithAdresse.class)
 	public Utilisateur inscription(@Valid @RequestBody Utilisateur user, BindingResult br) {
 
 		if (br.hasErrors()) {
@@ -53,7 +53,7 @@ public class AuthController {
 	}
 
 	@GetMapping("")
-	@JsonView(JsonViews.Common.class)
+	@JsonView(JsonViews.UtilisateurWithAdresse.class)
 	public Utilisateur getUser(@AuthenticationPrincipal Utilisateur user) {
 		return userService.getById(user.getId());
 	}
