@@ -1,86 +1,114 @@
-<h1>Votre commande :</h1>
-<div class="form-group">
-  <form (ngSubmit)="submit()" #monform="ngForm">
-    <legend>Selectionner un type de commande :</legend>
-    <fieldset>
-      <div>
-        <input
-          (change)="lancementDesCalculs()"
-          [(ngModel)]="typeCommande"
-          type="radio"
-          id="Emporter"
-          name="TypeCommande"
-          value="Salle"
-          #typeCtrl="ngModel"
-          class="form-check-input"
-        />
-        <label for="Emporter">Emporter</label>
+<section class="food_section layout_padding">
+  <div class="container">
+    <h1>Votre commande :</h1>
+    <div class="form-group">
+      <form (ngSubmit)="submit()" #monform="ngForm">
+        <legend>Selectionner un type de commande :</legend>
+        <fieldset>
+          <div>
+            <div class="form-check">
+              <input
+                (change)="lancementDesCalculs()"
+                [(ngModel)]="typeCommande"
+                type="radio"
+                id="Emporter"
+                name="TypeCommande"
+                value="Salle"
+                #typeCtrl="ngModel"
+                class="form-check-input"
+              />
+              <label class="form-check-label" for="Emporter">Emporter</label>
+            </div>
+            <div class="form-check">
+              <input
+                (change)="lancementDesCalculs()"
+                [(ngModel)]="typeCommande"
+                type="radio"
+                id="Livraison"
+                name="TypeCommande"
+                value="Livraison"
+                #typeCtrl="ngModel"
+                class="form-check-input"
+              />
+              <label class="form-check-label" for="Livraison">Livraison</label>
+            </div>
+            <div *ngIf="typeCommande == 'Livraison'">
+              <form>
+                <div class="form-group">
+                  <label for="heureSouhaite"
+                    >Une heure de livraison souhaitée ? Une précision à transmettre au livreur ? Laissez
+                    nous un petit message : </label
+                  >
+                  <textarea
+                    [(ngModel)]="heureSouhaite"
+                    id="heureSouhaite"
+                    name="heureSouhaite"
+                    #heureSouhaiteCtrl="ngModel"
+                    class="form-control"
+                    rows="2"
+                  >
+                  </textarea>
+                </div>
+              </form>
+            </div>
+          </div>
+        </fieldset>
 
-        <input
-          (change)="lancementDesCalculs()"
-          [(ngModel)]="typeCommande"
-          type="radio"
-          id="Livraison"
-          name="TypeCommande"
-          value="Livraison"
-          #typeCtrl="ngModel"
-          class="form-check-input"
-        />
-        <label for="contactChoice1">Livraison</label>
-
-        <div *ngIf="typeCommande == 'Livraison'">
-          <label
-            >Si vous souhaitez une heure de livraison spécifique laissez nous un
-            petit message nous ferons notre possible pour respecter votre
-            souhait</label
+        <span *ngIf="typeCommande == 'Livraison'">
+          <div
+            class="card text-white bg-secondary mb-3"
+            style="max-width: 18rem"
           >
-          <input
-            [(ngModel)]="heureSouhaite"
-            id="heureSouhaite"
-            name="heureSouhaite"
-            #heureSouhaiteCtrl="ngModel"
-          />
+            <div class="card-body">
+              <h5 class="card-title">Votre adresse :</h5>
+
+              <div class="card-text">
+                Numéro de Voie : {{ utilisateur.adresse?.numVoie! }}
+              </div>
+              <div class="card-text">
+                Nom de voie : {{ utilisateur.adresse?.nomVoie! }}
+              </div>
+              <div class="card-text">
+                Code Postale : {{ utilisateur.adresse?.cp! }}
+              </div>
+              <div class="card-text">
+                Ville : {{ utilisateur.adresse?.ville! }}
+              </div>
+              <button
+                type="button"
+                class="btn btn-outline-danger"
+                (click)="retourCompte()"
+              >
+                Modifier Votre Adresse
+              </button>
+            </div>
+          </div>
+        </span>
+
+        <span *ngIf="typeCommande == 'Salle'">
+          <div>
+            Vottre commande vous attendra dans notre restaurant :
+            <div>1310 Av. du Père Soulas</div>
+            <div>34090 Montpellier</div>
+          </div>
+        </span>
+
+        <h2>Prix des articles dans le panier :{{ prixtotalpanier }} €</h2>
+        <span *ngIf="typeCommande == 'Livraison'">
+          Cout de la livraison (2€ par pizza) : {{ prixLivraison }} €</span
+        >
+        <span *ngIf="reductionEmploye != 0">
+          Vous bénéficier de la réduction de 30% en tant que membre de l'équipe
+          : -{{ reductionEmploye }} €</span
+        >
+        <h1>Montant total à régler : {{ prixTotal }} €</h1>
+
+        <div *ngIf="typeCtrl.dirty">
+          <button type="submit" class="btn btn-outline-success">
+            Valider la commande
+          </button>
         </div>
-      </div>
-    </fieldset>
-
-    <span *ngIf="typeCommande == 'Livraison'">
-      <h6>Votre adresse :</h6>
-      <div>Numéro de Voie : {{ utilisateur.adresse?.numVoie! }}</div>
-      <div>Nom de voie : {{ utilisateur.adresse?.nomVoie! }}</div>
-      <div>Code Postale : {{ utilisateur.adresse?.cp! }}</div>
-      <div>Ville : {{ utilisateur.adresse?.ville! }}</div>
-      <button
-        type="button"
-        class="btn btn-outline-danger"
-        (click)="retourCompte()"
-      >
-        Modifier Votre Adresse
-      </button>
-    </span>
-
-    <span *ngIf="typeCommande == 'Salle'">
-      <div>
-        Vottre commande vous attendra dans notre restaurant :
-        <div>1310 Av. du Père Soulas</div>
-        <div>34090 Montpellier</div>
-      </div>
-    </span>
-
-    <div>Prix des articles dans le panier :{{ prixtotalpanier }} €</div>
-    <span *ngIf="typeCommande == 'Livraison'">
-      Cout de la livraison (2€ par pizza) : {{ prixLivraison }} €</span
-    >
-    <span *ngIf="reductionEmploye != 0">
-      Vous bénéficier de la réduction de 30% en tant que membre de l'équipe :
-      -{{ reductionEmploye }} €</span
-    >
-    <div>Montant total à régler : {{ prixTotal }} €</div>
-
-    <div *ngIf="typeCtrl.dirty">
-      <button type="submit" class="btn btn-outline-success">
-        Valider la commande
-      </button>
+      </form>
     </div>
-  </form>
-</div>
+  </div>
+</section>

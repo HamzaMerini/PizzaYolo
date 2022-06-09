@@ -1,89 +1,132 @@
-<h1>Mon panier :</h1>
+<section class="food_section layout_padding">
+  <div class="container">
+    <h1>Mon panier :</h1>
 
-<h2>Mes Pizzas :</h2>
-<span *ngIf="showMessagePizza"> Aucune pizza dans le panier</span>
-<table class="table">
-  <tr *ngFor="let pizza of pizzas">
-    <td>{{ pizza.recette?.nom }}</td>
-    <td>{{ pizza.taille }}</td>
-    <td>{{ pizza.pate }}</td>
-    <td>{{ pizza.prix }} €</td>
-    <td>
-      <button
-        (click)="supprimerPizza(pizza)"
-        type="button"
-        class="btn btn-outline-danger"
-      >
-        Supprimer du panier
-      </button>
-    </td>
-  </tr>
-</table>
+    <h2>Mes Pizzas :</h2>
 
-<h2>Mes Desserts :</h2>
-<span *ngIf="showMessageDessert"> Aucun dessert dans le panier</span>
-<table class="table">
-  <tr *ngFor="let dessert of desserts">
-    <td>{{ dessert.nom }}</td>
+    <span *ngIf="showMessagePizza"> Aucune pizza dans le panier</span>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Recette</th>
+          <th scope="col">Taille</th>
+          <th scope="col">Pate</th>
+          <th scope="col">Prix</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let pizza of pizzas">
+          <td class="col-3">{{ pizza.recette?.nom }}</td>
 
-    <td>{{ dessert.quantite }}</td>
+          <td>{{ pizza.taille }}</td>
+          <td>{{ pizza.pate }}</td>
+          <td>{{ pizza.prix }} €</td>
 
-    <td>{{ dessert.prix }}€ prix unitaire</td>
-    <td>{{ totalLigne(dessert) }} €</td>
+          <td>
+            <button
+              (click)="supprimerPizza(pizza)"
+              type="button"
+              class="btn btn-outline-danger"
+            >
+              Supprimer du panier
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
 
-    <td>
-      <button
-        (click)="supprimerUnDessert(dessert)"
-        type="button"
-        class="btn btn-outline-danger"
-      >
-        Supprimer un article du panier
-      </button>
-      <button
-        (click)="supprimerDessert(dessert)"
-        type="button"
-        class="btn btn-outline-danger"
-      >
-        Supprimer du panier
-      </button>
-    </td>
-  </tr>
-</table>
+    <div class="container-fluid">
+      <h2>Mes Desserts :</h2>
+      <span *ngIf="showMessageDessert"> Aucun dessert dans le panier</span>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Dessert</th>
+            <th scope="col">Quantité</th>
+            <th scope="col">Prix Unitaire</th>
+            <th scope="col">Prix</th>
+          </tr>
+        </thead>
 
-<h2>Mes Boissons :</h2>
-<span *ngIf="showMessageBoisson"> Aucune boisson dans le panier</span>
-<table class="table">
-  <tr *ngFor="let boisson of boissons">
-    <td>{{ boisson.nom }}</td>
-    <td>{{ boisson.quantite }}</td>
-    <td>{{ boisson.prix }} prix unitaire €</td>
-    <td>{{ totalLigne(boisson) }} €</td>
-    <td>
-      <button
-        (click)="supprimerUneBoisson(boisson)"
-        type="button"
-        class="btn btn-outline-danger"
-      >
-        Supprimer une boisson du panier
-      </button>
-      <button
-        (click)="supprimerBoisson(boisson)"
-        type="button"
-        class="btn btn-outline-danger"
-      >
-        Supprimer du panier
-      </button>
-    </td>
-  </tr>
+        <tbody>
+          <tr *ngFor="let dessert of desserts">
+            <td>{{ dessert.nom }}</td>
 
-  <h1>Montant total du panier : {{ prixtotalpanier }} €</h1>
-</table>
+            <td>{{ dessert.quantite }}</td>
 
-<button
-  *ngIf="showBontonCommande"
-  (click)="Pagecommander()"
-  type="button"
-  class="btn btn-outline-success"
->
-  Passer Commande !
-</button>
+            <td>{{ dessert.prix }}€</td>
+            <td>{{ totalLigne(dessert) }} €</td>
+
+            <td>
+              <button
+                (click)="supprimerUnDessert(dessert)"
+                type="button"
+                class="btn btn-outline-danger"
+              >
+                Supprimer un article du panier
+              </button>
+              <button
+                (click)="supprimerDessert(dessert)"
+                type="button"
+                class="btn btn-outline-danger"
+              >
+                Supprimer du panier
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <h2>Mes Boissons :</h2>
+        <span *ngIf="showMessageBoisson"> Aucune boisson dans le panier</span>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Boisson</th>
+              <th scope="col">Quantité</th>
+              <th scope="col">Prix Unitaire</th>
+              <th scope="col">Prix</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr *ngFor="let boisson of boissons">
+              <td>{{ boisson.nom }}</td>
+              <td>{{ boisson.quantite }}</td>
+              <td>{{ boisson.prix }} €</td>
+              <td>{{ totalLigne(boisson) }} €</td>
+              <td>
+                <button
+                  (click)="supprimerUneBoisson(boisson)"
+                  type="button"
+                  class="btn btn-outline-danger"
+                >
+                  Supprimer une boisson du panier
+                </button>
+                <button
+                  (click)="supprimerBoisson(boisson)"
+                  type="button"
+                  class="btn btn-outline-danger"
+                >
+                  Supprimer du panier
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <h1>Montant total du panier : {{ prixtotalpanier }} €</h1>
+    <button
+      *ngIf="showBontonCommande"
+      (click)="Pagecommander()"
+      type="button"
+      class="btn btn-outline-success"
+    >
+      Passer Commande !
+    </button>
+  </div>
+</section>

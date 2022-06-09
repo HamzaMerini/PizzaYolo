@@ -21,6 +21,7 @@ import { CommandeComponent } from './component/commande/commande.component';
 import { NgwWowModule } from 'ngx-wow';
 import { ScrollDirective } from './directive/scroll.directive';
 import { FooterComponent } from './component/footer/footer.component';
+import { CommandevalideeComponent } from './component/commandevalidee/commandevalidee.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { FooterComponent } from './component/footer/footer.component';
     CommandeComponent,
     ScrollDirective,
     FooterComponent,
+    CommandevalideeComponent,
   ],
   imports: [
     BrowserModule,
