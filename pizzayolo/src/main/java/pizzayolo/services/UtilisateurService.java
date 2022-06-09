@@ -42,7 +42,6 @@ public class UtilisateurService {
 	}
 
 	public Utilisateur update(Utilisateur utilisateur) {
-	
 		return utilisateurRepository.save(utilisateur);
 	}
 

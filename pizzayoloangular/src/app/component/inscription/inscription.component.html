@@ -35,7 +35,9 @@
     <ng-container formGroupName="confirmPasswordGroup">
       <div>
         mot de passe:<input formControlName="password" /><ng-container
-          *ngIf="monForm.get('password')?.hasError('required')"
+          *ngIf="
+            monForm.get('confirmPasswordGroup.password')?.hasError('pattern')
+          "
         >
           champ obligatoire
         </ng-container>

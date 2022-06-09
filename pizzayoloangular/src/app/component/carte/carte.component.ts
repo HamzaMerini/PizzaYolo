@@ -17,6 +17,7 @@ import { FormGroup } from '@angular/forms';
   styleUrls: ['./carte.component.css'],
 })
 export class CarteComponent implements OnInit {
+  fakeArray = new Array(27);
   recettes: Observable<Recette[]>;
   desserts: Observable<Dessert[]>;
   boissons: Observable<Boisson[]>;
@@ -40,6 +41,10 @@ export class CarteComponent implements OnInit {
   }
 
   ngOnInit(): void {}
+
+  public trouverRecette(id: number): Observable<Recette[]> {
+    return this.recetteService.getById(id);
+  }
 
   public trouverIndiceDessertPannier(dessert: Dessert): number {
     let indice: number = 0;

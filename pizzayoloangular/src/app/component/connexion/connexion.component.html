@@ -1,4 +1,3 @@
-<app-navbar></app-navbar>
 <!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" />
@@ -101,7 +100,10 @@
                         </a>
                       </div>
                       <br />
-                      <div *ngIf="showError" style="color: #ee3939">
+                      <div
+                        *ngIf="showError"
+                        style="font-size: x-small; color: #ff5b5b"
+                      >
                         {{ message }}
                       </div>
                     </form>
@@ -120,13 +122,7 @@
                           class="form-style"
                           placeholder="Votre Nom"
                           style="text-transform: capitalize"
-                        /><ng-container
-                          *ngIf="
-                            FormInscription.get('nom')?.hasError('required')
-                          "
-                        >
-                          champ obligatoire
-                        </ng-container>
+                        />
                         <i class="input-icon uil uil-user"></i>
                       </div>
                       <div class="form-group mt-2">
@@ -136,13 +132,7 @@
                           class="form-style"
                           placeholder="Votre Prenom"
                           style="text-transform: capitalize"
-                        /><ng-container
-                          *ngIf="
-                            FormInscription.get('prenom')?.hasError('required')
-                          "
-                        >
-                          champ obligatoire
-                        </ng-container>
+                        />
                         <i class="input-icon uil uil-user"></i>
                       </div>
                       <div class="form-group mt-2">
@@ -159,6 +149,7 @@
                             FormInscription.get('mail')?.invalid
                           "
                           class="alert alert-danger"
+                          style="font-size: x-small"
                         >
                           <ng-container
                             *ngIf="
@@ -194,12 +185,14 @@
                             autocomplete="off"
                           /><ng-container
                             *ngIf="
-                              FormInscription.get('password')?.hasError(
-                                'required'
-                              )
+                              FormInscription.get(
+                                'confirmPasswordGroup.password'
+                              )?.hasError('pattern')
                             "
-                          >
-                            champ obligatoire
+                            ><p style="font-size: x-small; color: #ff5b5b">
+                              Le mot de passe doit contenir au moins <br />
+                              1 Maj 1Num 1CarSps taille 8
+                            </p>
                           </ng-container>
                           <i class="input-icon uil uil-lock-alt"></i>
                         </div>
@@ -211,17 +204,18 @@
                             placeholder="Confirmer Mot de passe"
                             autocomplete="off"
                           />
+                          <span
+                            *ngIf="
+                              FormInscription.get(
+                                'confirmPasswordGroup'
+                              )?.hasError('equals')
+                            "
+                            style="font-size: x-small; color: #ff5b5b"
+                          >
+                            Les mots de passe ne correspondent pas</span
+                          >
                           <i class="input-icon uil uil-lock-alt"></i>
                         </div>
-                        <span
-                          *ngIf="
-                            FormInscription.get(
-                              'confirmPasswordGroup'
-                            )?.hasError('equals')
-                          "
-                        >
-                          mdp different</span
-                        >
                       </ng-container>
                       <a>
                         <button

@@ -1,4 +1,3 @@
-<app-navbar></app-navbar>
 <!-- <div class="container">
   <table class="table">
     <tr>
@@ -96,7 +95,8 @@
             <div class="text-center">
               <h3>{{ utilisateur?.prenom }} {{ utilisateur?.nom }}</h3>
               <div class="h5 font-weight-300">
-                <i class="ni location_pin mr-2"></i>XXXXX, France
+                <i class="ni location_pin mr-2"></i
+                >{{ utilisateur!.adresse?.ville }}, France
               </div>
             </div>
           </div>
@@ -188,7 +188,7 @@
                   </div>
                 </div>
               </div>
-              <div class="pl-lg-6">
+              <!-- <div class="pl-lg-6">
                 <div class="row">
                   <div class="col-md-12">
                     <div class="form-group focused">
@@ -232,14 +232,34 @@
                       />
                     </div>
                   </div>
-                </div>
+                </div> -->
 
-                <div>
-                  <button type="submit" class="btn btn-info">
-                    Sauvegarder
-                  </button>
-                </div>
+              <div>
+                <button
+                  (click)="save()"
+                  type="submit"
+                  class="btn btn-info"
+                  style="float: left"
+                >
+                  Sauvegarder
+                </button>
+                <button
+                  (click)="delete(utilisateur?.id!)"
+                  class="btn btn-danger"
+                  style="float: right"
+                >
+                  Supprimer
+                </button>
               </div>
+              <!-- </div>
+            </form> -->
+              <!-- </div> -->
+              <!-- </div> -->
+              <!-- </div> -->
+              <!-- </div> -->
+              <!-- </div> -->
+              <!-- </div> -->
+              <br /><br /><br /><br /><br />
             </form>
           </div>
         </div>
@@ -247,13 +267,20 @@
     </div>
   </div>
 </div>
-<br /><br /><br /><br /><br />
 
-<input
-  type="text"
-  class="form-control form-control-alternative"
-  placeholder="Ville"
-  value="{{ utilisateur?.id }}"
-/>
+<div>
+  <h1>edition compte</h1>
 
-<button>SUPPRIMER LE COMPTE</button>
+  <div class="form-group">
+    <label>nom:</label>
+    <input [(ngModel)]="utilisateur!.nom" class="form-control" />
+  </div>
+  <div class="form-group">
+    <label>prenom:</label>
+    <input [(ngModel)]="utilisateur!.prenom" class="form-control" />
+  </div>
+  <div class="form-group">
+    <button class="btn btn-primary" (click)="save()">enregistrer</button>
+  </div>
+
+</div>

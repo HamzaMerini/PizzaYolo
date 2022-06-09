@@ -33,12 +33,12 @@ public class Utilisateur implements UserDetails {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqUtilisateur")
 	@Column(name = "id")
-	@JsonView(JsonViews.Common.class)
+	@JsonView({JsonViews.Common.class,JsonViews.UtilisateurWithAdresse.class})
 	private Long id;
 
 	@Column(name = "mail", unique = true)
 	@NotEmpty
-	@JsonView({ JsonViews.Common.class, JsonViews.CommandeWithItem.class })
+	@JsonView({ JsonViews.Common.class, JsonViews.CommandeWithItem.class,JsonViews.UtilisateurWithAdresse.class })
 	@Email
 	private String mail;
 
@@ -48,24 +48,25 @@ public class Utilisateur implements UserDetails {
 	private String password;
 
 	@Column(name = "nom")
-	@JsonView({ JsonViews.Common.class, JsonViews.CommandeWithItem.class })
+	@JsonView({ JsonViews.Common.class, JsonViews.CommandeWithItem.class,JsonViews.UtilisateurWithAdresse.class })
 	private String nom;
 
 	@Column(name = "prenom")
-	@JsonView(JsonViews.Common.class)
+	@JsonView({JsonViews.Common.class,JsonViews.UtilisateurWithAdresse.class})
 	private String prenom;
 
 	@Embedded
-	@JsonView(JsonViews.UtilisateurWithAdresse.class)
+	@JsonView({JsonViews.Common.class,JsonViews.UtilisateurWithAdresse.class})
 	private Adresse adresse;
 
 	@Column(name = "type")
-	@JsonView(JsonViews.Common.class)
+	@JsonView({JsonViews.Common.class,JsonViews.UtilisateurWithAdresse.class})
 	private String type; // client employe ou responsable
 
 	@OneToMany(mappedBy = "clientTicket")
 	Set<Commande> historiqueCommande;
 
+	@JsonView({JsonViews.Common.class,JsonViews.UtilisateurWithAdresse.class})
 	@OneToOne(mappedBy = "utilisateur") // PAS TOUJOURS VRAI DANS LE SENS OU UN UTILSATEUR NEST PAS FORCEMENT UN EMPLYE
 	private Employe employe;
 
