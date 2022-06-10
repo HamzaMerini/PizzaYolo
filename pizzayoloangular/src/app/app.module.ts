@@ -21,7 +21,7 @@ import { CommandeComponent } from './component/commande/commande.component';
 import { NgwWowModule } from 'ngx-wow';
 import { ScrollDirective } from './directive/scroll.directive';
 import { FooterComponent } from './component/footer/footer.component';
-import { CommandevalideeComponent } from './component/commandevalidee/commandevalidee.component';
+import { EditCompteComponent } from './component/compte/edit-compte/edit-compte.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +39,7 @@ import { CommandevalideeComponent } from './component/commandevalidee/commandeva
     CommandeComponent,
     ScrollDirective,
     FooterComponent,
-    CommandevalideeComponent,
+    EditCompteComponent,
   ],
   imports: [
     BrowserModule,

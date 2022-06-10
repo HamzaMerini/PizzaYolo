@@ -63,9 +63,9 @@ export class UtilisateurService {
       employe: undefined,
     };
 
-    if (utilisateur.id) {
-      Object.assign(obj, { id: utilisateur.id });
-    }
+    // if (utilisateur.id) {
+    //   Object.assign(obj, { id: utilisateur.id });
+    // }
     return obj;
   }
 }

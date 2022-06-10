@@ -1,21 +1,9 @@
+<br /><br /><br /><br />
 <section class="food_section layout_padding">
   <div class="container">
     <div class="heading_container heading_center">
       <h2>Menu</h2>
     </div>
-
-    <ul class="filters_menu">
-      <li class="active" data-filter="*">Tout</li>
-      <li data-filter=".pizza">Pizza</li>
-      <li data-filter=".boisson">Boissons</li>
-      <li data-filter=".dessert">Desserts</li>
-    </ul>
-
-    <!--<div class="row row-cols-2 row-cols-lg-3 g-0">
-      <a href="#recettes" target="_self" class="col">Nos Pizza </a>
-      <a href="#desserts" target="_self" class="col"> Nos desserts</a>
-      <a href="#boissons" target="_self" class="col">Nos boissons</a>
-    </div> -->
 
     <h2>Nos Pizzas :</h2>
     <div class="row row-cols-2 row-cols-lg-3 g-0" id="recettes">
@@ -34,11 +22,10 @@
                 </div>
                 <div class="detail-box">
                   <h5>{{ recette.nom }}</h5>
-                  <p>
-                    <td *ngFor="let ingredient of recette.listeIngre">
-                      <p>{{ ingredient.libelle }}</p>
-                    </td>
-                  </p>
+
+                  <td *ngFor="let ingredient of recette.listeIngre">
+                    {{ ingredient.libelle }}&nbsp;
+                  </td>
 
                   <div class="options">
                     <h6>{{ recette.prixM }}€</h6>

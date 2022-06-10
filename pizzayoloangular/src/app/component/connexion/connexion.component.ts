@@ -26,6 +26,10 @@ export class ConnexionComponent implements OnInit {
   password = '';
   showError = false;
   message = '';
+  ville = '';
+  cp = '';
+  rue = '';
+  numero = '';
 
   FormInscription: FormGroup;
   adresseVide = new Adresse();
@@ -36,6 +40,10 @@ export class ConnexionComponent implements OnInit {
     private inscriptionService: InscriptionService,
     private router: Router
   ) {
+    this.adresseVide.ville = this.ville;
+    this.adresseVide.cp = this.cp;
+    this.adresseVide.nomVoie = this.rue;
+    this.adresseVide.numVoie = this.numero;
     this.FormInscription = new FormGroup({
       mail: new FormControl(
         '',

@@ -159,7 +159,6 @@ export class CarteComponent implements OnInit {
   public showFormPizza(recette: Recette) {
     this.showformPizza = true;
     this.pizza.recette = recette;
-    
   }
 
   public savePizza(formPizza: any) {

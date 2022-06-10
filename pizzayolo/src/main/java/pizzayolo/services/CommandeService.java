@@ -77,6 +77,9 @@ public class CommandeService {
 		commandeRepository.deleteById(id);
 	}
 
+	
+
+	
 	public void afficherTicket(Commande commande) {
 
 	}

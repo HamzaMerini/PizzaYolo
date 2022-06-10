@@ -134,7 +134,7 @@
   color: #ffffff;
   border-radius: 15px;
   overflow: hidden;
-  background: linear-gradient(to bottom, #f1f2f3 25px, #222831 25px);
+  background: linear-gradient(to bottom, #f1f2f3 25px, #3c4656 25px);
 }
 
 .food_section .box .img-box {
@@ -190,7 +190,7 @@
   width: 40px;
   height: 40px;
   border-radius: 100%;
-  background: #ffbe33;
+  background: #256f3a;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -226,7 +226,7 @@
 .food_section .btn-box a {
   display: inline-block;
   padding: 10px 55px;
-  background-color: #ffbe33;
+  background-color: #256f3a;
   color: #ffffff;
   border-radius: 45px;
   -webkit-transition: all 0.3s;
@@ -235,5 +235,5 @@
 }
 
 .food_section .btn-box a:hover {
-  background-color: #e69c00;
+  background-color: #256f3a;
 }

@@ -18,8 +18,5 @@ public interface CommandeRepository extends JpaRepository<Commande, Long>{
 	List<Commande>findAllWithItem();
 	
 	
-	@Query("select c from Commande as c where c.clientTicket=:utilisateurid")
-	List<Commande>findbyClient(@Param("utilisateurid") Long id);
 
-	
 }

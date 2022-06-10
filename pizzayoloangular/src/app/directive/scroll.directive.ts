@@ -10,8 +10,8 @@ export class ScrollDirective {
   newNav!: boolean;
 
   @HostListener('window:scroll') onScroll() {
-    console.log(window.scrollY);
-    if (window.scrollY >= 500) {
+    // console.log(window.scrollY);
+    if (window.scrollY >= 100) {
       this.newNav = true;
     } else {
       this.newNav = false;
